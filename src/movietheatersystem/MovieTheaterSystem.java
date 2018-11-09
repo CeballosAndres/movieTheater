@@ -83,7 +83,7 @@ public class MovieTheaterSystem {
             "Sacar cliente de cola",
             "Mostrar clientes formados"};
         do {
-            this.label("Submenú Ventas - Fila");
+            this.label("Mini menú Ventas - Fila");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
@@ -118,7 +118,7 @@ public class MovieTheaterSystem {
             "Vender boleto",
             "Cancelación de boleto"};
         do {
-            this.label("Submenú Ventas - Atender");
+            this.label("Mini menú Ventas - Atender");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
@@ -194,7 +194,7 @@ public class MovieTheaterSystem {
             "Número de salas",
             "Asientos en salas"};
         do {
-            this.label("Submenú Configuración - Cine");
+            this.label("Mini menú Configuración - Cine");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
@@ -227,7 +227,7 @@ public class MovieTheaterSystem {
             "Descuento a adultos mayores",
             "Descuento a niños"};
         do {
-            this.label("Submenú Administración - Costos");
+            this.label("Mini menú Administración - Costos");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
