@@ -6,5 +6,4 @@ public class Boleto {
     int boletosNino;
     int boletosTercera;
     float total;
-    
 }
