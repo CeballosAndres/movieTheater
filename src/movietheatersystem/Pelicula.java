@@ -1,8 +1,10 @@
 package movietheatersystem;
 public class Pelicula {
+    Pelicula next;
+    
     String nombre;
-    String categoria;
-    String anoEstreno;
+    String genero;
+    String director;
     int duracion; //minutos
     
 }
