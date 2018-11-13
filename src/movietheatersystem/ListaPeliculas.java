@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class ListaPeliculas {
 
+    public ListaPeliculas() {
+        this.inicio = null;
+        this.fin = null;
+        this.peliculasEjemplo();
+    }
+    
+    
+
     Pelicula inicio, fin;
     Metodos m = new Metodos();
 
@@ -125,20 +133,25 @@ public class ListaPeliculas {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
-            System.out.printf("%-20s", "Nombre");
-            System.out.printf("%-20s", "Director");
-            System.out.printf("%-10s", "Genero");
-            System.out.printf("%-4s", "Duración");
+            System.out.printf("|  %-20s  ", "Nombre");
+            System.out.printf("|  %-20s  ", "Director");
+            System.out.printf("|  %-15s  ", "Genero");
+            System.out.printf("|  %-8s  |", "Duración");
             System.out.println();
             while (aux != null) {
-                System.out.printf("%-20s", aux.getNombre());
-                System.out.printf("%-20s", aux.getDirector());
-                System.out.printf("%-10s", aux.getGenero());
-                System.out.printf("%-4s", aux.getDuracion());
-                System.out.println();
+                aux.mostrar();
                 aux = aux.getSigue();
             }
         }
+    }
+
+    public void peliculasEjemplo() {
+        this.agregarFinal(new Pelicula("Schindler's List", "Drama", "Steven Spielberg", 1993));
+        this.agregarFinal(new Pelicula("The Godfather", "Crime", "Francis Ford Coppola", 1972));
+        this.agregarFinal(new Pelicula("Pulp Fiction", "Crime", "Quentin Tarantino", 1994));
+        this.agregarFinal(new Pelicula("Fight Club","Drama","David Fincher", 1999));
+        this.agregarFinal(new Pelicula("Forrest Gump","Drama, Romance","Robert Zemeckis", 1994));
+        this.agregarFinal(new Pelicula("Inception","Action","Christopher Nolan", 2010));
     }
 
     public boolean vacia() {
