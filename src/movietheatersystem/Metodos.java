@@ -6,7 +6,7 @@ public class Metodos {
 
     public String entradaTexto() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("> ");
+        System.out.print(" > ");
         return sc.nextLine();
     }
 
