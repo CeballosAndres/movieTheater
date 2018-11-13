@@ -149,7 +149,7 @@ public class MovieTheaterSystem {
         Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
-            "Administrar cartelera",
+            "Administrar peliculas",
             "Administración de funciones en salas",
             "Administración de costos",
             "Mostrar funciones y costos acutuales",
@@ -184,7 +184,6 @@ public class MovieTheaterSystem {
                 case 6:
                     this.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
-
                     break;
                 case 0:
                     break;

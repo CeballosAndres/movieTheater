@@ -19,15 +19,12 @@ public class ListaPeliculas {
         this.inicio = inicio;
     }
 
-    public void setFin(Pelicula fin) {
-        this.fin = fin;
-    }
-
     private void agregarFinal(Pelicula nuevo) {
         if (this.vacia()) {
             this.inicio = nuevo;
             this.fin = nuevo;
         } else {
+            nuevo.setAtras(this.fin);
             this.fin.setSigue(nuevo);
             this.fin = nuevo;
         }
@@ -65,14 +62,14 @@ public class ListaPeliculas {
     public int posicion(Pelicula pelicula) {
         //regresa 0 si es unico elemento, 1 si está al inicio
         // 2 si está en medio y 3 si es el último elemento.
-        if (pelicula == this.inicio && pelicula == this.fin) {
+        if (this.inicio == this.fin) {
             return 0;
+        }
+        if (pelicula == this.inicio) {
+            return 1;
         }
         if (pelicula.getAtras() != null && pelicula.getSigue() != null) {
             return 2;
-        }
-        if (pelicula.getAtras() != null) {
-            return 1;
         }
         return 3;
     }
@@ -83,17 +80,17 @@ public class ListaPeliculas {
     }
 
     private void elimnarInicio(Pelicula eliminar) {
-        this.inicio = eliminar.getSigue();
+        this.inicio = this.inicio.getSigue();
+        this.inicio.setAtras(null);
     }
 
     private void eliminarEnMedio(Pelicula eliminar) {
-        System.out.println("aqui");
         eliminar.getAtras().setSigue(eliminar.getSigue());
         eliminar.getSigue().setAtras(eliminar.getAtras());
     }
 
     private void eliminarFin(Pelicula eliminar) {
-        eliminar.setAtras(null);
+        this.fin = this.fin.getAtras();
         this.fin.setSigue(null);
     }
 
@@ -103,6 +100,7 @@ public class ListaPeliculas {
         nombre = m.entradaTexto();
         Pelicula eliminar = this.buscarPorNombre(nombre);
         if (eliminar != null) {
+            System.out.println("aqui está!" + this.posicion(eliminar));
             switch (this.posicion(eliminar)) {
                 // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
                 case 0:
@@ -117,8 +115,9 @@ public class ListaPeliculas {
                 case 3:
                     this.eliminarFin(eliminar);
             }
+        } else {
+            System.out.println("Pelicula no encontrada.");
         }
-        System.out.println("Eliminado");
     }
 
     public void mostrarPeliculas() {
