@@ -228,11 +228,13 @@ public class MovieTheaterSystem {
         Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
-            "Agregar pelicula",
-            "Eliminar pelicula",
-            "Ver peliculas"};
+            "Ver peliculas",
+            "Agregar nueva",
+            "Modificar",
+            "Eliminar"
+        };
         do {
-            this.label("Mini menú Configuración - Cine");
+            this.label("Mini menú Configuración - Peliculas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
@@ -242,15 +244,19 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     this.label(opcionesMenu[opc - 1]);
-                    this.peliculas.agregarPelicula();
+                    this.peliculas.mostrarPeliculas();
                     break;
                 case 2:
                     this.label(opcionesMenu[opc - 1]);
-                    this.peliculas.eliminarPelicula();
+                    this.peliculas.agregarPelicula();
                     break;
                 case 3:
                     this.label(opcionesMenu[opc - 1]);
-                    this.peliculas.mostrarPeliculas();
+                    this.peliculas.modificarPelicula();
+                    break;
+                case 4:
+                    this.label(opcionesMenu[opc - 1]);
+                    this.peliculas.eliminarPelicula();
                     break;
                 case 0:
                     break;

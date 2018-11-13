@@ -9,8 +9,6 @@ public class ListaPeliculas {
         this.fin = null;
         this.peliculasEjemplo();
     }
-    
-    
 
     Pelicula inicio, fin;
     Metodos m = new Metodos();
@@ -41,7 +39,7 @@ public class ListaPeliculas {
     public Pelicula buscarPorNombre(String nombre) {
         Pelicula aux = this.inicio;
         while (aux != null) {
-            if (aux.getNombre().equals(nombre)) {
+            if (aux.getNombre().equalsIgnoreCase(nombre)) {
                 return aux;
             }
             aux = aux.getSigue();
@@ -104,24 +102,67 @@ public class ListaPeliculas {
 
     public void eliminarPelicula() {
         String nombre;
-        System.out.print("Nombre");
+        System.out.print("Nombre de pelicula a eliminar");
         nombre = m.entradaTexto();
         Pelicula eliminar = this.buscarPorNombre(nombre);
         if (eliminar != null) {
-            System.out.println("aqui está!" + this.posicion(eliminar));
-            switch (this.posicion(eliminar)) {
-                // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
-                case 0:
-                    this.eliminarUnico();
-                    break;
-                case 1:
-                    this.elimnarInicio(eliminar);
-                    break;
-                case 2:
-                    this.eliminarEnMedio(eliminar);
-                    break;
-                case 3:
-                    this.eliminarFin(eliminar);
+            System.out.println("");
+            eliminar.labelPeliculas();
+            eliminar.mostrar();
+            System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
+            char opc = m.entradaChar();
+            if (Character.toLowerCase(opc) == 's') {
+                switch (this.posicion(eliminar)) {
+                    // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
+                    case 0:
+                        this.eliminarUnico();
+                        break;
+                    case 1:
+                        this.elimnarInicio(eliminar);
+                        break;
+                    case 2:
+                        this.eliminarEnMedio(eliminar);
+                        break;
+                    case 3:
+                        this.eliminarFin(eliminar);
+                }
+                System.out.println("Eliminada exitosamente!");
+            } else {
+                System.out.println("No se ha eliminado el elemento.");
+            }
+        } else {
+            System.out.println("Pelicula no encontrada.");
+        }
+    }
+
+    public void modificarPelicula() {
+        System.out.print("Nombre de pelicula a eliminar");
+        String nombre = m.entradaTexto();
+        Pelicula modificar = this.buscarPorNombre(nombre);
+        if (modificar != null) {
+            System.out.println("");
+            eliminar.labelPeliculas();
+            eliminar.mostrar();
+            System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
+            char opc = m.entradaChar();
+            if (Character.toLowerCase(opc) == 's') {
+                switch (this.posicion(eliminar)) {
+                    // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
+                    case 0:
+                        this.eliminarUnico();
+                        break;
+                    case 1:
+                        this.elimnarInicio(eliminar);
+                        break;
+                    case 2:
+                        this.eliminarEnMedio(eliminar);
+                        break;
+                    case 3:
+                        this.eliminarFin(eliminar);
+                }
+                System.out.println("Eliminada exitosamente!");
+            } else {
+                System.out.println("No se ha eliminado el elemento.");
             }
         } else {
             System.out.println("Pelicula no encontrada.");
@@ -133,11 +174,7 @@ public class ListaPeliculas {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
-            System.out.printf("|  %-20s  ", "Nombre");
-            System.out.printf("|  %-20s  ", "Director");
-            System.out.printf("|  %-15s  ", "Genero");
-            System.out.printf("|  %-8s  |", "Duración");
-            System.out.println();
+            aux.labelPeliculas();
             while (aux != null) {
                 aux.mostrar();
                 aux = aux.getSigue();
@@ -146,12 +183,12 @@ public class ListaPeliculas {
     }
 
     public void peliculasEjemplo() {
-        this.agregarFinal(new Pelicula("Schindler's List", "Drama", "Steven Spielberg", 1993));
-        this.agregarFinal(new Pelicula("The Godfather", "Crime", "Francis Ford Coppola", 1972));
-        this.agregarFinal(new Pelicula("Pulp Fiction", "Crime", "Quentin Tarantino", 1994));
-        this.agregarFinal(new Pelicula("Fight Club","Drama","David Fincher", 1999));
-        this.agregarFinal(new Pelicula("Forrest Gump","Drama, Romance","Robert Zemeckis", 1994));
-        this.agregarFinal(new Pelicula("Inception","Action","Christopher Nolan", 2010));
+        this.agregarFinal(new Pelicula("Schindler's List", "Drama", "Steven Spielberg", 195));
+        this.agregarFinal(new Pelicula("The Godfather", "Crime", "Francis Ford Coppola", 175));
+        this.agregarFinal(new Pelicula("Pulp Fiction", "Crime", "Quentin Tarantino", 154));
+        this.agregarFinal(new Pelicula("Fight Club", "Drama", "David Fincher", 139));
+        this.agregarFinal(new Pelicula("Forrest Gump", "Drama, Romance", "Robert Zemeckis", 142));
+        this.agregarFinal(new Pelicula("Inception", "Action", "Christopher Nolan", 148));
     }
 
     public boolean vacia() {

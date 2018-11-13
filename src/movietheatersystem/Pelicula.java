@@ -67,6 +67,14 @@ public class Pelicula {
         return duracion;
     }
 
+    public void labelPeliculas() {
+        System.out.printf("|  %-20s  ", "Nombre");
+        System.out.printf("|  %-20s  ", "Director");
+        System.out.printf("|  %-15s  ", "Genero");
+        System.out.printf("|  %-8s  |", "Duración");
+        System.out.println();
+    }
+
     public void mostrar() {
         System.out.printf("| %-21s  ", this.nombre);
         System.out.printf("| %-21s  ", this.director);
