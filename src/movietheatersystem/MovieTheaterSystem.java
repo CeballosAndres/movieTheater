@@ -8,6 +8,9 @@ import java.util.Scanner;
  */
 public class MovieTheaterSystem {
 
+    ListaPeliculas peliculas = new ListaPeliculas();
+    Sala salas = new Sala();
+
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
         obj.menu();
@@ -146,6 +149,7 @@ public class MovieTheaterSystem {
         Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
+            "Administrar cartelera",
             "Administración de funciones en salas",
             "Administración de costos",
             "Mostrar funciones y costos acutuales",
@@ -161,20 +165,23 @@ public class MovieTheaterSystem {
             opc = this.opcion();
             switch (opc) {
                 case 1:
+                    this.subMenuConfiguracionCartelera();
+                    break;
+                case 2:
                     this.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita asignar una funcion a una sala.");
                     break;
-                case 2:
+                case 3:
                     this.subMenuConfiguracionCostos();
                     break;
-                case 3:
+                case 4:
                     this.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra las peliculas por sala y costos.");
                     break;
-                case 4:
+                case 5:
                     this.subMenuConfiguracionCine();
                     break;
-                case 5:
+                case 6:
                     this.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
 
@@ -209,6 +216,42 @@ public class MovieTheaterSystem {
                 case 2:
                     this.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita definer asisentos por sala de cine.");
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void subMenuConfiguracionCartelera() {
+        Scanner sc = new Scanner(System.in);
+        int opc;
+        String[] opcionesMenu = {
+            "Agregar pelicula",
+            "Eliminar pelicula",
+            "Ver peliculas"};
+        do {
+            this.label("Mini menú Configuración - Cine");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = this.opcion();
+            switch (opc) {
+                case 1:
+                    this.label(opcionesMenu[opc - 1]);
+                    this.peliculas.agregarPelicula();
+                    break;
+                case 2:
+                    this.label(opcionesMenu[opc - 1]);
+                    this.peliculas.eliminarPelicula();
+                    break;
+                case 3:
+                    this.label(opcionesMenu[opc - 1]);
+                    this.peliculas.mostrarPeliculas();
                     break;
                 case 0:
                     break;
