@@ -1,8 +1,10 @@
 package movietheatersystem;
+
 public class Pelicula {
+
     private Pelicula sigue;
     private Pelicula atras;
-    
+
     private String nombre;
     private String genero;
     private String director;
@@ -16,7 +18,7 @@ public class Pelicula {
         this.director = director;
         this.duracion = duracion;
     }
-    
+
     public void setSigue(Pelicula sigue) {
         this.sigue = sigue;
     }
@@ -64,7 +66,13 @@ public class Pelicula {
     public int getDuracion() {
         return duracion;
     }
-    
 
-    
+    public void mostrar() {
+        System.out.printf("| %-21s  ", this.nombre);
+        System.out.printf("| %-21s  ", this.director);
+        System.out.printf("| %-16s  ", this.genero);
+        System.out.printf("| %-9s  |", this.duracion);
+        System.out.println();
+    }
+
 }

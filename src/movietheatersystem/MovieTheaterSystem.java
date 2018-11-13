@@ -353,7 +353,7 @@ public class MovieTheaterSystem {
     }
 
     public void label(String cadena) {
-        int ancho = 50;
+        int ancho = 83;
         System.out.println("");
         for (int i = 0; i < (ancho - cadena.length()) / 2; i++) {
             System.out.print("=");
