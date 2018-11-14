@@ -5,16 +5,20 @@ import java.util.Scanner;
 public class ListaPeliculas {
 
     Pelicula inicio, fin;
+    static int cantidadPeliculas = 0;
     Metodos m = new Metodos();
 
-    public Pelicula getInicio() {
-        return inicio;
+    public ListaPeliculas() {
+        this.inicio = null;
+        this.fin = null;
     }
 
-    public Pelicula getFin() {
-        return fin;
+    public ListaPeliculas(Pelicula inicio, Pelicula fin) {
+        this.inicio = inicio;
+        this.fin = fin;
     }
 
+    
     public void setInicio(Pelicula inicio) {
         this.inicio = inicio;
     }
@@ -28,6 +32,7 @@ public class ListaPeliculas {
             this.fin.setSigue(nuevo);
             this.fin = nuevo;
         }
+        cantidadPeliculas++;
     }
 
     public Pelicula buscarPorNombre(String nombre) {
@@ -41,21 +46,39 @@ public class ListaPeliculas {
         return null;
     }
 
+    public Pelicula buscarPorPosicion(int index) {
+       Pelicula aux = this.inicio;
+       int i=1;
+        while (aux != null) {
+            if (i==index) {
+                return aux;
+            }
+            i++;
+            aux = aux.getSigue();
+        }
+        return null;
+
+    }
+
     public void agregarPelicula() {
-        String nombre = "", genero = "", director = "";
-        int duracion = 0;
-        System.out.print("Nombre");
-        nombre = m.entradaTexto();
-        if (this.buscarPorNombre(nombre) == null) {
-            System.out.print("Genero");
-            genero = m.entradaTexto();
-            System.out.print("Director");
-            director = m.entradaTexto();
-            System.out.print("duracion");
-            duracion = m.entradaEntero();
-            this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
+        if (cantidadPeliculas + 1 <= ListaSalas.cantidadSalas) {
+            String nombre = "", genero = "", director = "";
+            int duracion = 0;
+            System.out.print("Nombre");
+            nombre = m.entradaTexto();
+            if (this.buscarPorNombre(nombre) == null) {
+                System.out.print("Genero");
+                genero = m.entradaTexto();
+                System.out.print("Director");
+                director = m.entradaTexto();
+                System.out.print("duracion");
+                duracion = m.entradaEntero();
+                this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
+            } else {
+                System.out.println("Esa pelicula ya existe.");
+            }
         } else {
-            System.out.println("Esa pelicula ya existe.");
+            System.out.println("Ya hay suficientes peliculas para las salas");
         }
     }
 
@@ -120,23 +143,45 @@ public class ListaPeliculas {
         }
     }
 
-    public void mostrarPeliculas() {
+    public void mostrarPeliculasInfo() {
         if (this.vacia()) {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
-            System.out.printf("%-20s", "Nombre");
+            System.out.printf("   %-20s", "Nombre");
             System.out.printf("%-20s", "Director");
             System.out.printf("%-10s", "Genero");
             System.out.printf("%-4s", "Duración");
             System.out.println();
+            int i = 1;
             while (aux != null) {
+                System.out.print(i + " -");
                 System.out.printf("%-20s", aux.getNombre());
                 System.out.printf("%-20s", aux.getDirector());
                 System.out.printf("%-10s", aux.getGenero());
                 System.out.printf("%-4s", aux.getDuracion());
                 System.out.println();
+                i++;
                 aux = aux.getSigue();
+            }
+        }
+    }
+
+    public void mostrarPeliculasNombre() {
+        if (this.vacia()) {
+            System.out.println("No hay peliculas registradas.");
+        } else {
+            Pelicula aux = this.inicio;
+            System.out.printf("   %-20s", "Nombre");
+            System.out.println();
+            int i = 1;
+            while (aux != null) {
+                System.out.print(i + " -");
+                System.out.printf("%-20s", aux.getNombre());
+                System.out.println();
+                aux = aux.getSigue();
+                i++;
+
             }
         }
     }

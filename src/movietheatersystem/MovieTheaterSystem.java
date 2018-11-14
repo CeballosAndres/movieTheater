@@ -9,7 +9,11 @@ import java.util.Scanner;
 public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
-    Sala salas = new Sala();
+    ListaSalas salas = new ListaSalas();
+
+    public void salasDefault() {
+
+    }
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -17,7 +21,9 @@ public class MovieTheaterSystem {
     }
 
     public void menu() {
+
         Scanner sc = new Scanner(System.in);
+        salas.configuracionInicialAsientos();
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",
@@ -169,7 +175,7 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     this.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita asignar una funcion a una sala.");
+                    subMenuConfiguracionFuncionesSala();
                     break;
                 case 3:
                     this.subMenuConfiguracionCostos();
@@ -201,6 +207,7 @@ public class MovieTheaterSystem {
             "Asientos en salas"};
         do {
             this.label("Mini menú Configuración - Cine");
+            System.out.println("NOTA: Cada que se utiliza estas opciones se vuelve a inicializar la lista de salas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
@@ -210,11 +217,11 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     this.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita definir el número de salas de cine.");
+                    salas.configuracionSalas();
                     break;
                 case 2:
                     this.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita definer asisentos por sala de cine.");
+                    salas.configuracionInicialAsientos();
                     break;
                 case 0:
                     break;
@@ -250,7 +257,42 @@ public class MovieTheaterSystem {
                     break;
                 case 3:
                     this.label(opcionesMenu[opc - 1]);
-                    this.peliculas.mostrarPeliculas();
+                    this.peliculas.mostrarPeliculasInfo();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void subMenuConfiguracionFuncionesSala() {
+        Scanner sc = new Scanner(System.in);
+        int opc;
+        String[] opcionesMenu = {
+            "Asignar pelicula a sala (+formato) ",
+            "Modificar pelicula a sala",
+            "Mostrar peliculas a sala "};
+        do {
+            this.label("Mini menú Configuración - peliculas a Salas");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = this.opcion();
+            switch (opc) {
+                case 1:
+                    this.label(opcionesMenu[opc - 1]);
+                    break;
+                case 2:
+                    this.label(opcionesMenu[opc - 1]);
+                 this.salas.modificarFuncionesSala();
+                    break;
+                case 3:
+                    this.label(opcionesMenu[opc - 1]);
+                    
                     break;
                 case 0:
                     break;
