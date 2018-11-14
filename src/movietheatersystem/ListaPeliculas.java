@@ -136,33 +136,37 @@ public class ListaPeliculas {
     }
 
     public void modificarPelicula() {
+
         System.out.print("Nombre de pelicula a eliminar");
         String nombre = m.entradaTexto();
         Pelicula modificar = this.buscarPorNombre(nombre);
         if (modificar != null) {
+            String text;
+            int num;
             System.out.println("");
-            eliminar.labelPeliculas();
-            eliminar.mostrar();
-            System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
-            char opc = m.entradaChar();
-            if (Character.toLowerCase(opc) == 's') {
-                switch (this.posicion(eliminar)) {
-                    // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
-                    case 0:
-                        this.eliminarUnico();
-                        break;
-                    case 1:
-                        this.elimnarInicio(eliminar);
-                        break;
-                    case 2:
-                        this.eliminarEnMedio(eliminar);
-                        break;
-                    case 3:
-                        this.eliminarFin(eliminar);
-                }
-                System.out.println("Eliminada exitosamente!");
-            } else {
-                System.out.println("No se ha eliminado el elemento.");
+            modificar.labelPeliculas();
+            modificar.mostrar();
+            System.out.println("Modificar:");
+
+            System.out.print(modificar.getNombre());
+            text = m.entradaTexto();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setNombre(nombre);
+            }
+            System.out.print(modificar.getDirector());
+            text = m.entradaTexto();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setDirector(text);
+            }
+            System.out.print(modificar.getGenero());
+            text = m.entradaTexto();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setNombre(text);
+            }
+            System.out.print(modificar.getDuracion());
+            num = m.entradaEntero();
+            if (num != 0) {
+                modificar.setDuracion(num);
             }
         } else {
             System.out.println("Pelicula no encontrada.");
