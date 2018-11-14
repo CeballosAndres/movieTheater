@@ -137,36 +137,48 @@ public class ListaPeliculas {
 
     public void modificarPelicula() {
 
-        System.out.print("Nombre de pelicula a eliminar");
+        System.out.print("Nombre de pelicula a modificar");
         String nombre = m.entradaTexto();
         Pelicula modificar = this.buscarPorNombre(nombre);
         if (modificar != null) {
+            boolean flag = false;
             String text;
-            int num;
             System.out.println("");
             modificar.labelPeliculas();
             modificar.mostrar();
-            System.out.println("Modificar:");
+            System.out.println("\nModificar:");
 
             System.out.print(modificar.getNombre());
             text = m.entradaTexto();
             if (!text.equalsIgnoreCase("")) {
-                modificar.setNombre(nombre);
+                modificar.setNombre(text);
+                flag = true;
             }
             System.out.print(modificar.getDirector());
             text = m.entradaTexto();
             if (!text.equalsIgnoreCase("")) {
                 modificar.setDirector(text);
+                flag = true;
             }
             System.out.print(modificar.getGenero());
             text = m.entradaTexto();
             if (!text.equalsIgnoreCase("")) {
-                modificar.setNombre(text);
+                modificar.setGenero(text);
+                flag = true;
             }
             System.out.print(modificar.getDuracion());
-            num = m.entradaEntero();
-            if (num != 0) {
-                modificar.setDuracion(num);
+            text = m.entradaTexto();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setDuracion(Integer.valueOf(text));
+                flag = true;
+            }
+
+            if (flag) {
+                System.out.println("\nPelicula modificada:");
+                modificar.labelPeliculas();
+                modificar.mostrar();
+            } else {
+                System.out.println("No se modifico " + modificar.getNombre());
             }
         } else {
             System.out.println("Pelicula no encontrada.");
