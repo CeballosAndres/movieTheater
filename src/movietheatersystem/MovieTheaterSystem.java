@@ -17,7 +17,6 @@ public class MovieTheaterSystem {
     }
 
     public void menu() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",
@@ -50,7 +49,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuVentas() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Fila de clientes",
@@ -79,7 +77,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuVentasFila() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Formar cliente en cola",
@@ -115,7 +112,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuVentasAtender() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Vender boleto",
@@ -146,7 +142,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuConfiguracion() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Administrar peliculas",
@@ -194,7 +189,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuConfiguracionCine() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Número de salas",
@@ -225,7 +219,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuConfiguracionCartelera() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Ver peliculas",
@@ -267,7 +260,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuConfiguracionCostos() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Función tradicional",
@@ -308,7 +300,6 @@ public class MovieTheaterSystem {
     }
 
     public void subMenuInformes() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Ganancias",
