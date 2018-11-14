@@ -1,10 +1,12 @@
 package movietheatersystem;
 //hola amor
+
 import java.util.Scanner;
 
 public class ListaPeliculas {
+
     Util util = new Util();
-== perdon amor 
+
     public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
@@ -47,7 +49,6 @@ public class ListaPeliculas {
         return null;
     }
 
-
     public Pelicula buscarPorPosicion(int index) {
         Pelicula aux = this.inicio;
         int i = 1;
@@ -65,26 +66,22 @@ public class ListaPeliculas {
 
     public void agregarPelicula() {
 
-        if (cantidadPeliculas + 1 <= ListaSalas.cantidadSalas) {
-            String nombre = "", genero = "", director = "";
-            int duracion = 0;
-            System.out.print("Nombre");
-            nombre = m.entradaTexto();
-            if (this.buscarPorNombre(nombre) == null) {
-                System.out.print("Genero");
-                genero = m.entradaTexto();
-                System.out.print("Director");
-                director = m.entradaTexto();
-                System.out.print("duracion");
-                duracion = m.entradaEntero();
-                this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
-            } else {
-                System.out.println("Esa pelicula ya existe.");
-            }
-          
+        String nombre = "", genero = "", director = "";
+        int duracion = 0;
+        System.out.print("Nombre");
+        nombre = util.inputText();
+        if (this.buscarPorNombre(nombre) == null) {
+            System.out.print("Genero");
+            genero = util.inputText();
+            System.out.print("Director");
+            director = util.inputText();
+            System.out.print("duracion");
+            duracion = util.inputInteger();
+            this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
+        } else {
+            System.out.println("Esa pelicula ya existe.");
         }
     }
-    
 
     public int posicion(Pelicula pelicula) {
         //regresa 0 si es unico elemento, 1 si está al inicio
@@ -205,8 +202,7 @@ public class ListaPeliculas {
         }
     }
 
-
-public void mostrarPeliculas() {
+    public void mostrarPeliculas() {
         if (this.vacia()) {
             System.out.println("No hay peliculas registradas.");
         } else {
@@ -236,8 +232,8 @@ public void mostrarPeliculas() {
 
             }
         }
+    }
    
-
     public void peliculasEjemplo() {
         this.agregarFinal(new Pelicula("Schindler's List", "Drama", "Steven Spielberg", 195));
         this.agregarFinal(new Pelicula("The Godfather", "Crime", "Francis Ford Coppola", 175));
@@ -245,7 +241,6 @@ public void mostrarPeliculas() {
         this.agregarFinal(new Pelicula("Fight Club", "Drama", "David Fincher", 139));
         this.agregarFinal(new Pelicula("Forrest Gump", "Drama, Romance", "Robert Zemeckis", 142));
         this.agregarFinal(new Pelicula("Inception", "Action", "Christopher Nolan", 148));
-       
     }
 
     public boolean vacia() {

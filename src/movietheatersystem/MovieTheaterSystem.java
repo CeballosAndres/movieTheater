@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
-    Sala salas = new Sala();
+    //Sala salas = new Sala();
     Util metodos = new Util();
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -19,7 +19,7 @@ public class MovieTheaterSystem {
     public void menu() {
 
         Scanner sc = new Scanner(System.in);
-        salas.configuracionInicialAsientos();
+        //salas.configuracionInicialAsientos();
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",

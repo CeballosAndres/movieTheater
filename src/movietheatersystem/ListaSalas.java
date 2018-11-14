@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ListaSalas {
 
     Sala inicio, fin;
-    Metodos m = new Metodos();
+    Util util = new Util();
     static int cantidadSalas = 4;
 
     public void configuracionInicialAsientos() {
@@ -92,6 +92,8 @@ public class ListaSalas {
         buscarPorPosicion(numSala).setTipoFormato(numFormato);
 
     }
+    
+    /*
     public void agregarFuncionesSala() {
         if (cantidadPeliculas>0) {
             
@@ -121,7 +123,7 @@ public class ListaSalas {
         buscarPorPosicion(numSala).setTipoFormato(numFormato);
 
     }
-    
+    */
 
 
     public Sala buscarPorPosicion(int index) {
