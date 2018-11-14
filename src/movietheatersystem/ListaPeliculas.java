@@ -4,7 +4,16 @@ import java.util.Scanner;
 
 public class ListaPeliculas {
 
+    Util util = new Util();
+
+    public ListaPeliculas() {
+        this.inicio = null;
+        this.fin = null;
+        this.peliculasEjemplo();
+    }
+
     Pelicula inicio, fin;
+
     static int cantidadPeliculas = 0;
     Metodos m = new Metodos();
 
@@ -18,7 +27,6 @@ public class ListaPeliculas {
         this.fin = fin;
     }
 
-    
     public void setInicio(Pelicula inicio) {
         this.inicio = inicio;
     }
@@ -38,7 +46,7 @@ public class ListaPeliculas {
     public Pelicula buscarPorNombre(String nombre) {
         Pelicula aux = this.inicio;
         while (aux != null) {
-            if (aux.getNombre().equals(nombre)) {
+            if (aux.getNombre().equalsIgnoreCase(nombre)) {
                 return aux;
             }
             aux = aux.getSigue();
@@ -47,10 +55,10 @@ public class ListaPeliculas {
     }
 
     public Pelicula buscarPorPosicion(int index) {
-       Pelicula aux = this.inicio;
-       int i=1;
+        Pelicula aux = this.inicio;
+        int i = 1;
         while (aux != null) {
-            if (i==index) {
+            if (i == index) {
                 return aux;
             }
             i++;
@@ -61,6 +69,7 @@ public class ListaPeliculas {
     }
 
     public void agregarPelicula() {
+
         if (cantidadPeliculas + 1 <= ListaSalas.cantidadSalas) {
             String nombre = "", genero = "", director = "";
             int duracion = 0;
@@ -77,10 +86,10 @@ public class ListaPeliculas {
             } else {
                 System.out.println("Esa pelicula ya existe.");
             }
-        } else {
-            System.out.println("Ya hay suficientes peliculas para las salas");
+          
         }
-    }
+
+    
 
     public int posicion(Pelicula pelicula) {
         //regresa 0 si es unico elemento, 1 si está al inicio
@@ -119,24 +128,82 @@ public class ListaPeliculas {
 
     public void eliminarPelicula() {
         String nombre;
-        System.out.print("Nombre");
-        nombre = m.entradaTexto();
+        System.out.print("Nombre de pelicula a eliminar");
+        nombre = util.inputText();
         Pelicula eliminar = this.buscarPorNombre(nombre);
         if (eliminar != null) {
-            System.out.println("aqui está!" + this.posicion(eliminar));
-            switch (this.posicion(eliminar)) {
-                // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
-                case 0:
-                    this.eliminarUnico();
-                    break;
-                case 1:
-                    this.elimnarInicio(eliminar);
-                    break;
-                case 2:
-                    this.eliminarEnMedio(eliminar);
-                    break;
-                case 3:
-                    this.eliminarFin(eliminar);
+            System.out.println("");
+            eliminar.labelPeliculas();
+            eliminar.mostrar();
+            System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
+            char opc = util.entradaChar();
+            if (Character.toLowerCase(opc) == 's') {
+                switch (this.posicion(eliminar)) {
+                    // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
+                    case 0:
+                        this.eliminarUnico();
+                        break;
+                    case 1:
+                        this.elimnarInicio(eliminar);
+                        break;
+                    case 2:
+                        this.eliminarEnMedio(eliminar);
+                        break;
+                    case 3:
+                        this.eliminarFin(eliminar);
+                }
+                System.out.println("Eliminada exitosamente!");
+            } else {
+                System.out.println("No se ha eliminado el elemento.");
+            }
+        } else {
+            System.out.println("Pelicula no encontrada.");
+        }
+    }
+
+    public void modificarPelicula() {
+
+        System.out.print("Nombre de pelicula a modificar");
+        String nombre = util.inputText();
+        Pelicula modificar = this.buscarPorNombre(nombre);
+        if (modificar != null) {
+            boolean flag = false;
+            String text;
+            System.out.println("");
+            modificar.labelPeliculas();
+            modificar.mostrar();
+            System.out.println("\nEscribir nuevos valores para modificar:");
+
+            System.out.print(modificar.getNombre());
+            text = util.inputText();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setNombre(text);
+                flag = true;
+            }
+            System.out.print(modificar.getDirector());
+            text = util.inputText();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setDirector(text);
+                flag = true;
+            }
+            System.out.print(modificar.getGenero());
+            text = util.inputText();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setGenero(text);
+                flag = true;
+            }
+            System.out.print(modificar.getDuracion());
+            text = util.inputText();
+            if (!text.equalsIgnoreCase("")) {
+                modificar.setDuracion(Integer.valueOf(text));
+                flag = true;
+            }
+            if (flag) {
+                System.out.println("\nPelicula modificada:");
+                modificar.labelPeliculas();
+                modificar.mostrar();
+            } else {
+                System.out.println("No se modifico " + modificar.getNombre());
             }
         } else {
             System.out.println("Pelicula no encontrada.");
@@ -148,13 +215,17 @@ public class ListaPeliculas {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
+            
             System.out.printf("   %-20s", "Nombre");
             System.out.printf("%-20s", "Director");
             System.out.printf("%-10s", "Genero");
             System.out.printf("%-4s", "Duración");
             System.out.println();
             int i = 1;
+          
             while (aux != null) {
+              
+                
                 System.out.print(i + " -");
                 System.out.printf("%-20s", aux.getNombre());
                 System.out.printf("%-20s", aux.getDirector());
@@ -162,10 +233,13 @@ public class ListaPeliculas {
                 System.out.printf("%-4s", aux.getDuracion());
                 System.out.println();
                 i++;
+                
                 aux = aux.getSigue();
             }
         }
     }
+
+
 
     public void mostrarPeliculasNombre() {
         if (this.vacia()) {
@@ -184,6 +258,16 @@ public class ListaPeliculas {
 
             }
         }
+   
+
+    public void peliculasEjemplo() {
+        this.agregarFinal(new Pelicula("Schindler's List", "Drama", "Steven Spielberg", 195));
+        this.agregarFinal(new Pelicula("The Godfather", "Crime", "Francis Ford Coppola", 175));
+        this.agregarFinal(new Pelicula("Pulp Fiction", "Crime", "Quentin Tarantino", 154));
+        this.agregarFinal(new Pelicula("Fight Club", "Drama", "David Fincher", 139));
+        this.agregarFinal(new Pelicula("Forrest Gump", "Drama, Romance", "Robert Zemeckis", 142));
+        this.agregarFinal(new Pelicula("Inception", "Action", "Christopher Nolan", 148));
+       
     }
 
     public boolean vacia() {
