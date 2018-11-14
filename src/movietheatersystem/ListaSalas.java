@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package movietheatersystem;
 
 import java.util.Scanner;
-
-/**
- *
- * @author beverly
- */
 public class ListaSalas {
 
     Sala inicio, fin;

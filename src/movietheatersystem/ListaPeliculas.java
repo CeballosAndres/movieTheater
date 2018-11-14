@@ -1,25 +1,18 @@
 package movietheatersystem;
-//hola amor
 
 import java.util.Scanner;
 
 public class ListaPeliculas {
 
     Util util = new Util();
+    Pelicula inicio, fin;
+    int cantidadPeliculas;
 
     public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
+        this.cantidadPeliculas = 0;
         this.peliculasEjemplo();
-    }
-
-    Pelicula inicio, fin;
-
-    static int cantidadPeliculas = 0;
-
-    public ListaPeliculas(Pelicula inicio, Pelicula fin) {
-        this.inicio = inicio;
-        this.fin = fin;
     }
 
     public void setInicio(Pelicula inicio) {
@@ -58,14 +51,12 @@ public class ListaPeliculas {
             }
             i++;
             aux = aux.getSigue();
-
         }
         return null;
 
     }
 
     public void agregarPelicula() {
-
         String nombre = "", genero = "", director = "";
         int duracion = 0;
         System.out.print("Nombre");
@@ -103,7 +94,7 @@ public class ListaPeliculas {
         this.inicio = null;
     }
 
-    private void elimnarInicio(Pelicula eliminar) {
+    private void elimnarInicio() {
         this.inicio = this.inicio.getSigue();
         this.inicio.setAtras(null);
     }
@@ -113,7 +104,7 @@ public class ListaPeliculas {
         eliminar.getSigue().setAtras(eliminar.getAtras());
     }
 
-    private void eliminarFin(Pelicula eliminar) {
+    private void eliminarFin() {
         this.fin = this.fin.getAtras();
         this.fin.setSigue(null);
     }
@@ -136,14 +127,15 @@ public class ListaPeliculas {
                         this.eliminarUnico();
                         break;
                     case 1:
-                        this.elimnarInicio(eliminar);
+                        this.elimnarInicio();
                         break;
                     case 2:
                         this.eliminarEnMedio(eliminar);
                         break;
                     case 3:
-                        this.eliminarFin(eliminar);
+                        this.eliminarFin();
                 }
+                this.cantidadPeliculas--;
                 System.out.println("Eliminada exitosamente!");
             } else {
                 System.out.println("No se ha eliminado el elemento.");
@@ -154,7 +146,6 @@ public class ListaPeliculas {
     }
 
     public void modificarPelicula() {
-
         System.out.print("Nombre de pelicula a modificar");
         String nombre = util.inputText();
         Pelicula modificar = this.buscarPorNombre(nombre);
@@ -165,7 +156,6 @@ public class ListaPeliculas {
             modificar.labelPeliculas();
             modificar.mostrar();
             System.out.println("\nEscribir nuevos valores para modificar:");
-
             System.out.print(modificar.getNombre());
             text = util.inputText();
             if (!text.equalsIgnoreCase("")) {
