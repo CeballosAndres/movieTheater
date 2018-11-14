@@ -3,7 +3,6 @@ package movietheatersystem;
 import java.util.Scanner;
 
 public class ListaPeliculas {
-
     Util util = new Util();
 
     public ListaPeliculas() {
@@ -15,12 +14,6 @@ public class ListaPeliculas {
     Pelicula inicio, fin;
 
     static int cantidadPeliculas = 0;
-    Metodos m = new Metodos();
-
-    public ListaPeliculas() {
-        this.inicio = null;
-        this.fin = null;
-    }
 
     public ListaPeliculas(Pelicula inicio, Pelicula fin) {
         this.inicio = inicio;
@@ -54,6 +47,7 @@ public class ListaPeliculas {
         return null;
     }
 
+
     public Pelicula buscarPorPosicion(int index) {
         Pelicula aux = this.inicio;
         int i = 1;
@@ -63,6 +57,7 @@ public class ListaPeliculas {
             }
             i++;
             aux = aux.getSigue();
+
         }
         return null;
 
@@ -88,7 +83,7 @@ public class ListaPeliculas {
             }
           
         }
-
+    }
     
 
     public int posicion(Pelicula pelicula) {
@@ -210,36 +205,19 @@ public class ListaPeliculas {
         }
     }
 
-    public void mostrarPeliculasInfo() {
+
+public void mostrarPeliculas() {
         if (this.vacia()) {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
-            
-            System.out.printf("   %-20s", "Nombre");
-            System.out.printf("%-20s", "Director");
-            System.out.printf("%-10s", "Genero");
-            System.out.printf("%-4s", "Duración");
-            System.out.println();
-            int i = 1;
-          
+            aux.labelPeliculas();
             while (aux != null) {
-              
-                
-                System.out.print(i + " -");
-                System.out.printf("%-20s", aux.getNombre());
-                System.out.printf("%-20s", aux.getDirector());
-                System.out.printf("%-10s", aux.getGenero());
-                System.out.printf("%-4s", aux.getDuracion());
-                System.out.println();
-                i++;
-                
+                aux.mostrar();
                 aux = aux.getSigue();
             }
         }
     }
-
-
 
     public void mostrarPeliculasNombre() {
         if (this.vacia()) {
