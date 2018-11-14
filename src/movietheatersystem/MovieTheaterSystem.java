@@ -10,7 +10,7 @@ public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
     Sala salas = new Sala();
-
+    Util metodos = new Util();
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
         obj.menu();
@@ -24,12 +24,12 @@ public class MovieTheaterSystem {
             "Configuración del cine",
             "Informes del cine"};
         do {
-            this.label("Menú principal");
+            metodos.label("Menú principal");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Salir");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
                     this.subMenuVentas();
@@ -56,13 +56,13 @@ public class MovieTheaterSystem {
             "Fila de clientes",
             "Atención a clientes"};
         do {
-            this.label("Submenú Ventas");
+            metodos.label("Submenú Ventas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
                     this.subMenuVentasFila();
@@ -86,24 +86,24 @@ public class MovieTheaterSystem {
             "Sacar cliente de cola",
             "Mostrar clientes formados"};
         do {
-            this.label("Mini menú Ventas - Fila");
+            metodos.label("Mini menú Ventas - Fila");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para ingresar cliente a la cola.");
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para sacar cliente a la cola.");
                     break;
                 case 3:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar a los clientes a la cola.");
                     break;
                 case 0:
@@ -121,20 +121,20 @@ public class MovieTheaterSystem {
             "Vender boleto",
             "Cancelación de boleto"};
         do {
-            this.label("Mini menú Ventas - Atender");
+            metodos.label("Mini menú Ventas - Atender");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para vender boleto (pelicula, cantidad, tipo)");
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para cancelar boleto(devolucion)");
                     break;
                 case 0:
@@ -156,33 +156,33 @@ public class MovieTheaterSystem {
             "Configurar general del cine",
             "Mostrar configuración general actual"};
         do {
-            this.label("Submenú Configuración");
+            metodos.label("Submenú Configuración");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
                     this.subMenuConfiguracionCartelera();
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita asignar una funcion a una sala.");
                     break;
                 case 3:
                     this.subMenuConfiguracionCostos();
                     break;
                 case 4:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra las peliculas por sala y costos.");
                     break;
                 case 5:
                     this.subMenuConfiguracionCine();
                     break;
                 case 6:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
                     break;
                 case 0:
@@ -200,20 +200,20 @@ public class MovieTheaterSystem {
             "Número de salas",
             "Asientos en salas"};
         do {
-            this.label("Mini menú Configuración - Cine");
+            metodos.label("Mini menú Configuración - Cine");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita definir el número de salas de cine.");
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita definer asisentos por sala de cine.");
                     break;
                 case 0:
@@ -234,28 +234,28 @@ public class MovieTheaterSystem {
             "Eliminar"
         };
         do {
-            this.label("Mini menú Configuración - Peliculas");
+            metodos.label("Mini menú Configuración - Peliculas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     this.peliculas.mostrarPeliculas();
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     this.peliculas.agregarPelicula();
                     break;
                 case 3:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     this.peliculas.modificarPelicula();
                     break;
                 case 4:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     this.peliculas.eliminarPelicula();
                     break;
                 case 0:
@@ -275,28 +275,28 @@ public class MovieTheaterSystem {
             "Descuento a adultos mayores",
             "Descuento a niños"};
         do {
-            this.label("Mini menú Administración - Costos");
+            metodos.label("Mini menú Administración - Costos");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el costo de funcion tradicional.");
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el costo de funcion 3D.");
                     break;
                 case 3:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el % de descuento a adultos mayores.");
                     break;
                 case 4:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el % de descuento a niños.");
                     break;
                 case 0:
@@ -318,36 +318,36 @@ public class MovieTheaterSystem {
             "Estadisticas de preferencia por pelicula",
             "Estadisticas de preferencia por formato"};
         do {
-            this.label("Submenú Informes");
+            metodos.label("Submenú Informes");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = this.opcion();
+            opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar las ganancias");
                     break;
                 case 2:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar candidad de voletos vendidos.");
                     break;
                 case 3:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar los voletos cancelados.");
                     break;
                 case 4:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas por edad(niños, adultos, a mayores");
                     break;
                 case 5:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas de preferencia por pelicula");
                     break;
                 case 6:
-                    this.label(opcionesMenu[opc - 1]);
+                    metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas de preferencia por formato (tradicional, 3D)");
                     break;
                 case 0:
@@ -357,24 +357,4 @@ public class MovieTheaterSystem {
             }
         } while (opc != 0);
     }
-
-    public void label(String cadena) {
-        int ancho = 83;
-        System.out.println("");
-        for (int i = 0; i < (ancho - cadena.length()) / 2; i++) {
-            System.out.print("=");
-        }
-        System.out.print(" " + cadena + " ");
-        for (int i = 0; i < (ancho - cadena.length()) / 2; i++) {
-            System.out.print("=");
-        }
-        System.out.println("");
-    }
-
-    public int opcion() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Opción > ");
-        return sc.nextInt();
-    }
-
 }

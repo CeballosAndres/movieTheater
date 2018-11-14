@@ -68,6 +68,7 @@ public class Pelicula {
     }
 
     public void labelPeliculas() {
+        System.out.println();
         System.out.printf("|  %-20s  ", "Nombre");
         System.out.printf("|  %-20s  ", "Director");
         System.out.printf("|  %-15s  ", "Genero");

@@ -3,6 +3,7 @@ package movietheatersystem;
 import java.util.Scanner;
 
 public class ListaPeliculas {
+    Util util = new Util();
 
     public ListaPeliculas() {
         this.inicio = null;
@@ -11,7 +12,6 @@ public class ListaPeliculas {
     }
 
     Pelicula inicio, fin;
-    Metodos m = new Metodos();
 
     public Pelicula getInicio() {
         return inicio;
@@ -51,14 +51,14 @@ public class ListaPeliculas {
         String nombre = "", genero = "", director = "";
         int duracion = 0;
         System.out.print("Nombre");
-        nombre = m.entradaTexto();
+        nombre = util.inputText();
         if (this.buscarPorNombre(nombre) == null) {
             System.out.print("Genero");
-            genero = m.entradaTexto();
+            genero = util.inputText();
             System.out.print("Director");
-            director = m.entradaTexto();
+            director = util.inputText();
             System.out.print("duracion");
-            duracion = m.entradaEntero();
+            duracion = util.inputInteger();
             this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
         } else {
             System.out.println("Esa pelicula ya existe.");
@@ -103,14 +103,14 @@ public class ListaPeliculas {
     public void eliminarPelicula() {
         String nombre;
         System.out.print("Nombre de pelicula a eliminar");
-        nombre = m.entradaTexto();
+        nombre = util.inputText();
         Pelicula eliminar = this.buscarPorNombre(nombre);
         if (eliminar != null) {
             System.out.println("");
             eliminar.labelPeliculas();
             eliminar.mostrar();
             System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
-            char opc = m.entradaChar();
+            char opc = util.entradaChar();
             if (Character.toLowerCase(opc) == 's') {
                 switch (this.posicion(eliminar)) {
                     // Mediante metodo posicion retorna entero, 0, 1, 2 y 3
@@ -138,7 +138,7 @@ public class ListaPeliculas {
     public void modificarPelicula() {
 
         System.out.print("Nombre de pelicula a modificar");
-        String nombre = m.entradaTexto();
+        String nombre = util.inputText();
         Pelicula modificar = this.buscarPorNombre(nombre);
         if (modificar != null) {
             boolean flag = false;
@@ -146,33 +146,32 @@ public class ListaPeliculas {
             System.out.println("");
             modificar.labelPeliculas();
             modificar.mostrar();
-            System.out.println("\nModificar:");
+            System.out.println("\nEscribir nuevos valores para modificar:");
 
             System.out.print(modificar.getNombre());
-            text = m.entradaTexto();
+            text = util.inputText();
             if (!text.equalsIgnoreCase("")) {
                 modificar.setNombre(text);
                 flag = true;
             }
             System.out.print(modificar.getDirector());
-            text = m.entradaTexto();
+            text = util.inputText();
             if (!text.equalsIgnoreCase("")) {
                 modificar.setDirector(text);
                 flag = true;
             }
             System.out.print(modificar.getGenero());
-            text = m.entradaTexto();
+            text = util.inputText();
             if (!text.equalsIgnoreCase("")) {
                 modificar.setGenero(text);
                 flag = true;
             }
             System.out.print(modificar.getDuracion());
-            text = m.entradaTexto();
+            text = util.inputText();
             if (!text.equalsIgnoreCase("")) {
                 modificar.setDuracion(Integer.valueOf(text));
                 flag = true;
             }
-
             if (flag) {
                 System.out.println("\nPelicula modificada:");
                 modificar.labelPeliculas();
