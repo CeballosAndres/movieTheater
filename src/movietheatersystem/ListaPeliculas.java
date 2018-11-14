@@ -1,5 +1,5 @@
 package movietheatersystem;
-
+//hola amor
 import java.util.Scanner;
 
 public class ListaPeliculas {
