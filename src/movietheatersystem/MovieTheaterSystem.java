@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
-    //Sala salas = new Sala();
+    ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -19,7 +19,7 @@ public class MovieTheaterSystem {
     public void menu() {
 
         Scanner sc = new Scanner(System.in);
-        //salas.configuracionInicialAsientos();
+        salas.configuracionInicialAsientos();
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",
@@ -198,7 +198,7 @@ public class MovieTheaterSystem {
             "Asientos en salas"};
         do {
             metodos.label("Mini menú Configuración - Cine");
-
+            System.out.println("NOTA: Estas opciones vuelven a inicializar la lista de salas ");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
@@ -207,11 +207,11 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita definir el número de salas de cine.");
+                    salas.configuracionSalas();
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita definer asisentos por sala de cine.");
+                    salas.configuracionInicialAsientos();
                     break;
                 case 0:
                     break;
