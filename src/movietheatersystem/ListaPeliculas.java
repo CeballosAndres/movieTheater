@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ListaPeliculas {
     Util util = new Util();
-
+== perdon amor 
     public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
