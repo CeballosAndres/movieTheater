@@ -186,7 +186,7 @@ public class ListaSalas {
                 aux = aux.getNext();
             }
         } else {
-            System.out.println("No hay todavíƒa funciones en sala");
+            System.out.println("No hay todavía funciones en sala");
         }
 
     }

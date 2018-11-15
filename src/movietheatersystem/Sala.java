@@ -67,26 +67,25 @@ public class Sala {
 
     public void labelFuncionesSala() {
         System.out.println();
-        System.out.printf("|  %-20s  ", "NumSala");
+        System.out.printf("|  %-10s  ", "Núm. Sala");
         System.out.printf("|  %-20s  ", "Pelicula");
         System.out.printf("|  %-15s  ", "Formato");
+        System.out.printf("|  %-19s |", "Asientos Disp.");
         System.out.println();
     }
 
     public void mostrar() {
-        System.out.printf("| %-21s  ", this.numSala);
+        System.out.printf("| %-11s  ", this.numSala);
         System.out.printf("| %-21s  ", this.pelicula.getNombre());
         System.out.printf("| %-16s  ", this.escribirFormato(this.tipoFormato));
+        System.out.printf("| %-19s  |", String.valueOf(this.capacidadSala));
         System.out.println();
     }
 
     public String escribirFormato(int formato) {
         if (formato == 1) {
             return "3D";
-        } else {
+        } 
             return "2D";
-        }
-
     }
-
 }

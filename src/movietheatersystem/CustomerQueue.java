@@ -35,15 +35,19 @@ public class CustomerQueue {
     }
 
     public void show() {
-        Client aux = this.first;
-        System.out.print("Fila: ");
-        while (aux != null) {
-            aux.show();
-            aux = aux.getNext();
+        if (this.empty()) {
+            System.out.println("No hay clientes en cola!");
+        } else {
+            Client aux = this.first;
+            System.out.print("Fila: ");
+            while (aux != null) {
+                aux.show();
+                aux = aux.getNext();
+            }
         }
     }
-    
-    public Client serveCustumer(){
+
+    public Client serveCustumer() {
         Client client;
         if ((client = this.remove()) != null) {
             //llamada a metodo para atender cliente
@@ -56,13 +60,11 @@ public class CustomerQueue {
     public boolean empty() {
         return this.first == null;
     }
-    
-    public void newClient(){
+
+    public void newClient() {
         System.out.print("Nombre cliente: ");
         this.add(new Client(util.inputText()));
         System.out.println("Alta exitosa!");
     }
-    
-    
-    
+
 }

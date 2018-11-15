@@ -10,7 +10,7 @@ public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
-    Util metodos = new Util();
+    Util util = new Util();
     CustomerQueue clients = new CustomerQueue();
     TicketList tickets = new TicketList();
 
@@ -30,12 +30,12 @@ public class MovieTheaterSystem {
             "Configuración del cine",
             "Informes del cine"};
         do {
-            metodos.label("Menú principal");
+            util.label("Menú principal");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Salir");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
                     this.subMenuVentas();
@@ -61,13 +61,13 @@ public class MovieTheaterSystem {
             "Fila de clientes",
             "Atención a clientes"};
         do {
-            metodos.label("Submenú Ventas");
+            util.label("Submenú Ventas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
                     this.miniMenuVentasFila();
@@ -93,19 +93,18 @@ public class MovieTheaterSystem {
             "Configurar general del cine",
             "Mostrar configuración general actual"};
         do {
-            metodos.label("Submenú Configuración");
+            util.label("Submenú Configuración");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
                     this.miniMenuConfiguracionCartelera();
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
                     if (peliculas.cantidadPeliculas() == 0) {
                         System.out.println("No se puede configurar funciones sala si no hay peliculas, ingrese opcion 1 para agregar peliculas");
                     } else {
@@ -116,7 +115,7 @@ public class MovieTheaterSystem {
                     this.miniMenuConfiguracionCostos();
                     break;
                 case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra las peliculas por sala y costos.");
                     break;
                 case 5:
@@ -124,7 +123,7 @@ public class MovieTheaterSystem {
                     this.miniMenuConfiguracionCine();
                     break;
                 case 6:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
                     break;
                 case 0:
@@ -145,36 +144,36 @@ public class MovieTheaterSystem {
             "Estadisticas de preferencia por pelicula",
             "Estadisticas de preferencia por formato"};
         do {
-            metodos.label("Submenú Informes");
+            util.label("Submenú Informes");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar las ganancias");
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar candidad de voletos vendidos.");
                     break;
                 case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar los voletos cancelados.");
                     break;
                 case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas por edad(niños, adultos, a mayores");
                     break;
                 case 5:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas de preferencia por pelicula");
                     break;
                 case 6:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para mostrar estdisticas de preferencia por formato (tradicional, 3D)");
                     break;
                 case 0:
@@ -191,21 +190,20 @@ public class MovieTheaterSystem {
             "Formar cliente en cola",
             "Mostrar clientes formados"};
         do {
-            metodos.label("Mini menú Ventas - Fila");
+            util.label("Mini menú Ventas - Fila");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     clients.newClient();
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("Clientes: ");
+                    util.label(opcionesMenu[opc - 1]);
                     clients.show();
                     break;
                 case 0:
@@ -222,24 +220,26 @@ public class MovieTheaterSystem {
             "Vender boleto",
             "Cancelación de boleto"};
         do {
-            metodos.label("Mini menú Ventas - Atender");
+            util.label("Mini menú Ventas - Atender");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
 
                     if (clients.empty()) {
                         System.out.println("No hay más clientes formados!");
                     } else {
-                        Client clientAtendido = clients.serveCustumer(); // saca al primer cliente de la cola
-
+                        Client atendido = clients.serveCustumer(); // saca al primer cliente de la cola
+                        System.out.print("Bienvenido! "+ atendido.getName()+
+                                " ¿Cuál es su edad?");
+                        int edad = util.inputInteger();
+                        
                         // Falta: 
-                        // preguntar edad
                         //consultar salas con peliculas y mostrar espacios
                         //preguntar cuantos asientos comprara
                         //validar que en la sala queden esos espacios disponibles
@@ -253,7 +253,7 @@ public class MovieTheaterSystem {
 
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para cancelar boleto(devolucion)");
                     break;
                 case 0:
@@ -271,20 +271,20 @@ public class MovieTheaterSystem {
 
         };
         do {
-            metodos.label("Mini menú Configuración - Cine");
+            util.label("Mini menú Configuración - Cine");
             System.out.println("NOTA: Estas opciones vuelven a inicializar la lista de salas ");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     salas.configuracionSalas();
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     salas.configuracionAsientos();
                     break;
                 case 0:
@@ -304,28 +304,28 @@ public class MovieTheaterSystem {
             "Eliminar"
         };
         do {
-            metodos.label("Mini menú Configuración - Peliculas");
+            util.label("Mini menú Configuración - Peliculas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.peliculas.mostrarPeliculas();
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.peliculas.agregarPelicula();
                     break;
                 case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.peliculas.modificarPelicula();
                     break;
                 case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.peliculas.eliminarPelicula();
                     break;
                 case 0:
@@ -344,24 +344,24 @@ public class MovieTheaterSystem {
             "Modificar pelicula a sala",
             "Mostrar peliculas a sala "};
         do {
-            metodos.label("Mini menú Configuración - peliculas a Salas");
+            util.label("Mini menú Configuración - peliculas a Salas");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.salas.agregarFuncionesSala(peliculas);
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.salas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     this.salas.mostrarSalasFunciones();
                     break;
                 case 0:
@@ -380,28 +380,28 @@ public class MovieTheaterSystem {
             "Descuento a adultos mayores",
             "Descuento a niños"};
         do {
-            metodos.label("Mini menú Administración - Costos");
+            util.label("Mini menú Administración - Costos");
 
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Atrás");
-            opc = metodos.opcion();
+            opc = util.opcion();
             switch (opc) {
                 case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el costo de funcion tradicional.");
                     break;
                 case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el costo de funcion 3D.");
                     break;
                 case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el % de descuento a adultos mayores.");
                     break;
                 case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
+                    util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para modificar el % de descuento a niños.");
                     break;
                 case 0:

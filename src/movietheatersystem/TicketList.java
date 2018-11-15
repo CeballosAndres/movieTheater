@@ -43,9 +43,9 @@ public class TicketList {
         }
         this.folioInc++;
     }
-    
+    /*
     public Ticket addTicket(String name, int sala){
         
     }
-    
+    */
 }
