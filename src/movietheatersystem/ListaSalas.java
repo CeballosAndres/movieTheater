@@ -85,12 +85,13 @@ public class ListaSalas {
 
     public void modificarFuncionesSala(ListaPeliculas peliculas) {
         System.out.println("   # Salas #  ");
-        mostrarSalasNombre();
+        mostrarSalasNombre(2);
         int numSala = 0;
         do {
             System.out.print("Ingrese el numero de la sala:");
             numSala = util.opcion();
-        } while (!(numSala <= cantidadSalas && numSala > 0));
+        } while (!(numSala <= cantidadSalas && numSala > 0  
+                && buscarPorPosicion(numSala).pelicula != null));
         asignarDatosSala(numSala, peliculas);
 
     }
@@ -107,6 +108,7 @@ public class ListaSalas {
         return true;
 
     }
+
     public boolean algunaSalaConPelicula() {
         Sala aux = this.inicio;
         while (aux != null) {
@@ -126,7 +128,7 @@ public class ListaSalas {
         int numPelicula = 0;
         do {
             System.out.print("Ingresa el numero de la pelicula :");
-            numPelicula = util.opcion();
+            numPelicula = util.inputInteger();
         } while (numPelicula <= peliculas.cantidadPeliculas && numPelicula > 0);
 
         System.out.println("   # Formato #  ");
@@ -135,7 +137,7 @@ public class ListaSalas {
         int numFormato = 0;
         do {
             System.out.print("Ingresa el numero de la pelicula :");
-            numFormato = util.opcion();
+            numFormato = util.inputInteger();
         } while (!(numFormato == 1 || numFormato == 2));
 
         buscarPorPosicion(numSala).setPelicula(peliculas.buscarPorPosicion(numPelicula));
@@ -145,19 +147,11 @@ public class ListaSalas {
     public void agregarFuncionesSala(ListaPeliculas peliculas) {
         if (!TodaSalaConPelicula()) {
             System.out.println("   # Salas sin Pelicula asignada #  ");
-            Sala aux = this.inicio;
-            int i = 0;
-            while (aux != null) {
-                if (aux.pelicula == null) {
-                    System.out.println((i + 1) + "-" + " " + aux.numSala);
-                }
-                i++;
-                aux = aux.getNext();
-            }
+            mostrarSalasNombre(1);
             int numSala;
             do {
                 System.out.print("Ingrese el numero de la sala: ");
-                numSala = util.opcion();
+                numSala = util.inputInteger();
             } while (!(numSala <= cantidadSalas && numSala > 0 && buscarPorPosicion(numSala).pelicula == null));
             asignarDatosSala(numSala, peliculas);
         } else {
@@ -174,8 +168,8 @@ public class ListaSalas {
                 aux.mostrar();
                 aux = aux.getNext();
             }
-        }else{
-            System.out.println("No hay todavía funciones en sala");
+        } else {
+            System.out.println("No hay todavíƒa funciones en sala");
         }
 
     }
@@ -193,17 +187,27 @@ public class ListaSalas {
         return null;
     }
 
-    public void mostrarSalasNombre() {
+    public void mostrarSalasNombre(int opc) {
         Sala aux = this.inicio;
         System.out.printf("   %-20s", "Nombre");
         System.out.println();
         int i = 1;
         while (aux != null) {
-            System.out.print(i + " =");
-            System.out.printf("%-20s", aux.getNumSala());
-            System.out.println();
-            aux = aux.getNext();
+            if (aux.pelicula == null && opc == 1) {
+                System.out.print(i + " =");
+                System.out.printf("%-20s", aux.getNumSala());
+                System.out.println();
+            } else if (aux.pelicula != null && opc == 2) {
+                System.out.print(i + " =");
+                System.out.printf("%-20s", aux.getNumSala());
+                System.out.println();
+            } else if (opc==3){
+                System.out.print(i + " =");
+                System.out.printf("%-20s", aux.getNumSala());
+                System.out.println();
+            }
             i++;
+            aux = aux.getNext();
 
         }
     }
