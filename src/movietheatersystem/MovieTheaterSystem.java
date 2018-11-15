@@ -8,19 +8,25 @@ import java.util.Scanner;
  */
 public class MovieTheaterSystem {
 
+    public ListaPeliculas getPeliculas() {
+        return peliculas;
+    }
+
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
+       
+        obj.salas.configuracionInicialAsientos();
+        obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
 
     public void menu() {
 
-        Scanner sc = new Scanner(System.in);
-        salas.configuracionInicialAsientos();
+        
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",

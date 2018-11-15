@@ -5,7 +5,7 @@ public class Sala {
     //Lista doblemente enlazada con las peliculas del cine.
     Sala next;
     int numSala;
-    static int capacidadSala;
+     static int capacidadSala = 0;
     int boletosVendidos;
     int boletosCancelados;
     int tipoFormato;
@@ -15,7 +15,6 @@ public class Sala {
     public Sala(int numSala) {
         this.next = null;
         this.numSala = numSala;
-        this.capacidadSala = 0;
         this.boletosVendidos = 0;
         this.boletosCancelados = 0;
         this.tipoFormato = 0;
@@ -25,13 +24,16 @@ public class Sala {
 
     public Sala() {
         this.next = null;
-        this.capacidadSala = 0;
         this.numSala = numSala;
         this.boletosVendidos = 0;
         this.boletosCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
         this.boleto = null;
+    }
+
+    public void setCapacidadSala(int capacidadSala) {
+        this.capacidadSala = capacidadSala;
     }
 
     public void setTipoFormato(int tipoFormato) {

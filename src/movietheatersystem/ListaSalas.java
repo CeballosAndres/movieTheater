@@ -6,29 +6,28 @@ public class ListaSalas {
 
     ListaPeliculas peliculas = new ListaPeliculas();
     Sala inicio, fin;
-    static int cantidadSalas;
-    private Util util;
+    static int cantidadSalas=4;
+    Util util = new Util();
 
     // CONTRUCTORES 
     public ListaSalas(Sala inicio, Sala fin) {
         this.inicio = inicio;
         this.fin = fin;
-        this.cantidadSalas=4;
-        Util util = new Util();
+        
+
     }
 
     public ListaSalas() {
         this.inicio = null;
         this.fin = null;
-        this.cantidadSalas=4;
-        Util util = new Util();
+        
     }
 
     // METODOS PARA MOVIE tHEATER SYSTEM
     public void configuracionInicialAsientos() {
-       
+
         System.out.print("Cuantas aseintos en salas:");
-        Sala.capacidadSala = util.opcion();
+        inicio.capacidadSala = util.opcion();
         vaciar();
         agregarSala();
     }
@@ -60,7 +59,6 @@ public class ListaSalas {
     }
 
     public void modificarFuncionesSala() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("   # Salas #  ");
         mostrarSalasNombre();
         int numSala = 0;
@@ -125,22 +123,23 @@ public class ListaSalas {
                 System.out.print("Ingrese el numero de la sala: ");
                 numSala = util.opcion();
             } while (!(numSala <= cantidadSalas && numSala > 0 && buscarPorPosicion(numSala).pelicula == null));
-
+            asignarDatosSala(numSala);
         } else {
             System.out.println("Salas ya tiene peliculas");
         }
 
     }
-    
+
     public void mostrarSalasFunciones() {
-            Sala aux = this.inicio;
-            aux.labelFuncionesSala();
-            while (aux != null) {
-                aux.mostrar();
-                aux = aux.getNext();
-            }
-        
+        Sala aux = this.inicio;
+        aux.labelFuncionesSala();
+        while (aux != null) {
+            aux.mostrar();
+            aux = aux.getNext();
+        }
+
     }
+
     public Sala buscarPorPosicion(int index) {
         Sala aux = this.inicio;
         int i = 1;

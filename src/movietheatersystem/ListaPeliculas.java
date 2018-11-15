@@ -6,13 +6,11 @@ public class ListaPeliculas {
 
     Util util = new Util();
     Pelicula inicio, fin;
-   static int cantidadPeliculas;
+   static int cantidadPeliculas=0;
 
     public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
-        this.cantidadPeliculas=0;
-        this.peliculasEjemplo();
     }
 
     public void setInicio(Pelicula inicio) {
