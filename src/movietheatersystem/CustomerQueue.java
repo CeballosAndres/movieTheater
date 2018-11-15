@@ -36,10 +36,21 @@ public class CustomerQueue {
 
     public void show() {
         Client aux = this.first;
+        System.out.println("Fila de clientes: ");
         while (aux != null) {
             aux.show();
             aux = aux.getNext();
         }
+    }
+    
+    public Client serveCustumer(){
+        Client client;
+        if ((client = this.remove()) != null) {
+            //llamada a metodo para atender cliente
+            return client;
+        }
+        System.out.println("No hay más clientes.");
+        return null;
     }
 
     public boolean empty() {
