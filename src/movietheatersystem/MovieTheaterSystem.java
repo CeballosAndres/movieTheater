@@ -103,7 +103,11 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que permita asignar una funcion a una sala.");
+                    if (peliculas.cantidadPeliculas == 0) {
+                        System.out.println("No se puede configurar funciones sala si no hay peliculas, ingrese opcion 1 para agregar peliculas");
+                    } else {
+                        this.miniMenuConfiguracionFuncionesSala();
+                    }
                     break;
                 case 3:
                     this.miniMenuConfiguracionCostos();
@@ -113,6 +117,7 @@ public class MovieTheaterSystem {
                     System.out.println("//Metodo que muestra las peliculas por sala y costos.");
                     break;
                 case 5:
+
                     this.miniMenuConfiguracionCine();
                     break;
                 case 6:
@@ -331,6 +336,7 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
+                    this.salas.agregarFuncionesSala();
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
@@ -338,7 +344,7 @@ public class MovieTheaterSystem {
                     break;
                 case 3:
                     metodos.label(opcionesMenu[opc - 1]);
-
+                    this.salas.mostrarSalasFunciones();
                     break;
                 case 0:
                     break;

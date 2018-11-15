@@ -1,35 +1,43 @@
 package movietheatersystem;
 
 import java.util.Scanner;
+
 public class ListaSalas {
+
     ListaPeliculas peliculas = new ListaPeliculas();
     Sala inicio, fin;
-    Util util = new Util();
-    static int cantidadSalas = 4;
+    static int cantidadSalas;
+    private Util util;
 
-    public void configuracionInicialAsientos() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Cuantas aseintos en salas:");
-        Sala.capacidadSala = sc.nextInt();
-        vaciar();
-        agregarSala();
-    }
-    public void configuracionSalas() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Cuantas  salas:");
-        cantidadSalas= sc.nextInt();
-        vaciar();
-        agregarSala();
-    }
-
+    // CONTRUCTORES 
     public ListaSalas(Sala inicio, Sala fin) {
         this.inicio = inicio;
         this.fin = fin;
+        this.cantidadSalas=4;
+        Util util = new Util();
     }
 
     public ListaSalas() {
         this.inicio = null;
         this.fin = null;
+        this.cantidadSalas=4;
+        Util util = new Util();
+    }
+
+    // METODOS PARA MOVIE tHEATER SYSTEM
+    public void configuracionInicialAsientos() {
+       
+        System.out.print("Cuantas aseintos en salas:");
+        Sala.capacidadSala = util.opcion();
+        vaciar();
+        agregarSala();
+    }
+
+    public void configuracionSalas() {
+        System.out.print("Cuantas  salas:");
+        cantidadSalas = util.opcion();
+        vaciar();
+        agregarSala();
     }
 
     private void agregarFinal(Sala nuevo) {
@@ -37,7 +45,6 @@ public class ListaSalas {
             this.inicio = nuevo;
             this.fin = nuevo;
         } else {
-
             this.fin.setNext(nuevo);
             this.fin = nuevo;
         }
@@ -59,63 +66,81 @@ public class ListaSalas {
         int numSala = 0;
         do {
             System.out.print("Ingrese el numero de la sala:");
-            numSala = sc.nextInt();
-        } while (numSala <= cantidadSalas && numSala > 0);
-        System.out.println("   # Peliculas #  ");
+            numSala = util.opcion();
+        } while (!(numSala <= cantidadSalas && numSala > 0));
+        asignarDatosSala(numSala);
 
+    }
+
+    public boolean salasConPelicula() {
+        Sala aux = this.inicio;
+        int i;
+        while (aux != null) {
+            if (aux.pelicula == null) {
+                return false;
+            }
+            aux = aux.next;
+
+        }
+        return true;
+
+    }
+
+    public void asignarDatosSala(int numSala) {
+        System.out.println("   # Peliculas #  ");
         new ListaPeliculas().mostrarPeliculasNombre();
         int numPelicula = 0;
         do {
             System.out.print("Ingresa el numero de la pelicula :");
-            numPelicula = sc.nextInt();
-        } while (numPelicula <= peliculas.cantidadPeliculas && numPelicula > 0);
+            numPelicula = util.opcion();
+        } while (numPelicula <= ListaPeliculas.cantidadPeliculas && numPelicula > 0);
+
         System.out.println("   # Formato #  ");
         System.out.println("1- 3D");
         System.out.println("2- 2D");
         int numFormato = 0;
         do {
             System.out.print("Ingresa el numero de la pelicula :");
-            numFormato = sc.nextInt();
+            numFormato = util.opcion();
         } while (!(numFormato == 1 || numFormato == 2));
 
         buscarPorPosicion(numSala).setPelicula(new ListaPeliculas().buscarPorPosicion(numPelicula));
         buscarPorPosicion(numSala).setTipoFormato(numFormato);
+    }
+
+    public void agregarFuncionesSala() {
+        if (!salasConPelicula()) {
+            System.out.println("   # Salas sin Pelicula asignada #  ");
+            Sala aux = this.inicio;
+            int i = 0;
+            while (aux != null) {
+                if (aux.pelicula == null) {
+                    System.out.println((i + 1) + "-" + " " + aux.numSala);
+                }
+                i++;
+                aux = aux.getNext();
+            }
+            int numSala;
+            do {
+                System.out.print("Ingrese el numero de la sala: ");
+                numSala = util.opcion();
+            } while (!(numSala <= cantidadSalas && numSala > 0 && buscarPorPosicion(numSala).pelicula == null));
+
+        } else {
+            System.out.println("Salas ya tiene peliculas");
+        }
 
     }
     
-    /*
-    public void agregarFuncionesSala() {
-        if (cantidadPeliculas>0) {
-            
-        }
+    public void mostrarSalasFunciones() {
+            Sala aux = this.inicio;
+            aux.labelFuncionesSala();
+            while (aux != null) {
+                aux.mostrar();
+                aux = aux.getNext();
+            }
         
-        Scanner sc = new Scanner(System.in);
-        System.out.println("   # Salas #  ");
-  ///// le estoy 
-        System.out.println("   # Peliculas #  ");
-
-        new ListaPeliculas().mostrarPeliculasNombre();
-        int numPelicula = 0;
-        do {
-            System.out.print("Ingresa el numero de la pelicula :");
-            numPelicula = sc.nextInt();
-        } while (numPelicula <= ListaPeliculas.cantidadPeliculas && numPelicula > 0);
-        System.out.println("   # Formato #  ");
-        System.out.println("1- 3D");
-        System.out.println("2- 2D");
-        int numFormato = 0;
-        do {
-            System.out.print("Ingresa el numero de la pelicula :");
-            numFormato = sc.nextInt();
-        } while (!(numFormato == 1 || numFormato == 2));
-
-        buscarPorPosicion(numSala).setPelicula(new ListaPeliculas().buscarPorPosicion(numPelicula));
-        buscarPorPosicion(numSala).setTipoFormato(numFormato);
-
     }
-    */
-
-
     public Sala buscarPorPosicion(int index) {
         Sala aux = this.inicio;
         int i = 1;
@@ -127,7 +152,6 @@ public class ListaSalas {
             aux = aux.getNext();
         }
         return null;
-
     }
 
     public void mostrarSalasNombre() {
@@ -144,9 +168,11 @@ public class ListaSalas {
 
         }
     }
-    public void vaciar(){
-    this.inicio=null;
+
+    public void vaciar() {
+        this.inicio = null;
     }
+
     public boolean vacia() {
         return this.inicio == null;
     }
