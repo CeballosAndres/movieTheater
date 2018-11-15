@@ -6,42 +6,42 @@ public class Sala {
     Sala next;
     int numSala;
     int capacidadSala;
-    int boletosVendidos;
-    int boletosCancelados;
+    int boletossVendidos;
+    int boletossCancelados;
     int tipoFormato;
     Pelicula pelicula;
-    Ticket boleto;
+    Ticket boletos;
 
     public Sala(int numSala) {
         this.next = null;
         this.numSala = numSala;
-        this.boletosVendidos = 0;
+        this.boletossVendidos = 0;
         this.capacidadSala = 4;
-        this.boletosCancelados = 0;
+        this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boleto = null;
+        this.boletos = null;
     }
     public Sala(int numSala, int asientos) {
         this.next = null;
         this.numSala = numSala;
-        this.boletosVendidos = 0;
+        this.boletossVendidos = 0;
         this.capacidadSala = asientos;
-        this.boletosCancelados = 0;
+        this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boleto = null;
+        this.boletos = null;
     }
 
     public Sala() {
         this.next = null;
         this.capacidadSala = 4;
         this.numSala = 0;
-        this.boletosVendidos = 0;
-        this.boletosCancelados = 0;
+        this.boletossVendidos = 0;
+        this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boleto = null;
+        this.boletos = null;
     }
 
     public void setCapacidadSala(int capacidadSala) {
