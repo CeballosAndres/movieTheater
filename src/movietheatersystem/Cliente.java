@@ -1,10 +1,13 @@
 package movietheatersystem;
 public class Cliente {
     private String name;
-
+    private Cliente next;
+    
     public Cliente(String name) {
         this.name = name;
     }
+    
+    public 
 
     public String getName() {
         return name;

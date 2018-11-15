@@ -2,7 +2,7 @@ package movietheatersystem;
 
 import java.util.Scanner;
 public class ListaSalas {
-
+    ListaPeliculas peliculas = new ListaPeliculas();
     Sala inicio, fin;
     Util util = new Util();
     static int cantidadSalas = 4;
@@ -68,7 +68,7 @@ public class ListaSalas {
         do {
             System.out.print("Ingresa el numero de la pelicula :");
             numPelicula = sc.nextInt();
-        } while (numPelicula <= ListaPeliculas.cantidadPeliculas && numPelicula > 0);
+        } while (numPelicula <= peliculas.cantidadPeliculas && numPelicula > 0);
         System.out.println("   # Formato #  ");
         System.out.println("1- 3D");
         System.out.println("2- 2D");
