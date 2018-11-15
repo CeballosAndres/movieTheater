@@ -104,7 +104,7 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    if (peliculas.cantidadPeliculas == 0) {
+                    if (peliculas.cantidadPeliculas() == 0) {
                         System.out.println("No se puede configurar funciones sala si no hay peliculas, ingrese opcion 1 para agregar peliculas");
                     } else {
                         this.miniMenuConfiguracionFuncionesSala();
