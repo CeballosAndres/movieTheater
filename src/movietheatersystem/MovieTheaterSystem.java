@@ -11,6 +11,7 @@ public class MovieTheaterSystem {
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
+
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
         obj.menu();
@@ -66,75 +67,10 @@ public class MovieTheaterSystem {
             opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.subMenuVentasFila();
+                    this.miniMenuVentasFila();
                     break;
                 case 2:
-                    this.subMenuVentasAtender();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción no valida.");
-            }
-        } while (opc != 0);
-    }
-
-    public void subMenuVentasFila() {
-        int opc;
-        String[] opcionesMenu = {
-            "Formar cliente en cola",
-            "Sacar cliente de cola",
-            "Mostrar clientes formados"};
-        do {
-            metodos.label("Mini menú Ventas - Fila");
-
-            for (int i = 0; i < opcionesMenu.length; i++) {
-                System.out.println((i + 1) + " - " + opcionesMenu[i]);
-            }
-            System.out.println("0 - Atrás");
-            opc = metodos.opcion();
-            switch (opc) {
-                case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para ingresar cliente a la cola.");
-                    break;
-                case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para sacar cliente a la cola.");
-                    break;
-                case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para mostrar a los clientes a la cola.");
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción no valida.");
-            }
-        } while (opc != 0);
-    }
-
-    public void subMenuVentasAtender() {
-        int opc;
-        String[] opcionesMenu = {
-            "Vender boleto",
-            "Cancelación de boleto"};
-        do {
-            metodos.label("Mini menú Ventas - Atender");
-
-            for (int i = 0; i < opcionesMenu.length; i++) {
-                System.out.println((i + 1) + " - " + opcionesMenu[i]);
-            }
-            System.out.println("0 - Atrás");
-            opc = metodos.opcion();
-            switch (opc) {
-                case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para vender boleto (pelicula, cantidad, tipo)");
-                    break;
-                case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para cancelar boleto(devolucion)");
+                    this.miniMenuVentasAtender();
                     break;
                 case 0:
                     break;
@@ -163,136 +99,25 @@ public class MovieTheaterSystem {
             opc = metodos.opcion();
             switch (opc) {
                 case 1:
-                    this.subMenuConfiguracionCartelera();
+                    this.miniMenuConfiguracionCartelera();
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que permita asignar una funcion a una sala.");
                     break;
                 case 3:
-                    this.subMenuConfiguracionCostos();
+                    this.miniMenuConfiguracionCostos();
                     break;
                 case 4:
                     metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra las peliculas por sala y costos.");
                     break;
                 case 5:
-                    this.subMenuConfiguracionCine();
+                    this.miniMenuConfiguracionCine();
                     break;
                 case 6:
                     metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción no valida.");
-            }
-        } while (opc != 0);
-    }
-
-    public void subMenuConfiguracionCine() {
-        int opc;
-        String[] opcionesMenu = {
-            "Número de salas",
-            "Asientos en salas"};
-        do {
-            metodos.label("Mini menú Configuración - Cine");
-            System.out.println("NOTA: Estas opciones vuelven a inicializar la lista de salas ");
-            for (int i = 0; i < opcionesMenu.length; i++) {
-                System.out.println((i + 1) + " - " + opcionesMenu[i]);
-            }
-            System.out.println("0 - Atrás");
-            opc = metodos.opcion();
-            switch (opc) {
-                case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    salas.configuracionSalas();
-                    break;
-                case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    salas.configuracionInicialAsientos();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción no valida.");
-            }
-        } while (opc != 0);
-    }
-
-    public void subMenuConfiguracionCartelera() {
-        int opc;
-        String[] opcionesMenu = {
-            "Ver peliculas",
-            "Agregar nueva",
-            "Modificar",
-            "Eliminar"
-        };
-        do {
-            metodos.label("Mini menú Configuración - Peliculas");
-
-            for (int i = 0; i < opcionesMenu.length; i++) {
-                System.out.println((i + 1) + " - " + opcionesMenu[i]);
-            }
-            System.out.println("0 - Atrás");
-            opc = metodos.opcion();
-            switch (opc) {
-                case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    this.peliculas.mostrarPeliculas();
-                    break;
-                case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    this.peliculas.agregarPelicula();
-                    break;
-                case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    this.peliculas.modificarPelicula();
-                    break;
-                case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    this.peliculas.eliminarPelicula();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción no valida.");
-            }
-        } while (opc != 0);
-    }
-
-    public void subMenuConfiguracionCostos() {
-        int opc;
-        String[] opcionesMenu = {
-            "Función tradicional",
-            "Función 3D",
-            "Descuento a adultos mayores",
-            "Descuento a niños"};
-        do {
-            metodos.label("Mini menú Administración - Costos");
-
-            for (int i = 0; i < opcionesMenu.length; i++) {
-                System.out.println((i + 1) + " - " + opcionesMenu[i]);
-            }
-            System.out.println("0 - Atrás");
-            opc = metodos.opcion();
-            switch (opc) {
-                case 1:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el costo de funcion tradicional.");
-                    break;
-                case 2:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el costo de funcion 3D.");
-                    break;
-                case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el % de descuento a adultos mayores.");
-                    break;
-                case 4:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el % de descuento a niños.");
                     break;
                 case 0:
                     break;
@@ -351,4 +176,216 @@ public class MovieTheaterSystem {
             }
         } while (opc != 0);
     }
+
+    public void miniMenuVentasFila() {
+        int opc;
+        String[] opcionesMenu = {
+            "Formar cliente en cola",
+            "Sacar cliente de cola",
+            "Mostrar clientes formados"};
+        do {
+            metodos.label("Mini menú Ventas - Fila");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para ingresar cliente a la cola.");
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para sacar cliente a la cola.");
+                    break;
+                case 3:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para mostrar a los clientes a la cola.");
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void miniMenuVentasAtender() {
+        int opc;
+        String[] opcionesMenu = {
+            "Vender boleto",
+            "Cancelación de boleto"};
+        do {
+            metodos.label("Mini menú Ventas - Atender");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para vender boleto (pelicula, cantidad, tipo)");
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para cancelar boleto(devolucion)");
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void miniMenuConfiguracionCine() {
+        int opc;
+        String[] opcionesMenu = {
+            "Número de salas",
+            "Asientos en salas"};
+        do {
+            metodos.label("Mini menú Configuración - Cine");
+            System.out.println("NOTA: Estas opciones vuelven a inicializar la lista de salas ");
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    salas.configuracionSalas();
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    salas.configuracionInicialAsientos();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void miniMenuConfiguracionCartelera() {
+        int opc;
+        String[] opcionesMenu = {
+            "Ver peliculas",
+            "Agregar nueva",
+            "Modificar",
+            "Eliminar"
+        };
+        do {
+            metodos.label("Mini menú Configuración - Peliculas");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    this.peliculas.mostrarPeliculas();
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    this.peliculas.agregarPelicula();
+                    break;
+                case 3:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    this.peliculas.modificarPelicula();
+                    break;
+                case 4:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    this.peliculas.eliminarPelicula();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void miniMenuConfiguracionFuncionesSala() {
+        Scanner sc = new Scanner(System.in);
+        int opc;
+        String[] opcionesMenu = {
+            "Asignar pelicula a sala (+formato) ",
+            "Modificar pelicula a sala",
+            "Mostrar peliculas a sala "};
+        do {
+            metodos.label("Mini menú Configuración - peliculas a Salas");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    this.salas.modificarFuncionesSala();
+                    break;
+                case 3:
+                    metodos.label(opcionesMenu[opc - 1]);
+
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
+    public void miniMenuConfiguracionCostos() {
+        int opc;
+        String[] opcionesMenu = {
+            "Función tradicional",
+            "Función 3D",
+            "Descuento a adultos mayores",
+            "Descuento a niños"};
+        do {
+            metodos.label("Mini menú Administración - Costos");
+
+            for (int i = 0; i < opcionesMenu.length; i++) {
+                System.out.println((i + 1) + " - " + opcionesMenu[i]);
+            }
+            System.out.println("0 - Atrás");
+            opc = metodos.opcion();
+            switch (opc) {
+                case 1:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para modificar el costo de funcion tradicional.");
+                    break;
+                case 2:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para modificar el costo de funcion 3D.");
+                    break;
+                case 3:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para modificar el % de descuento a adultos mayores.");
+                    break;
+                case 4:
+                    metodos.label(opcionesMenu[opc - 1]);
+                    System.out.println("//Metodo para modificar el % de descuento a niños.");
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
+            }
+        } while (opc != 0);
+    }
+
 }
