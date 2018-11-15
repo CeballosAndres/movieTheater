@@ -20,7 +20,6 @@ public class MovieTheaterSystem {
         obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
-
     public void menu() {
 
         int opc;
