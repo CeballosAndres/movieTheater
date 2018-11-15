@@ -8,7 +8,7 @@ public class ListaPeliculas {
     Pelicula inicio, fin;
    static int cantidadPeliculas =0;
 
-    public ListaPeliculas() {ß
+    public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
         this.peliculasEjemplo();
