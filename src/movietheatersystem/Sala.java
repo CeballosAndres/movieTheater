@@ -10,7 +10,6 @@ public class Sala {
     int boletossCancelados;
     int tipoFormato;
     Pelicula pelicula;
-    Ticket boletos;
 
     public Sala(int numSala) {
         this.next = null;
@@ -20,8 +19,8 @@ public class Sala {
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boletos = null;
     }
+
     public Sala(int numSala, int asientos) {
         this.next = null;
         this.numSala = numSala;
@@ -30,7 +29,6 @@ public class Sala {
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boletos = null;
     }
 
     public Sala() {
@@ -41,7 +39,6 @@ public class Sala {
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
-        this.boletos = null;
     }
 
     public void setCapacidadSala(int capacidadSala) {

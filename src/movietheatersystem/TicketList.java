@@ -4,14 +4,12 @@ public class TicketList {
 
     Util util = new Util();
     private Ticket first, end;
+    int folioInc;
 
     public TicketList() {
         this.first = null;
         this.end = null;
-    }
-
-    public Util getUtil() {
-        return util;
+        this.folioInc = 10000;
     }
 
     public Ticket getFirst() {
@@ -22,10 +20,6 @@ public class TicketList {
         return end;
     }
 
-    public void setUtil(Util util) {
-        this.util = util;
-    }
-
     public void setFirst(Ticket first) {
         this.first = first;
     }
@@ -34,8 +28,6 @@ public class TicketList {
         this.end = end;
     }
     
-    
-
     public boolean empty() {
         return this.first == null;
     }
@@ -46,9 +38,14 @@ public class TicketList {
             this.end = ticket;
         } else {
             ticket.setBack(this.end);
-            this.first.setFirst(nuevo);
-            this.fin = nuevo;
+            this.end.setNext(ticket);
+            this.end = ticket;
         }
-        cantidadPeliculas++;
+        this.folioInc++;
     }
+    
+    public Ticket addTicket(String name, int sala){
+        
+    }
+    
 }

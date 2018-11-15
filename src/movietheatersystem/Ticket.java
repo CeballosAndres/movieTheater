@@ -9,11 +9,11 @@ public class Ticket {
     private int ticketElderly;
     private float total;
     
-    public Ticket(String Name){
+    public Ticket(){
         this.next = null;
         this.back = null;
         this.folio = null;
-        this.name = name;
+        this.name = null;
         this.age = 0;
         this.ticketStandard = 0;
         this.ticketBoy = 0;
