@@ -11,7 +11,8 @@ public class MovieTheaterSystem {
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
-    CustomerQueue cola = new CustomerQueue();
+    CustomerQueue clients = new CustomerQueue();
+    TicketList tickets = new TicketList();
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -20,6 +21,7 @@ public class MovieTheaterSystem {
         obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
+
     public void menu() {
 
         int opc;
@@ -199,12 +201,12 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    cola.newClient();
+                    clients.newClient();
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
                     System.out.println("Clientes: ");
-                    cola.show();
+                    clients.show();
                     break;
                 case 0:
                     break;
@@ -230,14 +232,25 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    
-                    if (cola.empty()) {
+
+                    if (clients.empty()) {
                         System.out.println("No hay más clientes formados!");
                     } else {
-                        
+                        Client clientAtendido = clients.serveCustumer(); // saca al primer cliente de la cola
+
+                        // Falta: 
+                        // preguntar edad
+                        //consultar salas con peliculas y mostrar espacios
+                        //preguntar cuantos asientos comprara
+                        //validar que en la sala queden esos espacios disponibles
+                        //preguntar tipo voleto(normal, niño, adulto mayor)
+                        //calcular costo total
+                        //confirmar venta de boletos
+                        //Sí: descontar a la sala los lugares comprados
+                        //mandar datos a metodo en tickets
+                        //Ticket ticketVendido = tickets.addTicket(clienteAtendido.getName, );
                     }
-                    
-                    
+
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
