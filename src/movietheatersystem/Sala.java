@@ -10,7 +10,7 @@ public class Sala {
     int boletosCancelados;
     int tipoFormato;
     Pelicula pelicula;
-    Boleto boleto;
+    Ticket boleto;
 
     public Sala(int numSala) {
         this.next = null;
