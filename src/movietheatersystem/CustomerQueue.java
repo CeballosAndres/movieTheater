@@ -36,7 +36,7 @@ public class CustomerQueue {
 
     public void show() {
         Client aux = this.first;
-        System.out.println("Fila de clientes: ");
+        System.out.print("Fila: ");
         while (aux != null) {
             aux.show();
             aux = aux.getNext();

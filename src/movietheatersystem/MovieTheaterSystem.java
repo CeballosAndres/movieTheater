@@ -230,7 +230,14 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para vender boleto (pelicula, cantidad, tipo)");
+                    
+                    if (cola.empty()) {
+                        System.out.println("No hay más clientes formados!");
+                    } else {
+                        
+                    }
+                    
+                    
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
