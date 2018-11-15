@@ -8,25 +8,20 @@ import java.util.Scanner;
  */
 public class MovieTheaterSystem {
 
-    public ListaPeliculas getPeliculas() {
-        return peliculas;
-    }
-
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
-       
-        obj.salas.configuracionInicialAsientos();
+
+        obj.salas.configuracionInicial();
         obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
 
     public void menu() {
 
-        
         int opc;
         String[] opcionesMenu = {
             "Venta de boletos",
@@ -256,8 +251,9 @@ public class MovieTheaterSystem {
     public void miniMenuConfiguracionCine() {
         int opc;
         String[] opcionesMenu = {
-            "Número de salas",
-            "Asientos en salas"};
+            "numero de salas", "numero de asientos"
+
+        };
         do {
             metodos.label("Mini menú Configuración - Cine");
             System.out.println("NOTA: Estas opciones vuelven a inicializar la lista de salas ");
@@ -273,7 +269,7 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    salas.configuracionInicialAsientos();
+                    salas.configuracionAsientos();
                     break;
                 case 0:
                     break;
@@ -342,11 +338,11 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    this.salas.agregarFuncionesSala();
+                    this.salas.agregarFuncionesSala(peliculas);
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    this.salas.modificarFuncionesSala();
+                    this.salas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
                     metodos.label(opcionesMenu[opc - 1]);
