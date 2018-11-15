@@ -11,6 +11,7 @@ public class MovieTheaterSystem {
     ListaPeliculas peliculas = new ListaPeliculas();
     ListaSalas salas = new ListaSalas();
     Util metodos = new Util();
+    CustomerQueue cola = new CustomerQueue();
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -187,7 +188,6 @@ public class MovieTheaterSystem {
         int opc;
         String[] opcionesMenu = {
             "Formar cliente en cola",
-            "Sacar cliente de cola",
             "Mostrar clientes formados"};
         do {
             metodos.label("Mini menú Ventas - Fila");
@@ -200,15 +200,12 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para ingresar cliente a la cola.");
+                    cola.newClient();
                     break;
                 case 2:
                     metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para sacar cliente a la cola.");
-                    break;
-                case 3:
-                    metodos.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para mostrar a los clientes a la cola.");
+                    System.out.println("Clientes: ");
+                    cola.show();
                     break;
                 case 0:
                     break;

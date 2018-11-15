@@ -26,7 +26,7 @@ public class Client {
     }
 
     public void show() {
-        System.out.printf("> %-12s >", this.name);
+        System.out.print(">" + this.name);
     }
 
 }

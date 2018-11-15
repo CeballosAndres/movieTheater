@@ -25,7 +25,7 @@ public class CustomerQueue {
         }
     }
 
-    public Client remove() {
+    private Client remove() {
         if (this.empty()) {
             return null;
         }
