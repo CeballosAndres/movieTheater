@@ -26,7 +26,7 @@ public class Client {
     }
 
     public void show() {
-        System.out.print(">" + this.name);
+        System.out.print("< " + this.name);
     }
 
 }
