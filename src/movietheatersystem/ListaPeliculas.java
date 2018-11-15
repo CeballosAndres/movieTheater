@@ -6,12 +6,21 @@ public class ListaPeliculas {
 
     Util util = new Util();
     Pelicula inicio, fin;
-    int cantidadPeliculas;
+    
+    public int cantidadPeliculas(){
+     Pelicula aux = this.inicio;
+     int i = 0;
+        while (aux != null) {
+            i++;
+            aux = aux.getSigue();
+        }
+        return i;
+    }
 
     public ListaPeliculas() {
         this.inicio = null;
         this.fin = null;
-        this.cantidadPeliculas=0;
+      
     }
 
     public void setInicio(Pelicula inicio) {
@@ -27,7 +36,7 @@ public class ListaPeliculas {
             this.fin.setSigue(nuevo);
             this.fin = nuevo;
         }
-        cantidadPeliculas++;
+       
     }
 
     public Pelicula buscarPorNombre(String nombre) {
@@ -134,7 +143,7 @@ public class ListaPeliculas {
                     case 3:
                         this.eliminarFin();
                 }
-                this.cantidadPeliculas--;
+                
                 System.out.println("Eliminada exitosamente!");
             } else {
                 System.out.println("No se ha eliminado el elemento.");
