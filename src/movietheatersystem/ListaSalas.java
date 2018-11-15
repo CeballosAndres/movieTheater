@@ -32,20 +32,20 @@ public class ListaSalas {
     }
 
     public void configuracionAsientos() {
-        int salas=cantidadSalas;
+        int salas = cantidadSalas;
         vaciar();
         System.out.print("Cuantas asientos en salas:");
         int asientos = util.inputInteger();
-        agregarAsientosYSala(asientos,salas);
+        agregarAsientosYSala(asientos, salas);
         datosSalasAsientos();
     }
 
     public void configuracionSalas() {
-        int asientos=inicio.capacidadSala;
+        int asientos = inicio.capacidadSala;
         vaciar();
         System.out.print("Cuantas  salas:");
         int salas = util.inputInteger();
-        agregarAsientosYSala(asientos,salas);
+        agregarAsientosYSala(asientos, salas);
         datosSalasAsientos();
 
     }
@@ -67,12 +67,11 @@ public class ListaSalas {
         }
     }
 
-    public void agregarAsientosYSala(int asientos,int salas) {
-        cantidadSalas=salas;
+    public void agregarAsientosYSala(int asientos, int salas) {
+        cantidadSalas = salas;
         agregarSalas();
         agregarAsientos(asientos);
     }
-
 
     private void agregarFinal(Sala nuevo) {
         if (this.vacia()) {
@@ -96,9 +95,8 @@ public class ListaSalas {
 
     }
 
-    public boolean salasConPelicula() {
+    public boolean TodaSalaConPelicula() {
         Sala aux = this.inicio;
-        int i;
         while (aux != null) {
             if (aux.pelicula == null) {
                 return false;
@@ -107,6 +105,18 @@ public class ListaSalas {
 
         }
         return true;
+
+    }
+    public boolean algunaSalaConPelicula() {
+        Sala aux = this.inicio;
+        while (aux != null) {
+            if (aux.pelicula != null) {
+                return true;
+            }
+            aux = aux.next;
+
+        }
+        return false;
 
     }
 
@@ -133,7 +143,7 @@ public class ListaSalas {
     }
 
     public void agregarFuncionesSala(ListaPeliculas peliculas) {
-        if (!salasConPelicula()) {
+        if (!TodaSalaConPelicula()) {
             System.out.println("   # Salas sin Pelicula asignada #  ");
             Sala aux = this.inicio;
             int i = 0;
@@ -157,11 +167,15 @@ public class ListaSalas {
     }
 
     public void mostrarSalasFunciones() {
-        Sala aux = this.inicio;
-        aux.labelFuncionesSala();
-        while (aux != null) {
-            aux.mostrar();
-            aux = aux.getNext();
+        if (algunaSalaConPelicula()) {
+            Sala aux = this.inicio;
+            aux.labelFuncionesSala();
+            while (aux != null) {
+                aux.mostrar();
+                aux = aux.getNext();
+            }
+        }else{
+            System.out.println("No hay todavía funciones en sala");
         }
 
     }
