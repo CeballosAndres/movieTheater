@@ -93,9 +93,9 @@ public class ListaSalas {
                 numSala = util.opcion();
             } while (!(numSala <= cantidadSalas && numSala > 0
                     && buscarPorPosicion(numSala).pelicula != null));
-            
+
+            util.label("Antigua configuracion : Sala funcion");
             buscarPorPosicion(numSala).labelFuncionesSala();
-            System.out.println("-------- Antigua configuracion : Sala funcion ---- ");
             buscarPorPosicion(numSala).mostrar();
             asignarDatosSala(numSala, peliculas);
         } else {
@@ -151,9 +151,10 @@ public class ListaSalas {
 
         buscarPorPosicion(numSala).setPelicula(peliculas.buscarPorPosicion(numPelicula));
         buscarPorPosicion(numSala).setTipoFormato(numFormato);
+        util.label("Nueva configuracion : Sala funcion");
 
         buscarPorPosicion(numSala).labelFuncionesSala();
-        System.out.println("-------- Nueva configuracion : Sala funcion ---- ");
+
         buscarPorPosicion(numSala).mostrar();
     }
 
