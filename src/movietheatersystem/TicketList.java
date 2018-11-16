@@ -45,12 +45,18 @@ public class TicketList {
 
     public Ticket totalesTickets() {
         Ticket totales = new Ticket();
+        int inc = 0;
         Ticket aux = this.inicio;
         while (aux != null) {
-            total += aux.getTotal();
-            aux.getNext();
+            totales.setTicketElderly(totales.getTicketElderly() + aux.getTicketElderly());
+            totales.setTicketKids(totales.getTicketKids() + aux.getTicketKids());
+            totales.setTicketStandard(totales.getTicketStandard() + aux.getTicketStandard());
+            totales.setTotal(totales.getTotal() + aux.getTotal());
+            inc++;
+            aux = aux.getNext();
         }
-        return total;
+        totales.setBoleto(inc);
+        return totales;
     }
 
     public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly, float total) {
