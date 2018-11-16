@@ -5,6 +5,7 @@ public class Ticket {
     private Ticket next;
     private String folio;
     private String name;
+    private int boleto;
     private int ticketStandard;
     private int ticketKids;
     private int ticketElderly;

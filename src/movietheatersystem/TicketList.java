@@ -32,8 +32,8 @@ public class TicketList {
 
     }
 
-    public float gananciaPorSala() {
-        float total = 0;
+    public Ticket totalesTickets() {
+        Ticket totales = new Ticket();
         Ticket aux = this.inicio;
         while(aux != null){
             total += aux.getTotal();

@@ -257,7 +257,7 @@ public class ListaSalas {
         return this.inicio == null;
     }
     
-    public float gananciasPorSalas(){
+    public float totales(){
         float total = 0;
         Sala aux = this.inicio;
         while(aux != null){
