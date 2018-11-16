@@ -243,15 +243,17 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    if (customerQueue.empty()) {
+                    serveCustumer();
 
-                        serveCustumer();
-                    }
                     break;
 
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para cancelar boleto(devolucion)");
+                    if (listaSalas.cantidadPersonas() != 0) {
+                        cancelarVenta();
+                    } else {
+                        System.out.println("Todavia no se ha vendido ningun boleto ");
+                    }
                     break;
                 case 0:
                     break;
@@ -407,19 +409,7 @@ public class MovieTheaterSystem {
                     break;
                 case 5:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("                       # Costos tradicionales # ");
-                    System.out.println("costo 2D: " + costo2D
-                            + " \n costo 3D: " + costo2D);
-                    System.out.println("                       # Descuentos personas # ");
-                    System.out.println("descuento ninos: " + descuentoNinos
-                            + " \n descuento adultos tercera edad: " + descuentoTercera);
-                    System.out.println("                       # Costos asociados # ");
-                    System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) * 100)
-                            + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) * 100)
-                            + " \n adultos - 2D: " + costo2D
-                            + " \n adultos - 3D: " + costo3D
-                            + " \n adultos tercera - 2D: " + costo2D * ((100 - descuentoTercera) * 100)
-                            + " \n adultos tercera - 3D: " + costo3D * ((100 - descuentoTercera) * 100));
+                    datosCosto();
                     break;
                 case 0:
                     break;
@@ -427,6 +417,23 @@ public class MovieTheaterSystem {
                     System.out.println("Opción no valida.");
             }
         } while (opc != 0);
+    }
+
+    public void datosCosto() {
+        System.out.println("                       # Costos tradicionales # ");
+        System.out.println("costo 2D: " + costo2D
+                + " \n costo 3D: " + costo2D);
+        System.out.println("                       # Descuentos personas # ");
+        System.out.println("descuento ninos: " + descuentoNinos
+                + " \n descuento adultos tercera edad: " + descuentoTercera);
+        System.out.println("                       # Costos asociados # ");
+        System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) * 100)
+                + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) * 100)
+                + " \n adultos - 2D: " + costo2D
+                + " \n adultos - 3D: " + costo3D
+                + " \n adultos tercera - 2D: " + costo2D * ((100 - descuentoTercera) * 100)
+                + " \n adultos tercera - 3D: " + costo3D * ((100 - descuentoTercera) * 100));
+
     }
 
     public int obtenerCosto(int opc) {
@@ -447,6 +454,15 @@ public class MovieTheaterSystem {
         listaSalas.vaciar();
         listaSalas.agregarAsientosYSala(asientos, cantidadSalas);
         return costo;
+    }
+
+    public void cancelarVenta() {
+        System.out.print("Ingresa el folio:");
+        String folio=util.inputText();
+        if () {
+            
+        }
+
     }
 
     public void serveCustumer() {
@@ -470,28 +486,26 @@ public class MovieTheaterSystem {
                             + "esa sala para vender");
                     System.out.println("Ingrese una cantidad <= a"
                             + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                            - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
-                            + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados));
+                            - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
                 }
 
             } while (!(boletos > 0 && boletos
                     <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                    - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
-                    + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados)));
+                    - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas())));
 
             int total, ticketKids, ticketStandard, ticketElderly;
 
             do {
-                System.out.println("Cuantos ninos:");
+                System.out.print("Cuantos ninos:");
                 ticketKids = util.inputInteger();
-                System.out.println("Cuantos boletos normales:");
+                System.out.print("Cuantos boletos normales:");
                 ticketStandard = util.inputInteger();
-                System.out.println("Cuantos adultos tercera edad:");
+                System.out.print("Cuantos adultos tercera edad:");
                 ticketElderly = util.inputInteger();
                 total = ticketKids + ticketStandard + ticketElderly;
                 if (total != boletos) {
-                    System.out.println("La cantidades de cada categoria no son las "
-                            + "adecuadas para " + boletos + " boletos");
+                    System.out.println("La cantidades de cada categoria no son las adecuadas para "
+                            + boletos + " boletos");
                 }
             } while (!(total == boletos));
 

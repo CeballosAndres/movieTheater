@@ -20,16 +20,45 @@ public class TicketList {
         return this.inicio == null;
     }
 
-   public int obtenerCantidadPersonas() {
-      Ticket aux=new Ticket();
-     aux= this.inicio;
-     int i = 0;
-        while (aux != null) {
-            i+=aux.getTicketElderly()+aux.getTicketKids()+aux.getTicketStandard();
-            aux = aux.getNext();
+    public boolean buscarEliminarFolio(String folio) {
+        Ticket atras,aux;
+        if (folio.equalsIgnoreCase(inicio.getFolio())) {
+            if (inicio == fin) {
+                inicio = null;
+                fin = null;
+                System.out.println(folio + " eliminado.");
+            } else {
+                inicio = inicio.getNext();
+                System.out.println(folio + " eliminado.");
+            }
+            return true;
+        } else {
+            atras = inicio;
+            aux = inicio.getNext();
+            while (aux != null) {
+                if (folio.equalsIgnoreCase(inicio.getFolio())) {
+                    atras.setNext(aux.getNext()) ;
+                    if (fin == aux) {
+                        fin = atras;
+                    }
+                    System.out.println(folio+ " eliminado.");
+                    aux = null;
+                } else {
+                    if (eliminar < aux.edad) {
+                        System.out.println("Valor no encontrado.");
+                        aux = null;
+                    } else {
+                        atras = aux;
+                        aux = aux.sigue;
+                    }
+                }
+            }
         }
-        return i;
-     }
+   
+    
+
+
+    
 
     private void anadirALista(Ticket nuevo) {
         if (this.vacio()) {
@@ -43,20 +72,33 @@ public class TicketList {
 
     }
 
+    public int obtenerCantidadBoletos() {
+        int i = 0;
+        Ticket aux = this.inicio;
+        while (aux != null) {
+            i++;
+            aux = aux.getNext();
+        }
+        return i;
+    }
+
     public Ticket totalesTickets() {
         Ticket totales = new Ticket();
-        int inc = 0;
         Ticket aux = this.inicio;
         while (aux != null) {
             totales.setTicketElderly(totales.getTicketElderly() + aux.getTicketElderly());
             totales.setTicketKids(totales.getTicketKids() + aux.getTicketKids());
             totales.setTicketStandard(totales.getTicketStandard() + aux.getTicketStandard());
             totales.setTotal(totales.getTotal() + aux.getTotal());
-            inc++;
             aux = aux.getNext();
         }
-        totales.setBoleto(inc);
         return totales;
+    }
+
+    public int cantidadPersonas() {
+        Ticket resultadosTicket = totalesTickets();
+        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketKids() + resultadosTicket.getTicketStandard();
+        return i;
     }
 
     public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly, float total) {

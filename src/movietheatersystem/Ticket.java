@@ -5,7 +5,6 @@ public class Ticket {
     private Ticket next;
     private String folio;
     private String name;
-    private int boleto;
     private int ticketStandard;
     private int ticketKids;
     private int ticketElderly;
@@ -65,6 +64,10 @@ public class Ticket {
         return next;
     }
 
+    public Ticket setNext() {
+        return next;
+    }
+
     public String getFolio() {
         return folio;
     }
@@ -109,20 +112,12 @@ public class Ticket {
         this.ticketElderly = ticketElderly;
     }
 
-    public int getBoleto() {
-        return boleto;
-    }
-
-    public void setBoleto(int boleto) {
-        this.boleto = boleto;
-    }
-
     public void setTotal(float total) {
         this.total = total;
     }
 
     public void informeEtiquetaGanancias() {
-        
+
     }
 
 }
