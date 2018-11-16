@@ -14,8 +14,6 @@ public class MovieTheaterSystem {
     CustomerQueue customerQueue = new CustomerQueue();
     int costo2D = 20, costo3D = 30, descuentoTercera = 15, descuentoNinos = 10;
 
-  
-
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
 
@@ -228,7 +226,7 @@ public class MovieTheaterSystem {
                     if (customerQueue.empty()) {
                         System.out.println("No hay más clientes formados!");
                     } else {
-                        customerQueue.serveCustumer(listaSalas, costo2D ,   costo3D,  descuentoTercera ,  descuentoNinos );
+                        customerQueue.serveCustumer(listaSalas, costo2D, costo3D, descuentoTercera, descuentoNinos);
                         /*
                         Client atendido = clients.serveCustumer(); // saca al primer cliente de la cola
                         System.out.print("Bienvenido! "+ atendido.getName()+
@@ -439,7 +437,7 @@ public class MovieTheaterSystem {
             costo = util.inputInteger();
         } while (!((costo > 0 && opc == 1)
                 || (costo >= 0 && costo <= 100 && costo == 2)));
-        
+
         int cantidadSalas = listaSalas.cantidadSalas;
         int asientos = listaSalas.inicio.capacidadSala;
         listaSalas.vaciar();
