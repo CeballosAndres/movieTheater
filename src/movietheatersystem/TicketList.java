@@ -15,7 +15,6 @@ public class TicketList {
     public Ticket getFin() {
         return fin;
     }
-    
 
     public boolean vacio() {
         return this.inicio == null;
@@ -26,16 +25,24 @@ public class TicketList {
             this.inicio = nuevo;
             this.fin = nuevo;
         } else {
-          
+
             this.fin.setNext(nuevo);
             this.fin = nuevo;
         }
-   
+
     }
-    
-    public  void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly){
-        Ticket nuevo=new Ticket(folio,name,ticketStandard,ticketKids,ticketElderly);
+
+    public float gananciaPorSala() {
+        float total = 0;
+        Ticket aux = this.inicio;
+        while(aux != null){
+            total += aux.
+        }
+    }
+
+    public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly) {
+        Ticket nuevo = new Ticket(folio, name, ticketStandard, ticketKids, ticketElderly);
         anadirALista(nuevo);
     }
-    
+
 }
