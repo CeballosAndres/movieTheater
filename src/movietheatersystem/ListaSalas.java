@@ -257,14 +257,17 @@ public class ListaSalas {
         return this.inicio == null;
     }
     
-    public float totales(){
-        float total = 0;
+    public Ticket totalesTickets() {
+        Ticket totales = new Ticket();
         Sala aux = this.inicio;
-        while(aux != null){
-            total += aux.getTicketList().gananciaPorSala();
-            aux = aux.getNext();
+        while (aux != null) {
+            Ticket ticketSala = this.totalesTickets();
+            totales.setTicketStandard(totales.getTicketElderly() + ticketSala.getTicketElderly());
+            totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
+            totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
+            totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
         }
-        return total;
+        return totales;
     }
 
 }

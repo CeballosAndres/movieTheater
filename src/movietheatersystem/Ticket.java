@@ -115,4 +115,18 @@ public class Ticket {
         this.ticketElderly = ticketElderly;
     }
 
+    public int getBoleto() {
+        return boleto;
+    }
+
+    public void setBoleto(int boleto) {
+        this.boleto = boleto;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+    
+    
+
 }
