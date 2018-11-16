@@ -57,64 +57,67 @@ public class CustomerQueue {
     }
 
     public void serveCustumer(ListaSalas listaSalas, int costo2D, int costo3D, int descuentoTercera, int descuentoNinos) {
+        if (listaSalas.algunaSalaConPelicula()) {
+            listaSalas.mostrarSalasNombre(2);
+            int numSala = 0;
+            do {
+                System.out.print("Ingrese el numero de la sala:");
+                numSala = util.opcion();
+            } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
+                    && listaSalas.buscarSalaPorPosicion(numSala).pelicula != null));
 
-        listaSalas.mostrarSalasNombre(2);
-        int numSala = 0;
-        do {
-            System.out.print("Ingrese el numero de la sala:");
-            numSala = util.opcion();
-        } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
-                && listaSalas.buscarSalaPorPosicion(numSala).pelicula != null));
+            int boletos;
+            do {
+                System.out.println("Cuantos Boletos:");
+                boletos = util.inputInteger();
+                if (!(boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
+                        - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
+                    System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
+                    System.out.println("Ingrese una cantidad <= a"
+                            + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
+                            - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                            + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados));
+                }
 
-        int boletos;
-        do {
-            System.out.println("Cuantos Boletos:");
-            boletos = util.inputInteger();
-            if (!(boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                    - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
-                System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
-                System.out.println("Ingrese una cantidad <= a"
-                        + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                        - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
-                        + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados));
+            } while (!(boletos > 0 && boletos
+                    <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
+                    - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                    + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados)));
+
+            int total, ticketKids, ticketStandard, ticketElderly;
+
+            do {
+                System.out.println("Cuantos ninos:");
+                ticketKids = util.inputInteger();
+                System.out.println("Cuantos boletos normales:");
+                ticketStandard = util.inputInteger();
+                System.out.println("Cuantos adultos tercera edad:");
+                ticketElderly = util.inputInteger();
+                total = ticketKids + ticketStandard + ticketElderly;
+                if (total != boletos) {
+                    System.out.println("La cantidades de cada categoria no son las adecuadas para " + boletos + " boletos");
+                }
+            } while (!(total == boletos));
+
+            String name = remove().getName();
+
+            listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
+                    .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala), name, ticketStandard, ticketKids, ticketElderly);
+
+            int costo;
+
+            if (listaSalas.buscarSalaPorPosicion(numSala).getTipoFormato() == 1) {
+                costo = costo3D;
+            } else {
+                costo = costo2D;
             }
+            float totalTicket = listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin().obtenerCostoBoleto(costo, descuentoTercera, descuentoNinos);
+            listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin().setTotal(totalTicket);
 
-        } while (!(boletos > 0 && boletos
-                <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
-                + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados)));
-
-        int total, ticketKids, ticketStandard, ticketElderly;
-
-        do {
-            System.out.println("Cuantos ninos:");
-            ticketKids = util.inputInteger();
-            System.out.println("Cuantos boletos normales:");
-            ticketStandard = util.inputInteger();
-            System.out.println("Cuantos adultos tercera edad:");
-            ticketElderly = util.inputInteger();
-            total = ticketKids + ticketStandard + ticketElderly;
-            if (total != boletos) {
-                System.out.println("La cantidades de cada categoria no son las adecuadas para " + boletos + " boletos");
-            }
-        } while (!(total == boletos));
-
-        String name = remove().getName();
-
-        listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
-                .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala), name, ticketStandard, ticketKids, ticketElderly);
-
-        int costo;
-        
-        if (listaSalas.buscarSalaPorPosicion(numSala).getTipoFormato() == 1) {
-            costo = costo3D;
+            listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos += boletos;
         }else{
-        costo=costo2D;
+            System.out.println("La salas todavia no tiene pelicula asignada");
         }
-        float totalTicket =listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin().obtenerCostoBoleto(costo, descuentoTercera, descuentoNinos);
-        listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin().setTotal(totalTicket);
-        
-        listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos+=boletos;
 
     }
 
