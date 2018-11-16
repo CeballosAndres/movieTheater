@@ -25,7 +25,7 @@ public class TicketList {
      aux= this.inicio;
      int i = 0;
         while (aux != null) {
-            i=aux.getTicketElderly()+aux.getTicketKids()+aux.getTicketStandard();
+            i+=aux.getTicketElderly()+aux.getTicketKids()+aux.getTicketStandard();
             aux = aux.getNext();
         }
         return i;
