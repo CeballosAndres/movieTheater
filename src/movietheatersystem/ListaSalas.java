@@ -15,31 +15,28 @@ public class ListaSalas {
         this.inicio = inicio;
         this.fin = fin;
         this.cantidadSalas = 4;
-        this.folio=" ";
-        this.numeracionFolio=1;
+        this.folio = " ";
+        this.numeracionFolio = 1;
     }
 
     public ListaSalas() {
         this.inicio = null;
         this.fin = null;
         this.cantidadSalas = 4;
-        this.folio=" ";
-        this.numeracionFolio=1;
+        this.folio = " ";
+        this.numeracionFolio = 1;
     }
 
     // METODOS PARA MOVIE tHEATER SYSTEM
     //
     //
-    
-     public String obtenerFolio(int numSala) {
+    public String obtenerFolio(int numSala) {
         char[] alphabet = " abcdefghijklmnopqrstuvwxyz".toCharArray();
-        folio=alphabet[numSala]+Integer.toString(numeracionFolio);
+        folio = alphabet[numSala] + Integer.toString(numeracionFolio);
         numeracionFolio++;
         return folio;
-     }
-     
+    }
 
-    
     public void configuracionInicial() {
         System.out.print("Cuantas asientos en salas:");
         int num = util.inputInteger();
@@ -256,18 +253,18 @@ public class ListaSalas {
     public boolean vacia() {
         return this.inicio == null;
     }
-    
+
     public Ticket totalesTickets() {
         Ticket totales = new Ticket();
         Sala aux = this.inicio;
         while (aux != null) {
             Ticket ticketSala = this.totalesTickets();
-            totales.setTicketStandard(totales.getTicketElderly() + ticketSala.getTicketElderly());
+            totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
             totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
-            totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
-            totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
+            totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
+            totales.setTotal(totales.getTotal() + ticketSala.getTotal());
+            totales.setTotal(totales.getBoleto() + ticketSala.getBoleto());
         }
         return totales;
     }
-
 }
