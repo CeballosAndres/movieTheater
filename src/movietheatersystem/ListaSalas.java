@@ -30,6 +30,17 @@ public class ListaSalas {
     // METODOS PARA MOVIE tHEATER SYSTEM
     //
     //
+    public int obtenerCantBoletosTodasSalas() {
+
+        Sala aux = this.inicio;
+        int i = 0;
+        while (aux != null) {
+            i+=aux.getTicketList().obtenerCantidadBoletos();
+            aux = aux.getNext();
+        }
+        return i;
+    }
+
     public String obtenerFolio(int numSala) {
         char[] alphabet = " abcdefghijklmnopqrstuvwxyz".toCharArray();
         folio = alphabet[numSala] + Integer.toString(numeracionFolio);
@@ -263,9 +274,14 @@ public class ListaSalas {
             totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
             totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
             totales.setTotal(totales.getTotal() + ticketSala.getTotal());
-            totales.setTotal(totales.getBoleto() + ticketSala.getBoleto());
         }
         return totales;
+    }
+    
+     public int cantidadPersonas(){
+       Ticket resultadosTicket= totalesTickets();
+       int i=resultadosTicket.getTicketKids()+resultadosTicket.getTicketKids()+resultadosTicket.getTicketStandard();
+       return i;
     }
 
     public void mostrarTotales() {
@@ -273,7 +289,7 @@ public class ListaSalas {
         System.out.printf("|  %-20s  ", "Sala");
         System.out.printf("  %-20s  |", "Ganancia");
         System.out.println();
-        
+
     }
 
 }

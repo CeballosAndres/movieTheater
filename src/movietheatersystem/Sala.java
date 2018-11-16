@@ -46,7 +46,9 @@ public class Sala {
     public int getTipoFormato() {
         return tipoFormato;
     }
-
+    
+    
+   
     
     public void setCapacidadSala(int capacidadSala) {
         this.capacidadSala = capacidadSala;
