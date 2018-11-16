@@ -140,8 +140,9 @@ public class ListaSalas {
         return true;
 
     }
+     
 
-    public boolean algunaSalaConPelicula() {
+      public boolean algunaSalaConPelicula() {
         Sala aux = this.inicio;
         while (aux != null) {
             if (aux.pelicula != null) {

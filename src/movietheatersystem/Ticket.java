@@ -64,6 +64,10 @@ public class Ticket {
         return next;
     }
 
+    public Ticket setNext() {
+        return next;
+    }
+
     public String getFolio() {
         return folio;
     }
@@ -108,14 +112,12 @@ public class Ticket {
         this.ticketElderly = ticketElderly;
     }
 
-   
-
     public void setTotal(float total) {
         this.total = total;
     }
 
     public void informeEtiquetaGanancias() {
-        
+
     }
 
 }
