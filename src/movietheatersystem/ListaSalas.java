@@ -256,5 +256,15 @@ public class ListaSalas {
     public boolean vacia() {
         return this.inicio == null;
     }
+    
+    public float gananciasPorSalas(){
+        float total = 0;
+        Sala aux = this.inicio;
+        while(aux != null){
+            total += aux.getTicketList().gananciaPorSala();
+            aux = aux.getNext();
+        }
+        return total;
+    }
 
 }
