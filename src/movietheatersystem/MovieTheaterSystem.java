@@ -234,7 +234,7 @@ public class MovieTheaterSystem {
                     if (customerQueue.empty()) {
 
                         serveCustumer();
-
+                    }
                         break;
 
                     
