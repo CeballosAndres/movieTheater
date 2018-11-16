@@ -496,7 +496,7 @@ public class MovieTheaterSystem {
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
                     .mostrarTicket(totalTicket,descuentoTercera, descuentoNinos);
             
-            System.out.println("El total a cobrar es:"+);
+            System.out.println("El total a cobrar es:"+totalTicket);
             
 
             listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos += boletos;

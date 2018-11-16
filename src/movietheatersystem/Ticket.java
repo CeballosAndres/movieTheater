@@ -55,7 +55,7 @@ public class Ticket {
         System.out.printf("| %-16s  ", this.ticketStandard );
         System.out.printf("| %-16s  |", this.ticketKids );
         System.out.printf("| %-16s  |", this.ticketElderly );
-        System.out.printf("|  %-15s  ",this.total);
+        System.out.printf("|  %-15s  ", "  ");
         System.out.println();
         System.out.printf("| %-21s  ", this.name);
         System.out.printf("| %-21s  ", this.folio);
