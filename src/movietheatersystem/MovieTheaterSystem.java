@@ -155,7 +155,7 @@ public class MovieTheaterSystem {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
                     System.out.print("Hasta el momento se han tenido ganancias por: $");
-                    System.out.println(util.outputMoney(this.listaSalas.gananciasPorSalas()));
+                    System.out.println();
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);

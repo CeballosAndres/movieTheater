@@ -267,4 +267,11 @@ public class ListaSalas {
         }
         return totales;
     }
+
+    public void mostrarTotales() {
+        Ticket totalSala = this.totalesTickets();
+        System.out.printf("|  %-20s  ", "Sala");
+        System.out.printf("  %-20s  |", "Ganancia");
+    }
+
 }
