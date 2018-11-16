@@ -36,8 +36,10 @@ public class TicketList {
         float total = 0;
         Ticket aux = this.inicio;
         while(aux != null){
-            total += aux.
+            total += aux.getTotal();
+            aux.getNext();
         }
+        return total;
     }
 
     public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly,float total) {
