@@ -47,9 +47,9 @@ public class Ticket {
         System.out.printf("|  %-20s  ", "Name");
         System.out.printf("|  %-20s  ", "Folio");
         System.out.printf("|  %-15s  ", "ticketStandard");
-        System.out.printf("|  %-8s  |", "ticketKids");
-        System.out.printf("|  %-20s  ", "Name");
-        System.out.printf("|  %-20s  ", "Folio");
+        System.out.printf("|  %-15s  |", "ticketKids");
+        System.out.printf("|  %-15s  ", "ticketElderly");
+        System.out.printf("|  %15s  ", "total");
         System.out.println();
     }
 
