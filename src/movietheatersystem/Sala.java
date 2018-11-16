@@ -6,7 +6,6 @@ public class Sala {
     Sala next;
     int numSala;
     int capacidadSala;
-
     int boletossCancelados;
     int tipoFormato;
     Pelicula pelicula;

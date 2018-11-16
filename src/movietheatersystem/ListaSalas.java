@@ -254,26 +254,20 @@ public class ListaSalas {
         return this.inicio == null;
     }
 
-    public Ticket totalesTickets() {
+    public Ticket totalesTicketsCine() {
         Ticket totales = new Ticket();
         Sala aux = this.inicio;
         while (aux != null) {
-            Ticket ticketSala = this.totalesTickets();
+            Ticket ticketSala = this.inicio.getTicketList().totalesTickets();
             totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
             totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
             totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
             totales.setTotal(totales.getTotal() + ticketSala.getTotal());
             totales.setTotal(totales.getBoleto() + ticketSala.getBoleto());
+            aux = aux.getNext();
         }
         return totales;
     }
 
-    public void mostrarTotales() {
-        Ticket totalSala = this.totalesTickets();
-        System.out.printf("|  %-20s  ", "Sala");
-        System.out.printf("  %-20s  |", "Ganancia");
-        System.out.println();
-        
-    }
 
 }
