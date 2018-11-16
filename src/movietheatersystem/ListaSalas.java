@@ -273,6 +273,7 @@ public class ListaSalas {
         System.out.printf("|  %-20s  ", "Sala");
         System.out.printf("  %-20s  |", "Ganancia");
         System.out.println();
+        
     }
 
 }
