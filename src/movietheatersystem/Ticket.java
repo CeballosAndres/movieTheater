@@ -125,9 +125,4 @@ public class Ticket {
         
     }
 
-    public void informeGanancias() {
-        System.out.printf("|  %-20s  ", this.);
-        System.out.printf("  %-20s  |", "Ganancia");
-    }
-
 }
