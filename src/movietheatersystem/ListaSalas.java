@@ -272,6 +272,7 @@ public class ListaSalas {
         Ticket totalSala = this.totalesTickets();
         System.out.printf("|  %-20s  ", "Sala");
         System.out.printf("  %-20s  |", "Ganancia");
+        System.out.println();
     }
 
 }
