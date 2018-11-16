@@ -47,11 +47,6 @@ public class TicketList {
         totales.setBoleto(inc);
         return totales;
     }
-    
-    public void mostrarTotales(){
-        Ticket totalSala = this.totalesTickets();
-        totalSala.informeGanancias();
-    }
 
     public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly, float total) {
         Ticket nuevo = new Ticket(folio, name, ticketStandard, ticketKids, ticketElderly, total);
