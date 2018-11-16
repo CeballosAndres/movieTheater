@@ -59,4 +59,8 @@ public class Util {
             return false;
         }
     }
+    
+    public float outputMoney(float input){
+        return input;
+    }
 }
