@@ -474,10 +474,8 @@ public class MovieTheaterSystem {
                 }
             } while (!(total == boletos));
 
-            String name = customerQueue.remove().getName();
 
-            listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
-                    .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala), name, ticketStandard, ticketKids, ticketElderly);
+
 
             int costo;
 
@@ -486,12 +484,20 @@ public class MovieTheaterSystem {
             } else {
                 costo = costo2D;
             }
-            float totalTicket = listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
-                    .obtenerCostoBoleto(costo, descuentoTercera, descuentoNinos);
+            
+            float totalTicket = (ticketStandard * costo) + (ticketKids * costo * ((100 - descuentoNinos) * 100)) + (ticketElderly * costo * ((100 - descuentoTercera) * 100));
+            String name = customerQueue.remove().getName();
+            
+            
+            listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
+                    .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala),
+                            name, ticketStandard, ticketKids, ticketElderly,totalTicket);
 
-            cobrar(totalTicket);
-
-            listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin().setTotal(totalTicket);
+            listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
+                    .mostrarTicket(totalTicket,descuentoTercera, descuentoNinos);
+            
+            System.out.println("El total a cobrar es:"+);
+            
 
             listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos += boletos;
         } else {
@@ -500,8 +506,9 @@ public class MovieTheaterSystem {
 
     }
 
-    public void cobrar(float total) {
+    public void cobrar(float total, int descuentoTercera,int descuentoNinos) {
      
     }
 
+   
 }

@@ -42,8 +42,8 @@ public class TicketList {
         return total;
     }
 
-    public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly) {
-        Ticket nuevo = new Ticket(folio, name, ticketStandard, ticketKids, ticketElderly);
+    public void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly,float total) {
+        Ticket nuevo = new Ticket(folio, name, ticketStandard, ticketKids, ticketElderly, total);
         anadirALista(nuevo);
     }
 
