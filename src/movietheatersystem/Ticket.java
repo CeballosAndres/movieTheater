@@ -61,4 +61,55 @@ public class Ticket {
         System.out.println();
     }
 
+    public Ticket getNext() {
+        return next;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getTicketStandard() {
+        return ticketStandard;
+    }
+
+    public int getTicketKids() {
+        return ticketKids;
+    }
+
+    public int getTicketElderly() {
+        return ticketElderly;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setFolio(String folio) {
+        this.folio = folio;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTicketStandard(int ticketStandard) {
+        this.ticketStandard = ticketStandard;
+    }
+
+    public void setTicketKids(int ticketKids) {
+        this.ticketKids = ticketKids;
+    }
+
+    public void setTicketElderly(int ticketElderly) {
+        this.ticketElderly = ticketElderly;
+    }
+    
+    
+    
+
 }
