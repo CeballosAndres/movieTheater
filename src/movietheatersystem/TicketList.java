@@ -20,12 +20,12 @@ public class TicketList {
         return this.inicio == null;
     }
 
-   public int obtenerBoletosVendidos() {
+   public int obtenerCantidadPersonas() {
       Ticket aux=new Ticket();
      aux= this.inicio;
      int i = 0;
         while (aux != null) {
-            i++;
+            i=aux.getTicketElderly()+aux.getTicketKids()+aux.getTicketStandard();
             aux = aux.getNext();
         }
         return i;

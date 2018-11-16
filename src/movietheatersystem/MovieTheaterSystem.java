@@ -236,6 +236,7 @@ public class MovieTheaterSystem {
                         serveCustumer();
 
                         break;
+
                     
             
             case 2:
@@ -249,6 +250,8 @@ public class MovieTheaterSystem {
             }
         } while (opc != 0);
         }
+
+    
 
     
 
@@ -461,13 +464,13 @@ public class MovieTheaterSystem {
                             + "esa sala para vender");
                     System.out.println("Ingrese una cantidad <= a"
                             + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                            - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                            - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
                             + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados));
                 }
 
             } while (!(boletos > 0 && boletos
                     <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                    - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                    - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
                     + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados)));
 
             int total, ticketKids, ticketStandard, ticketElderly;
@@ -515,7 +518,6 @@ public class MovieTheaterSystem {
 
             System.out.println("Su cambio es:" + (efectivo - totalTicket));
 
-            listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos += boletos;
         } else {
             System.out.println("La salas todavia no tiene pelicula asignada");
         }
