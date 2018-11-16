@@ -54,10 +54,10 @@ public class Ticket {
     }
 
     public void mostrar() {
-        System.out.printf("| %-21s  ", this.nombre);
-        System.out.printf("| %-21s  ", this.director);
-        System.out.printf("| %-16s  ", this.genero);
-        System.out.printf("| %-9s  |", this.duracion);
+        System.out.printf("| %-21s  ", this.name);
+        System.out.printf("| %-21s  ", this.folio);
+        System.out.printf("| %-16s  ", this.ticketStanderd);
+        System.out.printf("| %-16s  |", this.duracion);
         System.out.println();
     }
 
