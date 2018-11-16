@@ -6,16 +6,17 @@ public class Sala {
     Sala next;
     int numSala;
     int capacidadSala;
-    int boletossVendidos;
+
     int boletossCancelados;
     int tipoFormato;
     Pelicula pelicula;
     TicketList ticketList;
+    
+     
 
     public Sala(int numSala) {
         this.next = null;
         this.numSala = numSala;
-        this.boletossVendidos = 0;
         this.capacidadSala = 4;
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
@@ -26,7 +27,6 @@ public class Sala {
     public Sala(int numSala, int asientos) {
         this.next = null;
         this.numSala = numSala;
-        this.boletossVendidos = 0;
         this.capacidadSala = asientos;
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
@@ -38,7 +38,6 @@ public class Sala {
         this.next = null;
         this.capacidadSala = 4;
         this.numSala = 0;
-        this.boletossVendidos = 0;
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;

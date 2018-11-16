@@ -73,7 +73,15 @@ public class MovieTheaterSystem {
                     this.miniMenuVentasFila();
                     break;
                 case 2:
-                    this.miniMenuVentasAtender();
+                    if (listaSalas.algunaSalaConPelicula()) {
+                        if (customerQueue.empty()) {
+                            System.out.println("No hat clientes formados en fila para compra o cancelacion de boleto");
+                        } else {
+                            this.miniMenuVentasAtender();
+                        }
+                    } else {
+                        System.out.println("Tpdavia no hay funciones en Salas");
+                    }
                     break;
                 case 0:
                     break;
@@ -223,16 +231,15 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-
                     if (customerQueue.empty()) {
-                        System.out.println("No hay más clientes formados!");
-                    } else {
+
                         serveCustumer();
 
-                    }
+                        break;
 
-                    break;
-                case 2:
+                    
+            
+            case 2:
                     util.label(opcionesMenu[opc - 1]);
                     System.out.println("//Metodo para cancelar boleto(devolucion)");
                     break;
@@ -242,12 +249,17 @@ public class MovieTheaterSystem {
                     System.out.println("Opción no valida.");
             }
         } while (opc != 0);
-    }
+        }
+
+    
+
+    
 
     public void miniMenuConfiguracionCine() {
         int opc;
         String[] opcionesMenu = {
-            "numero de salas", "numero de asientos"
+            "numero de salas",
+            "numero de asientos"
 
         };
         do {
@@ -433,7 +445,7 @@ public class MovieTheaterSystem {
 
     public void serveCustumer() {
         if (listaSalas.algunaSalaConPelicula()) {
-            
+
             listaSalas.mostrarSalasNombre(2);
             int numSala = 0;
             do {
@@ -452,13 +464,13 @@ public class MovieTheaterSystem {
                             + "esa sala para vender");
                     System.out.println("Ingrese una cantidad <= a"
                             + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                            - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                            - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
                             + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados));
                 }
 
             } while (!(boletos > 0 && boletos
                     <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                    - listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos
+                    - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().obtenerCantidadPersonas()
                     + listaSalas.buscarSalaPorPosicion(numSala).boletossCancelados)));
 
             int total, ticketKids, ticketStandard, ticketElderly;
@@ -484,34 +496,32 @@ public class MovieTheaterSystem {
             } else {
                 costo = costo2D;
             }
-            
-            float totalTicket = (ticketStandard * costo) + (ticketKids * costo * 
-                    ((100 - descuentoNinos) * 100)) + (ticketElderly * costo * ((100 - descuentoTercera) * 100));
+
+            float totalTicket = (ticketStandard * costo) + (ticketKids * costo
+                    * ((100 - descuentoNinos) * 100)) + (ticketElderly * costo * ((100 - descuentoTercera) * 100));
             String name = customerQueue.remove().getName();
-            
-            
+
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
                     .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala),
-                            name, ticketStandard, ticketKids, ticketElderly,totalTicket);
+                            name, ticketStandard, ticketKids, ticketElderly, totalTicket);
 
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
-                    .mostrarTicket(totalTicket,descuentoTercera, descuentoNinos);
-            
-            
-            System.out.println("El total a cobrar es:"+totalTicket);
-            float efectivo;
-            do{
-                System.out.print("Ingrese el efectivo:");
-                   efectivo = util.inputInteger();
-            
-            }while(!(efectivo>=totalTicket));
-            
-            System.out.println("Su cambio es:"+(efectivo-totalTicket));
+                    .mostrarTicket(totalTicket, descuentoTercera, descuentoNinos);
 
-            listaSalas.buscarSalaPorPosicion(numSala).boletossVendidos += boletos;
+            System.out.println("El total a cobrar es:" + totalTicket);
+            float efectivo;
+            do {
+                System.out.print("Ingrese el efectivo:");
+                efectivo = util.inputInteger();
+
+            } while (!(efectivo >= totalTicket));
+
+            System.out.println("Su cambio es:" + (efectivo - totalTicket));
+
         } else {
             System.out.println("La salas todavia no tiene pelicula asignada");
         }
 
     }
+
 }

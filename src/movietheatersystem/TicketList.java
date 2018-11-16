@@ -3,7 +3,7 @@ package movietheatersystem;
 public class TicketList {
 
     Util util = new Util();
-    private Ticket inicio, fin;
+    Ticket inicio, fin;
     int folioInc;
 
     public TicketList() {
@@ -19,6 +19,17 @@ public class TicketList {
     public boolean vacio() {
         return this.inicio == null;
     }
+
+   public int obtenerCantidadPersonas() {
+      Ticket aux=new Ticket();
+     aux= this.inicio;
+     int i = 0;
+        while (aux != null) {
+            i=aux.getTicketElderly()+aux.getTicketKids()+aux.getTicketStandard();
+            aux = aux.getNext();
+        }
+        return i;
+     }
 
     private void anadirALista(Ticket nuevo) {
         if (this.vacio()) {
