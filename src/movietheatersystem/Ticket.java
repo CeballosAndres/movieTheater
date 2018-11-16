@@ -42,5 +42,23 @@ public class Ticket {
         int total=(ticketStandard*costo)+(ticketKids*costo* ((100 - descuentoNinos) * 100))+(ticketElderly*costo* ((100 - descuentoTercera) * 100));
         return total;
     }
+     public void labelTicket() {
+        System.out.println();
+        System.out.printf("|  %-20s  ", "Name");
+        System.out.printf("|  %-20s  ", "Folio");
+        System.out.printf("|  %-15s  ", "ticketStandard");
+        System.out.printf("|  %-8s  |", "ticketKids");
+        System.out.printf("|  %-20s  ", "Name");
+        System.out.printf("|  %-20s  ", "Folio");
+        System.out.println();
+    }
+
+    public void mostrar() {
+        System.out.printf("| %-21s  ", this.nombre);
+        System.out.printf("| %-21s  ", this.director);
+        System.out.printf("| %-16s  ", this.genero);
+        System.out.printf("| %-9s  |", this.duracion);
+        System.out.println();
+    }
 
 }
