@@ -10,6 +10,7 @@ public class Sala {
     int boletossCancelados;
     int tipoFormato;
     Pelicula pelicula;
+    TicketList ticketList;
 
     public Sala(int numSala) {
         this.next = null;
@@ -19,6 +20,7 @@ public class Sala {
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
+        this.ticketList = new TicketList();
     }
 
     public Sala(int numSala, int asientos) {
@@ -29,6 +31,7 @@ public class Sala {
         this.boletossCancelados = 0;
         this.tipoFormato = 0;
         this.pelicula = null;
+        this.ticketList = new TicketList();
     }
 
     public Sala() {
@@ -41,6 +44,11 @@ public class Sala {
         this.pelicula = null;
     }
 
+    public int getTipoFormato() {
+        return tipoFormato;
+    }
+
+    
     public void setCapacidadSala(int capacidadSala) {
         this.capacidadSala = capacidadSala;
     }
@@ -65,6 +73,11 @@ public class Sala {
         return next;
     }
 
+    public TicketList getTicketList() {
+        return ticketList;
+    }
+
+    
     public void labelFuncionesSala() {
         System.out.println();
         System.out.printf("|  %-10s  ", "Núm. Sala");

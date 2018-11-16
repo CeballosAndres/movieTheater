@@ -3,49 +3,39 @@ package movietheatersystem;
 public class TicketList {
 
     Util util = new Util();
-    private Ticket first, end;
+    private Ticket inicio, fin;
     int folioInc;
 
     public TicketList() {
-        this.first = null;
-        this.end = null;
-        this.folioInc = 10000;
+        this.inicio = null;
+        this.fin = null;
+        this.folioInc = 0;
     }
 
-    public Ticket getFirst() {
-        return first;
-    }
-
-    public Ticket getEnd() {
-        return end;
-    }
-
-    public void setFirst(Ticket first) {
-        this.first = first;
-    }
-
-    public void setEnd(Ticket end) {
-        this.end = end;
+    public Ticket getFin() {
+        return fin;
     }
     
-    public boolean empty() {
-        return this.first == null;
+
+    public boolean vacio() {
+        return this.inicio == null;
     }
 
-    private void addEnd(Ticket ticket) {
-        if (this.empty()) {
-            this.first = ticket;
-            this.end = ticket;
+    private void anadirALista(Ticket nuevo) {
+        if (this.vacio()) {
+            this.inicio = nuevo;
+            this.fin = nuevo;
         } else {
-            ticket.setBack(this.end);
-            this.end.setNext(ticket);
-            this.end = ticket;
+          
+            this.fin.setNext(nuevo);
+            this.fin = nuevo;
         }
-        this.folioInc++;
+   
     }
-    /*
-    public Ticket addTicket(String name, int sala){
-        
+    
+    public  void formarTicketParaAnadir(String folio, String name, int ticketStandard, int ticketKids, int ticketElderly){
+        Ticket nuevo=new Ticket(folio,name,ticketStandard,ticketKids,ticketElderly);
+        anadirALista(nuevo);
     }
-    */
+    
 }

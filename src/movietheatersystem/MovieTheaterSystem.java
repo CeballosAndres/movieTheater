@@ -9,15 +9,17 @@ import java.util.Scanner;
 public class MovieTheaterSystem {
 
     ListaPeliculas peliculas = new ListaPeliculas();
-    ListaSalas salas = new ListaSalas();
+    ListaSalas listaSalas = new ListaSalas();
     Util util = new Util();
-    CustomerQueue clients = new CustomerQueue();
-    TicketList tickets = new TicketList();
+    CustomerQueue customerQueue = new CustomerQueue();
+    int costo2D = 20, costo3D = 30, descuentoTercera = 15, descuentoNinos = 10;
+
+  
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
 
-        obj.salas.configuracionInicial();
+        obj.listaSalas.configuracionInicial();
         obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
@@ -89,9 +91,7 @@ public class MovieTheaterSystem {
             "Administrar peliculas",
             "Administración de funciones en salas",
             "Administración de costos",
-            "Mostrar funciones y costos acutuales",
-            "Configurar general del cine",
-            "Mostrar configuración general actual"};
+            "Configurar general del cine",};
         do {
             util.label("Submenú Configuración");
 
@@ -114,18 +114,12 @@ public class MovieTheaterSystem {
                 case 3:
                     this.miniMenuConfiguracionCostos();
                     break;
-                case 4:
-                    util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que muestra las peliculas por sala y costos.");
-                    break;
+
                 case 5:
 
                     this.miniMenuConfiguracionCine();
                     break;
-                case 6:
-                    util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo que muestra la configuracion general del cine, no de salas y asientos");
-                    break;
+
                 case 0:
                     break;
                 default:
@@ -200,11 +194,11 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    clients.newClient();
+                    customerQueue.newClient();
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    clients.show();
+                    customerQueue.show();
                     break;
                 case 0:
                     break;
@@ -231,14 +225,16 @@ public class MovieTheaterSystem {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
 
-                    if (clients.empty()) {
+                    if (customerQueue.empty()) {
                         System.out.println("No hay más clientes formados!");
                     } else {
+                        customerQueue.serveCustumer(listaSalas, costo2D ,   costo3D,  descuentoTercera ,  descuentoNinos );
+                        /*
                         Client atendido = clients.serveCustumer(); // saca al primer cliente de la cola
                         System.out.print("Bienvenido! "+ atendido.getName()+
                                 " ¿Cuál es su edad?");
                         int edad = util.inputInteger();
-                        
+                         */
                         // Falta: 
                         //consultar salas con peliculas y mostrar espacios
                         //preguntar cuantos asientos comprara
@@ -281,11 +277,11 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    salas.configuracionSalas();
+                    listaSalas.configuracionSalas();
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    salas.configuracionAsientos();
+                    listaSalas.configuracionAsientos();
                     break;
                 case 0:
                     break;
@@ -354,15 +350,15 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    this.salas.agregarFuncionesSala(peliculas);
+                    this.listaSalas.agregarFuncionesSala(peliculas);
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    this.salas.modificarFuncionesSala(peliculas);
+                    this.listaSalas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
                     util.label(opcionesMenu[opc - 1]);
-                    this.salas.mostrarSalasFunciones();
+                    this.listaSalas.mostrarSalasFunciones();
                     break;
                 case 0:
                     break;
@@ -375,13 +371,15 @@ public class MovieTheaterSystem {
     public void miniMenuConfiguracionCostos() {
         int opc;
         String[] opcionesMenu = {
-            "Función tradicional",
+            "Función 2D",
             "Función 3D",
             "Descuento a adultos mayores",
-            "Descuento a niños"};
+            "Descuento a niños",
+            "Mostrar costos actuales"
+        };
         do {
             util.label("Mini menú Administración - Costos");
-
+            System.out.println("Al cambiar costos se reconfigura el sistema :listas de salas y numero de asientos ");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
@@ -390,19 +388,36 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el costo de funcion tradicional.");
+                    costo2D = obtenerCosto(1);
+
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el costo de funcion 3D.");
+                    costo3D = obtenerCosto(1);
                     break;
                 case 3:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el % de descuento a adultos mayores.");
+                    descuentoTercera = obtenerCosto(2);
                     break;
                 case 4:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para modificar el % de descuento a niños.");
+                    descuentoNinos = obtenerCosto(2);
+                    break;
+                case 5:
+                    util.label(opcionesMenu[opc - 1]);
+                    System.out.println("                       # Costos tradicionales # ");
+                    System.out.println("costo 2D: " + costo2D
+                            + " \n costo 3D: " + costo2D);
+                    System.out.println("                       # Descuentos personas # ");
+                    System.out.println("descuento ninos: " + descuentoNinos
+                            + " \n descuento adultos tercera edad: " + descuentoTercera);
+                    System.out.println("                       # Costos asociados # ");
+                    System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) * 100)
+                            + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) * 100)
+                            + " \n adultos - 2D: " + costo2D
+                            + " \n adultos - 3D: " + costo3D
+                            + " \n adultos tercera - 2D: " + costo2D * ((100 - descuentoTercera) * 100)
+                            + " \n adultos tercera - 3D: " + costo3D * ((100 - descuentoTercera) * 100));
                     break;
                 case 0:
                     break;
@@ -410,6 +425,26 @@ public class MovieTheaterSystem {
                     System.out.println("Opción no valida.");
             }
         } while (opc != 0);
+    }
+
+    public int obtenerCosto(int opc) {
+        int costo = 0;
+        do {
+            if (opc == 1) {
+                System.out.print("Ingresa costo nuevo:");
+            } else {
+                System.out.print("Ingresa descuento nuevo( 0-100):");
+            }
+
+            costo = util.inputInteger();
+        } while (!((costo > 0 && opc == 1)
+                || (costo >= 0 && costo <= 100 && costo == 2)));
+        
+        int cantidadSalas = listaSalas.cantidadSalas;
+        int asientos = listaSalas.inicio.capacidadSala;
+        listaSalas.vaciar();
+        listaSalas.agregarAsientosYSala(asientos, cantidadSalas);
+        return costo;
     }
 
 }
