@@ -460,19 +460,14 @@ public class MovieTheaterSystem {
         int boletos;
         util.label("Datos para venta");
         do {
-            System.out.print("Número de personas:");
+            System.out.print("¿Cuántos lugares desea?");
             boletos = util.inputInteger();
-
             if (!(boletos > 0)) {
                 System.out.println("Tiene que ser mayor a cero");
             } else if (!(boletos <= (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas()))) {
                 System.out.println("Ingrese una cantidad menor o igual a "
                         + (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas()));
-
             }
-
-            System.out.println(obtenerSala(numSala).capacidadSala);
-            System.out.println(obtenerTicketList(numSala).cantidadPersonas());
         } while (!(boletos > 0
                 && boletos <= (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas())));
 
