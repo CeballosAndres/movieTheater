@@ -72,7 +72,7 @@ public class Sala {
     }
 
     public void mostrar() {
-        System.out.printf("| %-11s  ", this.numSala);
+        System.out.printf("| %-8s  ", this.numSala);
         System.out.printf("| %-21s  ", this.pelicula.getNombre());
         System.out.printf("| %-16s  ", this.escribirFormato(this.tipoFormato));
         System.out.printf("| %-19s  |", String.valueOf(this.capacidadSala));

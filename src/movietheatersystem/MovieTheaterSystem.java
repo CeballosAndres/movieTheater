@@ -448,17 +448,17 @@ public class MovieTheaterSystem {
 
     public void serveCustumer() {
         String name = customerQueue.remove().getName();
-        
-        
+
         //listaSalas.mostrarSalasNombre(4);
         int numSala = 0;
         System.out.println();
         this.listaSalas.mostrarSalasFunciones();
         System.out.println();
         System.out.println();
+        System.out.print("Opción invalida. Ingrese el número de la sala");
 
         do {
-            System.out.print("\nBienvenido "+ name+". Ingrese el número de la sala");
+            System.out.print("\n¡Bienvenido " + name + "! Ingrese el número de la sala");
             numSala = util.inputInteger();
         } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
                 && obtenerSala(numSala).pelicula != null
