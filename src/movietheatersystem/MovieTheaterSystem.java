@@ -444,19 +444,17 @@ public class MovieTheaterSystem {
         }else{
             System.out.println("No se encontro elemento");
         }
-
+       String name = customerQueue.remove().getName();
+       System.out.println("Fue un gusto atenderle "+ name);
+       subMenuVentas();
     }
 
     public void serveCustumer() {
         String name = customerQueue.remove().getName();
 
-        //listaSalas.mostrarSalasNombre(4);
+        listaSalas.mostrarSalasinf(4);
         int numSala = 0;
-        System.out.println();
-        this.listaSalas.mostrarSalasFunciones();
-        System.out.println();
-        System.out.println();
-        System.out.print("Opción invalida. Ingrese el número de la sala");
+
 
         do {
             System.out.print("\n¡Bienvenido " + name + "! Ingrese el número de la sala");
