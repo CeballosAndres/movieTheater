@@ -20,45 +20,36 @@ public class TicketList {
         return this.inicio == null;
     }
 
-    public boolean buscarEliminarFolio(String folio) {
-        Ticket atras,aux;
+    public Ticket buscarEliminarFolio(String folio) {
+        Ticket atras, aux;
         if (folio.equalsIgnoreCase(inicio.getFolio())) {
+            aux = this.inicio;
             if (inicio == fin) {
                 inicio = null;
                 fin = null;
-                System.out.println(folio + " eliminado.");
             } else {
                 inicio = inicio.getNext();
-                System.out.println(folio + " eliminado.");
             }
-            return true;
+            return aux;
         } else {
             atras = inicio;
             aux = inicio.getNext();
             while (aux != null) {
-                if (folio.equalsIgnoreCase(inicio.getFolio())) {
-                    atras.setNext(aux.getNext()) ;
+                if (folio.equalsIgnoreCase(aux.getFolio())) {
+                    atras.setNext(aux.getNext());
                     if (fin == aux) {
                         fin = atras;
                     }
-                    System.out.println(folio+ " eliminado.");
-                    aux = null;
+                    System.out.println(aux.getFolio() + " eliminado.");
+                    return aux;
                 } else {
-                    if (eliminar < aux.edad) {
-                        System.out.println("Valor no encontrado.");
-                        aux = null;
-                    } else {
-                        atras = aux;
-                        aux = aux.sigue;
-                    }
+                    atras = aux;
+                    aux = aux.getNext();
                 }
             }
         }
-   
-    
-
-
-    
+        return null;
+    }
 
     private void anadirALista(Ticket nuevo) {
         if (this.vacio()) {

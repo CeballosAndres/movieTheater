@@ -252,7 +252,7 @@ public class MovieTheaterSystem {
                     if (listaSalas.cantidadPersonas() != 0) {
                         cancelarVenta();
                     } else {
-                        System.out.println("Todavia no se ha vendido ningun boleto ");
+                        System.out.println("Todavia no se ha vendido ningun boleto.");
                     }
                     break;
                 case 0:
@@ -457,10 +457,18 @@ public class MovieTheaterSystem {
     }
 
     public void cancelarVenta() {
-        System.out.print("Ingresa el folio:");
-        String folio=util.inputText();
-        if () {
+        System.out.print("Ingresa folio: ");
+        String folio = util.inputText();
+        Ticket eliminado = this.listaSalas.buscarFolio(folio);
+        if (eliminado != null) {
+            eliminado.mostrarTicket();
             
+            /*
+            
+            Falta con el objeto Ticket sumar los lugares totales a los previamente descontados
+            
+            */
+            System.out.println("Eliminado!!");
         }
 
     }
