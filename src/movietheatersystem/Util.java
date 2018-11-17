@@ -15,7 +15,7 @@ public class Util {
         System.out.print(" > ");
         String input = sc.next();
         while (!isNumeric(input)) {
-            System.out.print("¡Introducir solo numeros! > ");
+            System.out.print("¡Introducir solo números! > ");
             input = sc.next();
         }
         return Integer.valueOf(input);

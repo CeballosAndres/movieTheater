@@ -218,7 +218,6 @@ public class ListaPeliculas {
             System.out.println("No hay peliculas registradas.");
         } else {
             Pelicula aux = this.inicio;
-            System.out.printf("   %-20s", "Nombre");
             System.out.println();
             int i = 1;
             while (aux != null) {

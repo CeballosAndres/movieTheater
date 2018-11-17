@@ -207,7 +207,6 @@ public class MovieTheaterSystem {
             opc = util.opcion();
             switch (opc) {
                 case 1:
-                    util.label(opcionesMenu[opc - 1]);
                     serveCustumer();
 
                     break;
@@ -316,7 +315,6 @@ public class MovieTheaterSystem {
             opc = util.opcion();
             switch (opc) {
                 case 1:
-                    util.label(opcionesMenu[opc - 1]);
                     this.listaSalas.agregarFuncionesSala(peliculas);
                     break;
                 case 2:
