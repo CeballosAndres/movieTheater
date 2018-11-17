@@ -455,8 +455,9 @@ public class MovieTheaterSystem {
                     && listaSalas.buscarSalaPorPosicion(numSala).pelicula != null));
 
             int boletos;
+            util.label("Datos para venta");
             do {
-                System.out.print("Cuantas personas");
+                System.out.print("Número de personas");
                 boletos = util.inputInteger();
 
                 if (!(boletos > 0 &&

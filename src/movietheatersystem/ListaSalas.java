@@ -259,12 +259,13 @@ public class ListaSalas {
     public Ticket totalesTicketsCine() {
         Ticket totales = new Ticket();
         Sala aux = this.inicio;
+        Ticket ticketSala = this.inicio.getTicketList().totalesTickets();
         while (aux != null) {
-            Ticket ticketSala = this.inicio.getTicketList().totalesTickets();
             totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
             totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
             totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
             totales.setTotal(totales.getTotal() + ticketSala.getTotal());
+            ticketSala.setNext(ticketSala.getNext());
             aux = aux.getNext();
         }
         return totales;
