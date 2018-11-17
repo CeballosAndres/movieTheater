@@ -150,6 +150,9 @@ public class ListaPeliculas {
             System.out.println("Pelicula no encontrada.");
         }
     }
+    
+    
+    
 
     public void modificarPelicula() {
         System.out.print("Nombre de pelicula a modificar");
