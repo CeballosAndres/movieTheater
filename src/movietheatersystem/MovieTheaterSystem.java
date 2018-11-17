@@ -118,7 +118,7 @@ public class MovieTheaterSystem {
                     this.miniMenuConfiguracionCostos();
                     break;
 
-                case 5:
+                case 4:
 
                     this.miniMenuConfiguracionCine();
                     break;
