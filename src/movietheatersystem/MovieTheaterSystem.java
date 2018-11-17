@@ -550,9 +550,8 @@ public class MovieTheaterSystem {
             }
 
             Ticket total = this.listaSalas.totalesTicketsCine();
-            int vendidos = total.getTicketElderly() + total.getTicketKids() + total.getTicketStandard();
             System.out.printf("|| %-8s |", "Totales");
-            System.out.printf("| %-8s ", vendidos);
+            System.out.printf("| %-8s ", total.cantidadPersonas());
             System.out.printf("| %-8s ", total.getTicketKids());
             System.out.printf("| %-8s ", total.getTicketStandard());
             System.out.printf("| %-8s |", total.getTicketElderly());
