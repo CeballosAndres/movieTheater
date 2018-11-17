@@ -151,39 +151,7 @@ public class MovieTheaterSystem {
             switch (opc) {
                 case 1:
                     util.label(opcionesMenu[opc - 1]);
-                    if (this.listaSalas.cantidadSalas > 0) {
-                        Sala aux = this.listaSalas.inicio;
-                        System.out.printf("|| %-8s |", "Sala no.");
-                        System.out.printf("| %-8s ", "Vendidos");
-                        System.out.printf("| %-8s ", "Niños");
-                        System.out.printf("| %-8s ", "Normal");
-                        System.out.printf("| %-8s |", "A. mayor");
-                        System.out.printf("| %-8s ||", "Ganancia");
-                        System.out.println();
-                        while (aux != null) {
-                            Ticket ticket = aux.getTicketList().totalesTickets();
-                            int vendidos = ticket.getTicketElderly() + ticket.getTicketKids() + ticket.getTicketStandard();
-                            System.out.printf("|| %-8s |", aux.numSala);
-                            System.out.printf("| %-8s ", vendidos);
-                            System.out.printf("| %-8s ", ticket.getTicketKids());
-                            System.out.printf("| %-8s ", ticket.getTicketStandard());
-                            System.out.printf("| %-8s |", ticket.getTicketElderly());
-                            System.out.printf("| %-8s ||", ticket.getTotal());
-                            System.out.println();
-                            aux = aux.getNext();
-                        }
-
-                        Ticket total = this.listaSalas.totalesTicketsCine();
-                        int vendidos = total.getTicketElderly() + total.getTicketKids() + total.getTicketStandard();
-                        System.out.printf("|| %-8s |", "Totales");
-                        System.out.printf("| %-8s ", vendidos);
-                        System.out.printf("| %-8s ", total.getTicketKids());
-                        System.out.printf("| %-8s ", total.getTicketStandard());
-                        System.out.printf("| %-8s |", total.getTicketElderly());
-                        System.out.printf("| %-8s ||", total.getTotal());
-                    } else {
-                        System.out.println("No hay información.");
-                    }
+                    this.estadisticasVentas();
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
@@ -462,12 +430,12 @@ public class MovieTheaterSystem {
         Ticket eliminado = this.listaSalas.buscarFolio(folio);
         if (eliminado != null) {
             eliminado.mostrarTicket();
-            
+
             /*
             
             Falta con el objeto Ticket sumar los lugares totales a los previamente descontados
             
-            */
+             */
             System.out.println("Eliminado!!");
         }
 
@@ -552,4 +520,39 @@ public class MovieTheaterSystem {
 
     }
 
+    public void estadisticasVentas() {
+        if (this.listaSalas.cantidadSalas > 0) {
+            Sala aux = this.listaSalas.inicio;
+            System.out.printf("|| %-8s |", "Sala no.");
+            System.out.printf("| %-8s ", "Vendidos");
+            System.out.printf("| %-8s ", "Niños");
+            System.out.printf("| %-8s ", "Normal");
+            System.out.printf("| %-8s |", "A. mayor");
+            System.out.printf("| %-8s ||", "Ganancia");
+            System.out.println();
+            while (aux != null) {
+                Ticket ticket = aux.getTicketList().totalesTickets();
+                int vendidos = ticket.getTicketElderly() + ticket.getTicketKids() + ticket.getTicketStandard();
+                System.out.printf("|| %-8s |", aux.numSala);
+                System.out.printf("| %-8s ", vendidos);
+                System.out.printf("| %-8s ", ticket.getTicketKids());
+                System.out.printf("| %-8s ", ticket.getTicketStandard());
+                System.out.printf("| %-8s |", ticket.getTicketElderly());
+                System.out.printf("| %-8s ||", ticket.getTotal());
+                System.out.println();
+                aux = aux.getNext();
+            }
+
+            Ticket total = this.listaSalas.totalesTicketsCine();
+            int vendidos = total.getTicketElderly() + total.getTicketKids() + total.getTicketStandard();
+            System.out.printf("|| %-8s |", "Totales");
+            System.out.printf("| %-8s ", vendidos);
+            System.out.printf("| %-8s ", total.getTicketKids());
+            System.out.printf("| %-8s ", total.getTicketStandard());
+            System.out.printf("| %-8s |", total.getTicketElderly());
+            System.out.printf("| %-8s ||", total.getTotal());
+        } else {
+            System.out.println("No hay información.");
+        }
+    }
 }
