@@ -23,15 +23,7 @@ public class Sala {
         this.ticketList = new TicketList();
     }
 
-    public Sala(int numSala, int asientos) {
-        this.next = null;
-        this.numSala = numSala;
-        this.capacidadSala = asientos;
-        this.boletossCancelados = 0;
-        this.tipoFormato = 0;
-        this.pelicula = null;
-        this.ticketList = new TicketList();
-    }
+   
 
     public Sala() {
         this.next = null;

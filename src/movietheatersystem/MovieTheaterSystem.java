@@ -1,4 +1,5 @@
 package movietheatersystem;
+
 /**
  *
  * @authors Beverly Urias & José Ceballos
@@ -232,7 +233,8 @@ public class MovieTheaterSystem {
         int opc;
         String[] opcionesMenu = {
             "numero de salas",
-            "numero de asientos"
+            "numero de asientos",
+            "mostrar numero de salas y asientos en casa salas"
         };
         do {
             util.label("Mini menú Configuración - Cine");
@@ -250,6 +252,10 @@ public class MovieTheaterSystem {
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
                     listaSalas.configuracionAsientos();
+                    break;
+                case 3:
+                    util.label(opcionesMenu[opc - 1]);
+                    listaSalas.datosSalasAsientos();
                     break;
                 case 0:
                     break;
@@ -390,7 +396,7 @@ public class MovieTheaterSystem {
                 + "\n descuento adultos tercera edad: " + descuentoTercera);
         System.out.println("                       # Costos asociados # ");
         System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) / 100)
-                + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) /100)
+                + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) / 100)
                 + " \n adultos - 2D: " + costo2D
                 + " \n adultos - 3D: " + costo3D
                 + " \n adultos tercera - 2D: " + costo2D * ((100 - descuentoTercera) / 100)
@@ -442,19 +448,17 @@ public class MovieTheaterSystem {
 
             int boletos;
             do {
-                System.out.println("Cuantos Boletos:");
+                System.out.print("Cuantos Boletos:");
                 boletos = util.inputInteger();
-                if (!(boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                        - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
-                    System.out.println("No hay suficiente cantidad de boletos en "
-                            + "esa sala para vender");
-                    System.out.println("Ingrese una cantidad <= a"
-                            + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
-                            - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+                
+                if (!(boletos>0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala- listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) 
+                {
+                    System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
+                    
+                    System.out.println("Ingrese una cantidad <= a "+ (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
                 }
 
-            } while (!(boletos > 0 && boletos
-                    <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
+            } while (!( boletos>0 && boletos<= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
                     - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas())));
 
             int total, ticketKids, ticketStandard, ticketElderly;
@@ -468,8 +472,7 @@ public class MovieTheaterSystem {
                 ticketElderly = util.inputInteger();
                 total = ticketKids + ticketStandard + ticketElderly;
                 if (total != boletos) {
-                    System.out.println("La cantidades de cada categoria no son las adecuadas para "
-                            + boletos + " boletos");
+                    System.out.println("La cantidades de cada categoria no son las adecuadas para "+ boletos + " persona");
                 }
             } while (!(total == boletos));
 
@@ -481,8 +484,8 @@ public class MovieTheaterSystem {
                 costo = costo2D;
             }
 
-            float totalTicket = (ticketStandard * costo) 
-                    +(ticketKids * costo * ((100 - descuentoNinos) /100)) 
+            float totalTicket = (ticketStandard * costo)
+                    + (ticketKids * costo * ((100 - descuentoNinos) / 100))
                     + (ticketElderly * costo * ((100 - descuentoTercera) / 100));
             String name = customerQueue.remove().getName();
 

@@ -31,7 +31,6 @@ public class ListaSalas {
     //
     //
     public int obtenerCantBoletosTodasSalas() {
-
         Sala aux = this.inicio;
         int i = 0;
         while (aux != null) {
