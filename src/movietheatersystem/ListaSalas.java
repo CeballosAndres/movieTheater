@@ -296,15 +296,15 @@ public class ListaSalas {
         return i;
     }
 
-    public Ticket buscarFolio(String folio) {
+    public boolean buscarFolio(String folio) {
         Sala aux = this.inicio;
-        Ticket eliminar;
+        boolean eliminado;
         while (aux != null) {
-            if ((eliminar = aux.getTicketList().buscarEliminarFolio(folio)) != null) {
-                return eliminar;
-            }
+           if(aux.getTicketList().buscarEliminarFolio(folio)) {
+            return true;
+           }
             aux = aux.getNext();
         }
-        return null;
+        return false;
     }
 }

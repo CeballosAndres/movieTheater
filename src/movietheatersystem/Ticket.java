@@ -68,21 +68,20 @@ public class Ticket {
 
     public void mostrarTicket() {
         System.out.println();
-        System.out.printf("| %-20s  ", "Name");
-        System.out.printf("| %-20s  ", "Folio");
-        System.out.printf("| %-15s  ", "ticketStandard");
-        System.out.printf("| %-15s  |", "ticketKids");
-        System.out.printf("| %-15s  ", "ticketElderly");
-        System.out.printf("| %-15s  ", "total");
+        System.out.printf("|  %-5s  ", "Name");
+        System.out.printf("|  %-6s  ", "Folio");
+        System.out.printf("|  %-14s  ", "ticketStandard");
+        System.out.printf("|  %-10s  ", "ticketKids");
+        System.out.printf("|  %-14s  ", "ticketElderly");
+        System.out.printf("|  %-6s  ", "total");
         System.out.println();
 
-        System.out.printf("|%-21s  ", this.name);
-        System.out.printf("|%-21s  ", this.folio);
-        System.out.printf("|%-16s  ", this.ticketStandard);
-        System.out.printf("|%-16s  |", this.ticketKids);
-        System.out.printf("|%-16s  |", this.ticketElderly);
-        System.out.printf("|%-15s  ", this.total);
-        System.out.println();
+        System.out.printf("|  %-6s  ", " ");
+        System.out.printf("|  %-7s  ", " ");
+        System.out.printf("|  %-15s  ", this.ticketStandard);
+        System.out.printf("|  %-11s  ", this.ticketKids);
+        System.out.printf("|  %-15s  ", this.ticketElderly);
+        System.out.printf("|  %-7s  ", "  ");
     }
 
     public Ticket getNext() {
