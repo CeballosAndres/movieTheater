@@ -38,8 +38,10 @@ public class MovieTheaterSystem {
                 char opcDos;
                 System.out.print("¿Está seguro de salir del sistema? [S/s]");
                 opcDos = Character.toLowerCase(util.inputChar());
+                if (opcDos != 's') {
+                    opc = 555;
+                }
             }
-
             switch (opc) {
                 case 1:
                     this.subMenuVentas();
@@ -52,6 +54,8 @@ public class MovieTheaterSystem {
                     break;
                 case 0:
                     System.out.println("Gracias por su preferencia. Adios.");
+                    break;
+                case 555:
                     break;
                 default:
                     System.out.println("Opción no valida.");
@@ -452,13 +456,13 @@ public class MovieTheaterSystem {
 
             int boletos;
             do {
-                System.out.print("Cuantas personas:");
+                System.out.print("Cuantas personas");
                 boletos = util.inputInteger();
 
                 if (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
-                    System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
+                    System.out.println("No hay suficiente cantidad de boletos en esa sala para vender.");
 
-                    System.out.println("Ingrese una cantidad <= a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+                    System.out.println("Ingrese una cantidad mayor a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
                 }
 
             } while (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
@@ -467,11 +471,11 @@ public class MovieTheaterSystem {
             int total, ticketKids, ticketStandard, ticketElderly;
 
             do {
-                System.out.print("Cuantos ninos:");
+                System.out.print("Cuantos ninos");
                 ticketKids = util.inputInteger();
-                System.out.print("Cuantos boletos normales:");
+                System.out.print("Cuantos boletos normales");
                 ticketStandard = util.inputInteger();
-                System.out.print("Cuantos adultos tercera edad:");
+                System.out.print("Cuantos adultos tercera edad");
                 ticketElderly = util.inputInteger();
                 total = ticketKids + ticketStandard + ticketElderly;
                 if (total != boletos) {
