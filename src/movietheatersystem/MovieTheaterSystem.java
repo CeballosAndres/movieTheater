@@ -231,12 +231,13 @@ public class MovieTheaterSystem {
                     case 2:
                         util.label(opcionesMenu[opc - 1]);
                         if (listaSalas.cantidadPersonas() != 0) {
-                            cancelarVenta();
+                            atendido=cancelarVenta();
                         } else {
                             System.out.println("Todavia no se ha vendido ningun boleto.");
                         }
                         break;
                     case 0:
+                        atendido=true;
                         break;
                     default:
                         System.out.println("Opción no valida.");
@@ -440,18 +441,21 @@ public class MovieTheaterSystem {
         return costo;
     }
 
-    public void cancelarVenta() {
+    public boolean cancelarVenta() {
         System.out.print("Ingresa folio: ");
         String folio = util.inputText();
         if (listaSalas.buscarFolio(folio)) {
 
             System.out.println("Eliminado!!");
+            String name = customerQueue.remove().getName();
+            System.out.println("Fue un gusto atenderle " + name);
+            return true;
         } else {
             System.out.println("No se encontro elemento");
+            return false;
         }
-        String name = customerQueue.remove().getName();
-        System.out.println("Fue un gusto atenderle " + name);
-        subMenuVentas();
+      
+       
     }
 
     public void serveCustumer() {
