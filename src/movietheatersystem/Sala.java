@@ -10,8 +10,6 @@ public class Sala {
     int tipoFormato;
     Pelicula pelicula;
     TicketList ticketList;
-    
-     
 
     public Sala(int numSala) {
         this.next = null;
@@ -22,8 +20,6 @@ public class Sala {
         this.pelicula = null;
         this.ticketList = new TicketList();
     }
-
-   
 
     public Sala() {
         this.next = null;
@@ -66,13 +62,12 @@ public class Sala {
         return ticketList;
     }
 
-    
     public void labelFuncionesSala() {
         System.out.println();
-        System.out.printf("|  %-10s  ", "Núm. Sala");
+        System.out.printf("|  %-7s  ", "Sala");
         System.out.printf("|  %-20s  ", "Pelicula");
         System.out.printf("|  %-15s  ", "Formato");
-        System.out.printf("|  %-19s |", "Asientos Disp.");
+        System.out.printf("|  %-19s |", "Disponibles");
         System.out.println();
     }
 
@@ -87,7 +82,7 @@ public class Sala {
     public String escribirFormato(int formato) {
         if (formato == 1) {
             return "3D";
-        } 
-            return "2D";
+        }
+        return "2D";
     }
 }
