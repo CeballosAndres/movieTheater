@@ -21,7 +21,7 @@ public class Util {
         return Integer.valueOf(input);
     }
 
-    public char entradaChar() {
+    public char inputChar() {
         Scanner sc = new Scanner(System.in);
         System.out.print(" > ");
         return sc.next().charAt(0);
