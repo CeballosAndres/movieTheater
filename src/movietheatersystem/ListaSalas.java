@@ -1,4 +1,5 @@
 package movietheatersystem;
+
 public class ListaSalas {
 
     Sala inicio, fin;
@@ -31,7 +32,19 @@ public class ListaSalas {
         Sala aux = this.inicio;
         int i = 0;
         while (aux != null) {
+            
             i += aux.getTicketList().obtenerCantidadBoletos();
+            aux = aux.getNext();
+        }
+        return i;
+    }
+      public int obtenerCantidadBoletos(String pelicula) {
+        Sala aux = this.inicio;
+        int i = 0;
+        while (aux != null) {
+            if (aux.pelicula.getNombre().equalsIgnoreCase(pelicula)) {
+                i += aux.getTicketList().obtenerCantidadBoletos();
+            }
             aux = aux.getNext();
         }
         return i;
@@ -219,10 +232,10 @@ public class ListaSalas {
     }
 
     public void mostrarSalasinf(int opc) {
-       
+
         Sala aux = this.inicio;
-         if (opc==4 && aux!=null) {
-          aux.labelFuncionesSala();
+        if (opc == 4 && aux != null) {
+            aux.labelFuncionesSala();
         }
         util.label("Seleccionar Sala");
         System.out.println();
@@ -240,7 +253,6 @@ public class ListaSalas {
 
             } else if (opc == 4 && aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0 && aux.pelicula != null) {
                 aux.mostrar();
-
                 System.out.println();
 
             } else if (opc == 3) {
@@ -257,10 +269,10 @@ public class ListaSalas {
         this.inicio = null;
     }
 
-    public boolean salaConBoletos() {
+    public boolean salaConBoletosPelicula() {
         Sala aux = this.inicio;
         while (aux != null) {
-            if (aux.capacidadSala-aux.getTicketList().cantidadPersonas()!=0 && aux.pelicula!=null) {
+            if (aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0 && aux.pelicula != null) {
                 return true;
             }
             aux = aux.getNext();
@@ -290,6 +302,28 @@ public class ListaSalas {
         return totales;
     }
 
+    public Ticket totalesTicketsPelicula(String pelicula) {
+        Ticket totales = new Ticket();
+        Sala aux = this.inicio;
+        while (aux != null) {
+            if (aux.pelicula.getNombre().equalsIgnoreCase(pelicula)) {
+                Ticket ticketSala = aux.getTicketList().totalesTickets();
+                totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
+                totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
+                totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
+                totales.setTotal(totales.getTotal() + ticketSala.getTotal());
+            }
+            aux = aux.getNext();
+        }
+        return totales;
+    }
+    
+    public int cantidadPersonasPelicula(String pelicula) {
+        Ticket resultadosTicket =totalesTicketsPelicula( pelicula);
+        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
+        return i;
+    }
+    
     public int cantidadPersonas() {
         Ticket resultadosTicket = totalesTicketsCine();
         int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
@@ -300,9 +334,9 @@ public class ListaSalas {
         Sala aux = this.inicio;
         boolean eliminado;
         while (aux != null) {
-           if(aux.getTicketList().buscarEliminarFolio(folio)) {
-            return true;
-           }
+            if (aux.getTicketList().buscarEliminarFolio(folio)) {
+                return true;
+            }
             aux = aux.getNext();
         }
         return false;

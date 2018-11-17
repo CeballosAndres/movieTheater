@@ -89,6 +89,8 @@ public class TicketList {
         }
         return totales;
     }
+    
+   
 
     public int cantidadPersonas() {
         Ticket resultadosTicket = totalesTickets();
