@@ -446,7 +446,7 @@ public class MovieTheaterSystem {
 
             int boletos;
             do {
-                System.out.print("Cuantos Boletos:");
+                System.out.print("Cuantas personas:");
                 boletos = util.inputInteger();
                 
                 if (!(boletos>0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala- listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) 
@@ -492,7 +492,7 @@ public class MovieTheaterSystem {
                             name, ticketStandard, ticketKids, ticketElderly, totalTicket);
 
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
-                    .mostrarTicket(costo, descuentoTercera, descuentoNinos);
+                    .mostrarTicket(costo,  descuentoNinos,descuentoTercera);
 
             System.out.println("El total a cobrar es:" + totalTicket);
             float efectivo;
