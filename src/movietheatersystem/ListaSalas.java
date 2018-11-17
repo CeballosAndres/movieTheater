@@ -279,13 +279,12 @@ public class ListaSalas {
     public Ticket totalesTicketsCine() {
         Ticket totales = new Ticket();
         Sala aux = this.inicio;
-        Ticket ticketSala = this.inicio.getTicketList().totalesTickets();
         while (aux != null) {
+            Ticket ticketSala = aux.getTicketList().totalesTickets();
             totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
             totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
             totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
             totales.setTotal(totales.getTotal() + ticketSala.getTotal());
-            ticketSala.setNext(ticketSala.getNext());
             aux = aux.getNext();
         }
         return totales;
@@ -296,11 +295,11 @@ public class ListaSalas {
         int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
         return i;
     }
-    
-    public Ticket buscarFolio(String folio){
+
+    public Ticket buscarFolio(String folio) {
         Sala aux = this.inicio;
         Ticket eliminar;
-        while(aux != null){
+        while (aux != null) {
             if ((eliminar = aux.getTicketList().buscarEliminarFolio(folio)) != null) {
                 return eliminar;
             }
