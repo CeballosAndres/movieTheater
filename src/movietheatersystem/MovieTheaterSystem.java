@@ -155,7 +155,7 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    System.out.println("//Metodo para mostrar candidad de voletos vendidos.");
+                    // incluir 
                     break;
                 case 0:
                     break;

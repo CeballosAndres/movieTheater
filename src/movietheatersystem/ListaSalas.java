@@ -148,25 +148,22 @@ public class ListaSalas {
                 return true;
             }
             aux = aux.next;
-
         }
         return false;
-
     }
 
     public void asignarDatosSala(int numSala, ListaPeliculas peliculas) {
-
-        System.out.println("           # Peliculas #  ");
+        util.label("Seleccionar pelicula");
         peliculas.mostrarPeliculasNombre();
         int numPelicula = 0;
         do {
-            System.out.print("Ingresa el numero de la pelicula :");
+            System.out.print("Ingresa el numero de la pelicula");
             numPelicula = util.inputInteger();
         } while (!(numPelicula <= peliculas.cantidadPeliculas() && numPelicula > 0));
 
-        System.out.println("          # Formato #  ");
-        System.out.println("1- 3D");
-        System.out.println("2- 2D");
+        util.label("Seleccionar Formato");
+        System.out.println("1 - 3D");
+        System.out.println("2 - 2D");
         int numFormato = 0;
         do {
             System.out.print("Ingresa el numero de el formato:");
@@ -183,16 +180,13 @@ public class ListaSalas {
 
     public void agregarFuncionesSala(ListaPeliculas peliculas) {
         if (!TodaSalaConPelicula()) {
-            System.out.println("       # Salas sin Pelicula asignada #  ");
-            mostrarSalasNombre(1);
+            this.mostrarSalasNombre(1);
             int numSala;
             do {
                 System.out.print("Ingrese el numero de la sala: ");
                 numSala = util.inputInteger();
             } while (!(numSala <= cantidadSalas && numSala > 0 && buscarSalaPorPosicion(numSala).pelicula == null));
-
             asignarDatosSala(numSala, peliculas);
-
         } else {
             System.out.println("Salas ya tiene peliculas");
         }

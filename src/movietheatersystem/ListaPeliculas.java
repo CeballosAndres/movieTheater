@@ -222,12 +222,11 @@ public class ListaPeliculas {
             System.out.println();
             int i = 1;
             while (aux != null) {
-                System.out.print(i + " -");
+                System.out.print(i + " - ");
                 System.out.printf("%-20s", aux.getNombre());
                 System.out.println();
                 aux = aux.getSigue();
                 i++;
-
             }
         }
     }
