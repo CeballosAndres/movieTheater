@@ -233,18 +233,16 @@ public class ListaSalas {
             } else if (aux.pelicula != null && opc == 2) {
                 System.out.print(i + " -  Sala ");
                 System.out.printf("%-20s", aux.getNumSala());
-                
+
                 System.out.println();
-                
-            }  else if (opc==4 && aux.capacidadSala-aux.getTicketList().cantidadPersonas()!=0 && aux.pelicula != null ) {
+
+            } else if (opc == 4 && aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0 && aux.pelicula != null) {
                 System.out.print(i + " -  Sala ");
                 System.out.printf("%-20s", aux.getNumSala());
-                
+
                 System.out.println();
-                
-            } 
-            
-            else if (opc == 3) {
+
+            } else if (opc == 3) {
                 System.out.print(i + " -  Sala ");
                 System.out.printf("%-20s", aux.getNumSala());
                 System.out.println();
@@ -258,16 +256,17 @@ public class ListaSalas {
         this.inicio = null;
     }
 
-      public boolean salaConBoletos() {
-         Sala aux = this.inicio;
+    public boolean salaConBoletos() {
+        Sala aux = this.inicio;
         while (aux != null) {
-            if (aux.capacidadSala-aux.getTicketList().cantidadPersonas()!=0) {
+            if (aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0) {
                 return true;
             }
             aux = aux.getNext();
         }
         return false;
     }
+
     public void datosSalasAsientos() {
         System.out.println("salas:" + cantidadSalas + "  asientos: " + inicio.capacidadSala);
     }
