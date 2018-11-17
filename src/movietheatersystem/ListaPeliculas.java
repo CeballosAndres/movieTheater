@@ -1,7 +1,5 @@
 package movietheatersystem;
 
-import java.util.Scanner;
-
 public class ListaPeliculas {
 
     Util util = new Util();
@@ -127,7 +125,7 @@ public class ListaPeliculas {
             eliminar.labelPeliculas();
             eliminar.mostrar();
             System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
-            char opc = util.entradaChar();
+            char opc = util.inputChar();
             if (Character.toLowerCase(opc) == 's') {
                 switch (this.posicion(eliminar)) {
                     // Mediante metodo posicion retorna entero, 0, 1, 2 y 3

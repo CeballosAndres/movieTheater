@@ -33,7 +33,15 @@ public class MovieTheaterSystem {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Salir");
-            opc = util.opcion();
+            opc = util.inputChar();
+            if (opc == 0) {
+                char opcDos;
+                do {
+                    opcDos = util.inputChar();
+                    System.out.print("¿Está seguro de salir del sistema? [S/s]");
+                } while (opcDos != 's');
+            }
+
             switch (opc) {
                 case 1:
                     this.subMenuVentas();
@@ -448,15 +456,14 @@ public class MovieTheaterSystem {
             do {
                 System.out.print("Cuantas personas:");
                 boletos = util.inputInteger();
-                
-                if (!(boletos>0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala- listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) 
-                {
+
+                if (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
                     System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
-                    
-                    System.out.println("Ingrese una cantidad <= a "+ (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+
+                    System.out.println("Ingrese una cantidad <= a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
                 }
 
-            } while (!( boletos>0 && boletos<= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
+            } while (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
                     - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas())));
 
             int total, ticketKids, ticketStandard, ticketElderly;
@@ -470,7 +477,7 @@ public class MovieTheaterSystem {
                 ticketElderly = util.inputInteger();
                 total = ticketKids + ticketStandard + ticketElderly;
                 if (total != boletos) {
-                    System.out.println("La cantidades de cada categoria no son las adecuadas para "+ boletos + " persona");
+                    System.out.println("La cantidades de cada categoria no son las adecuadas para " + boletos + " persona");
                 }
             } while (!(total == boletos));
 
