@@ -392,13 +392,13 @@ public class MovieTheaterSystem {
     }
 
     public void datosCosto() {
-        System.out.println("                       # Costos tradicionales # ");
+        System.out.println("\n                       # Costos tradicionales # ");
         System.out.println("costo 2D: " + costo2D
                 + "\n costo 3D: " + costo2D);
-        System.out.println("                       # Descuentos personas # ");
+        System.out.println("\n                     # Descuentos personas # ");
         System.out.println("descuento ninos: " + descuentoNinos
                 + "\n descuento adultos tercera edad: " + descuentoTercera);
-        System.out.println("                       # Costos asociados # ");
+        System.out.println("\n                       # Costos asociados # ");
         System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) / 100)
                 + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) / 100)
                 + " \n adultos - 2D: " + costo2D
@@ -452,7 +452,7 @@ public class MovieTheaterSystem {
 
             int boletos;
             do {
-                System.out.print("Cuantos Boletos:");
+                System.out.print("Cuantas personas:");
                 boletos = util.inputInteger();
 
                 if (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
@@ -497,7 +497,7 @@ public class MovieTheaterSystem {
                             name, ticketStandard, ticketKids, ticketElderly, totalTicket);
 
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
-                    .mostrarTicket(costo, descuentoTercera, descuentoNinos);
+                    .mostrarTicket(costo,  descuentoNinos,descuentoTercera);
 
             System.out.println("El total a cobrar es:" + totalTicket);
             float efectivo;

@@ -36,27 +36,28 @@ public class Ticket {
 
     public void mostrarTicket(float costo, float descuentoNinos, float descuentoTercera) {
         System.out.println();
-        System.out.printf("|  %-20s  ", "Name");
-        System.out.printf("|  %-20s  ", "Folio");
-        System.out.printf("|  %-15s  ", "ticketStandard");
-        System.out.printf("|  %-15s  |", "ticketKids");
-        System.out.printf("|  %-15s  ", "ticketElderly");
-        System.out.printf("|  %-15s  ", "total");
+        System.out.printf("|  %-5s  ", "Name");
+        System.out.printf("|  %-6s  ", "Folio");
+        System.out.printf("|  %-14s  ", "ticketStandard");
+        System.out.printf("|  %-10s  ", "ticketKids");
+        System.out.printf("|  %-14s  ", "ticketElderly");
+        System.out.printf("|  %-6s  ", "total");
         System.out.println();
 
-        System.out.printf("| %-21s  ", " ");
-        System.out.printf("| %-21s  ", " ");
-        System.out.printf("| %-16s  ", this.ticketStandard);
-        System.out.printf("| %-16s  |", this.ticketKids);
-        System.out.printf("| %-16s  |", this.ticketElderly);
-        System.out.printf("|  %-15s  ", "  ");
+        System.out.printf("| %-6s  ", " ");
+        System.out.printf("| %-7s  ", " ");
+        System.out.printf("| %-15s  ", this.ticketStandard);
+        System.out.printf("| %-11s  ", this.ticketKids);
+        System.out.printf("| %-15s  ", this.ticketElderly);
+        System.out.printf("|  %-7s  ", "  ");
+        
         System.out.println();
-        System.out.printf("| %-21s  ", this.name);
-        System.out.printf("| %-21s  ", this.folio);
-        System.out.printf("| %-16s  ", this.ticketStandard * costo);
-        System.out.printf("| %-16s  |", this.ticketKids * costo * ((100 - descuentoNinos) / 100));
-        System.out.printf("| %-16s  |", this.ticketElderly * costo * ((100 - descuentoTercera) / 100));
-        System.out.printf("|  %-15s  ", this.total);
+        System.out.printf("| %-6s  ", this.name);
+        System.out.printf("| %-7s  ", this.folio);
+        System.out.printf("| %-15s  ", this.ticketStandard * costo);
+        System.out.printf("| %-11s  ", this.ticketKids * costo * ((100 - descuentoNinos) / 100));
+        System.out.printf("| %-15s  ", this.ticketElderly * costo * ((100 - descuentoTercera) / 100));
+        System.out.printf("|  %-7s  ", this.total);
         System.out.println();
     }
 
