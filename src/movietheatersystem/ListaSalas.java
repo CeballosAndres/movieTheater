@@ -109,12 +109,12 @@ public class ListaSalas {
 
     public void modificarFuncionesSala(ListaPeliculas peliculas) {
         if (algunaSalaConPelicula()) {
-            System.out.println("   # Salas #  ");
+            util.label("Salas");
             mostrarSalasNombre(2);
             int numSala = 0;
             do {
-                System.out.print("Ingrese el numero de la sala:");
-                numSala = util.opcion();
+                System.out.print("Ingrese el numero de la sala");
+                numSala = util.inputInteger();
             } while (!(numSala <= cantidadSalas && numSala > 0
                     && buscarSalaPorPosicion(numSala).pelicula != null));
 
@@ -166,7 +166,7 @@ public class ListaSalas {
         System.out.println("2 - 2D");
         int numFormato = 0;
         do {
-            System.out.print("Ingresa el numero de el formato:");
+            System.out.print("Ingresa el numero de el formato");
             numFormato = util.inputInteger();
         } while (!(numFormato == 1 || numFormato == 2));
 
@@ -183,7 +183,7 @@ public class ListaSalas {
             this.mostrarSalasNombre(1);
             int numSala;
             do {
-                System.out.print("Ingrese el numero de la sala: ");
+                System.out.print("Ingrese el numero de la sala ");
                 numSala = util.inputInteger();
             } while (!(numSala <= cantidadSalas && numSala > 0 && buscarSalaPorPosicion(numSala).pelicula == null));
             asignarDatosSala(numSala, peliculas);
