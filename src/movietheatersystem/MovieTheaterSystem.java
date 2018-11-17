@@ -1,7 +1,4 @@
 package movietheatersystem;
-
-import java.util.Scanner;
-
 /**
  *
  * @authors Beverly Urias & José Ceballos
@@ -305,7 +302,6 @@ public class MovieTheaterSystem {
     }
 
     public void miniMenuConfiguracionFuncionesSala() {
-        Scanner sc = new Scanner(System.in);
         int opc;
         String[] opcionesMenu = {
             "Asignar pelicula a sala (+formato) ",
@@ -430,12 +426,6 @@ public class MovieTheaterSystem {
         Ticket eliminado = this.listaSalas.buscarFolio(folio);
         if (eliminado != null) {
             eliminado.mostrarTicket();
-
-            /*
-            
-            Falta con el objeto Ticket sumar los lugares totales a los previamente descontados
-            
-             */
             System.out.println("Eliminado!!");
         }
 

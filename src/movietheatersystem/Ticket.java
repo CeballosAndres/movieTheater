@@ -135,8 +135,4 @@ public class Ticket {
         this.total = total;
     }
 
-    public void informeEtiquetaGanancias() {
-
-    }
-
 }
