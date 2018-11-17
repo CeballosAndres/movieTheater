@@ -36,9 +36,10 @@ public class TicketList {
             aux = inicio.getNext();
             while (aux != null) {
                 if (folio.equalsIgnoreCase(aux.getFolio())) {
-                    atras.setNext(aux.getNext());
                     if (fin == aux) {
                         fin = atras;
+                    } else {
+                        atras.setNext(aux.getNext());
                     }
                     System.out.println(aux.getFolio() + " eliminado.");
                     return aux;
@@ -88,7 +89,7 @@ public class TicketList {
 
     public int cantidadPersonas() {
         Ticket resultadosTicket = totalesTickets();
-        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly()+ resultadosTicket.getTicketStandard();
+        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
         return i;
     }
 
