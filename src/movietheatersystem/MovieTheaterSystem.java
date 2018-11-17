@@ -459,10 +459,15 @@ public class MovieTheaterSystem {
                 System.out.print("Cuantas personas");
                 boletos = util.inputInteger();
 
-                if (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala -  listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()))) {
+                if (!(boletos > 0 &&
+                        boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala -  listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()))) {
                     System.out.println("No hay suficiente cantidad de boletos en esa sala para vender");
 
-                    System.out.println("Ingrese una cantidad menor o igual a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+                    System.out.println("Ingrese una cantidad menor o igual a " + 
+                            (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+                    
+                    System.out.println(listaSalas.buscarSalaPorPosicion(numSala).capacidadSala);
+                    System.out.println(listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas());
                 }
 
             } while (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
@@ -513,6 +518,7 @@ public class MovieTheaterSystem {
 
             System.out.println("Su cambio es:" + (efectivo - totalTicket));
 
+            subMenuVentas();
         } else {
             System.out.println("La salas todavia no tiene pelicula asignada");
         }

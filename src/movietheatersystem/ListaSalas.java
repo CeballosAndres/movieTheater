@@ -272,7 +272,7 @@ public class ListaSalas {
 
     public int cantidadPersonas() {
         Ticket resultadosTicket = totalesTicketsCine();
-        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketKids() + resultadosTicket.getTicketStandard();
+        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
         return i;
     }
     
