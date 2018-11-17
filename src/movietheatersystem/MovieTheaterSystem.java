@@ -492,7 +492,7 @@ public class MovieTheaterSystem {
                             name, ticketStandard, ticketKids, ticketElderly, totalTicket);
 
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList().getFin()
-                    .mostrarTicket(totalTicket, descuentoTercera, descuentoNinos);
+                    .mostrarTicket(costo, descuentoTercera, descuentoNinos);
 
             System.out.println("El total a cobrar es:" + totalTicket);
             float efectivo;
