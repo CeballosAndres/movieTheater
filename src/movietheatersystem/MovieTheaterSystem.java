@@ -82,7 +82,7 @@ public class MovieTheaterSystem {
                     this.miniMenuVentasFila();
                     break;
                 case 2:
-                    if (!customerQueue.empty()) {
+                     if (!customerQueue.empty()) {
                         if (!listaSalas.algunaSalaConPelicula()) {
                             System.out.println("\nTodavía no hay funciones en las salas");
                         } else {
@@ -147,7 +147,8 @@ public class MovieTheaterSystem {
         int opc;
         String[] opcionesMenu = {
             "Estadisticas ventas",
-            "Estadisticas peliculas"
+            "Estadisticas peliculas",
+           "Informacion Sala de ticket (nombres,costo,folio)"
         };
         do {
             util.label("Submenú Informes");
@@ -164,8 +165,12 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     util.label(opcionesMenu[opc - 1]);
-                    // incluir 
+                     this.estadisticasPelicula();
                     break;
+                 case 3:
+                    util.label(opcionesMenu[opc - 1]);
+                     this.informacionSala();
+                    break; 
                 case 0:
                     break;
                 default:
@@ -220,12 +225,13 @@ public class MovieTheaterSystem {
                 opc = util.opcion();
                 switch (opc) {
                     case 1:
-                        if (listaSalas.salaConBoletosPelicula()) {
+                       if (listaSalas.salaConBoletosPelicula()) {
                             serveCustumer();
                             atendido=true;
                         } else {
                             System.out.println("No hay salas con boletos ni funciones disponibles! ");
                         }
+
                         break;
 
                     case 2:
@@ -347,7 +353,7 @@ public class MovieTheaterSystem {
                     break;
                 case 3:
                     util.label(opcionesMenu[opc - 1]);
-                    this.listaSalas.mostrarSalasFunciones();
+                    this.listaSalas.mostrarSalasConPelicula();
                     break;
                 case 0:
                     break;
@@ -461,7 +467,7 @@ public class MovieTheaterSystem {
     public void serveCustumer() {
         String name = customerQueue.remove().getName();
 
-        listaSalas.mostrarSalasinf(4);
+        listaSalas.mostrarSalasConBoletoYPeliculas();
         int numSala = 0;
        
         System.out.print("\n¡Bienvenido " + name + "!\n");
@@ -592,11 +598,16 @@ public class MovieTheaterSystem {
             System.out.printf("| %-8s ", total.getTicketKids());
             System.out.printf("| %-8s ", total.getTicketStandard());
             System.out.printf("| %-8s |", total.getTicketElderly());
-            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosTodasSalas());
+            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosSalas());
             System.out.printf("| %-8s ||", total.getTotal());
         } else {
             System.out.println("No hay información.");
         }
+    }
+    
+    
+    public void informacionSala() {
+    
     }
 
     public void estadisticasPelicula() {
@@ -615,8 +626,8 @@ public class MovieTheaterSystem {
             System.out.println();
             while (aux != null) {
                 Ticket ticket = listaSalas.totalesTicketsPelicula(aux.getNombre());
-                System.out.printf("|| %-7s |", aux.getNombre());
-                System.out.printf("|| %-22s |", listaSalas.cantidadPersonasPelicula(aux.getNombre()));
+                System.out.printf("|| %-22s |", aux.getNombre());
+                System.out.printf("| %-8s ", listaSalas.cantidadPersonasPelicula(aux.getNombre()));
 
                 System.out.printf("| %-8s ", ticket.getTicketKids());
                 System.out.printf("| %-8s ", ticket.getTicketStandard());
@@ -628,14 +639,12 @@ public class MovieTheaterSystem {
             }
 
             Ticket total = this.listaSalas.totalesTicketsCine();
-            System.out.printf("|| %-8s |", "Totales");
-            System.out.printf("|| %-7s |", "-------");
-            System.out.printf("|| %-22s |", "----------------------");
+            System.out.printf("|| %-22s |", "      Totales         ");
             System.out.printf("| %-8s ", listaSalas.cantidadPersonas());
             System.out.printf("| %-8s ", total.getTicketKids());
             System.out.printf("| %-8s ", total.getTicketStandard());
             System.out.printf("| %-8s |", total.getTicketElderly());
-            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosTodasSalas());
+            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosSalas());
             System.out.printf("| %-8s ||", total.getTotal());
         }
     }
