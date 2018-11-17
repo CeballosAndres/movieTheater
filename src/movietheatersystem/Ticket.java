@@ -84,7 +84,7 @@ public class Ticket {
         System.out.printf("|  %-19s |", this.total);
         System.out.println();
     }
-
+/*
     public void mostrarTicket(float costo, float descuentoNinos, float descuentoTercera) {
         mostrarTicket();
         System.out.printf("| %-8s  ",this.name);
@@ -95,7 +95,7 @@ public class Ticket {
         System.out.printf("|  %-19s |", this.total);
         System.out.println();
     }
-
+*/
 
     public Ticket getNext() {
         return next;
