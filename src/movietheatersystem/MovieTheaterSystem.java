@@ -462,7 +462,7 @@ public class MovieTheaterSystem {
                 if (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).capacidadSala))) {
                     System.out.println("No hay suficiente cantidad de boletos en esa sala para vender.");
 
-                    System.out.println("Ingrese una cantidad mayor a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
+                    System.out.println("Ingrese una cantidad menor o igual a " + (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala - listaSalas.buscarSalaPorPosicion(numSala).getTicketList().cantidadPersonas()));
                 }
 
             } while (!(boletos > 0 && boletos <= (listaSalas.buscarSalaPorPosicion(numSala).capacidadSala
