@@ -11,7 +11,7 @@ public class ListaSalas {
     public ListaSalas(Sala inicio, Sala fin) {
         this.inicio = inicio;
         this.fin = fin;
-        this.cantidadSalas = 4;
+        this.cantidadSalas = 0;
         this.folio = " ";
         this.numeracionFolio = 1;
     }
@@ -19,7 +19,7 @@ public class ListaSalas {
     public ListaSalas() {
         this.inicio = null;
         this.fin = null;
-        this.cantidadSalas = 4;
+        this.cantidadSalas = 0;
         this.folio = " ";
         this.numeracionFolio = 1;
     }
@@ -44,11 +44,12 @@ public class ListaSalas {
         return folio;
     }
 
-    public void configuracionInicial() {
-        System.out.print("Cuantas asientos en salas");
-        int num = util.inputInteger();
+    public void configuracionInicial(int salas, int asientos) {
+        //System.out.print("Cuantas asientos en salas");
+        //int num = util.inputInteger();
+        this.cantidadSalas = salas;
         agregarSalas();
-        agregarAsientos(num);
+        agregarAsientos(asientos);
     }
 
     public void configuracionAsientos() {

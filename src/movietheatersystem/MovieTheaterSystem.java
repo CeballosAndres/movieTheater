@@ -16,7 +16,7 @@ public class MovieTheaterSystem {
         MovieTheaterSystem obj = new MovieTheaterSystem();
         obj.superEtiqueta();
         System.out.println();
-        obj.listaSalas.configuracionInicial();
+        obj.listaSalas.configuracionInicial(5, 35);
         obj.peliculas.peliculasEjemplo();
         obj.menu();
     }
@@ -245,9 +245,9 @@ public class MovieTheaterSystem {
     public void miniMenuConfiguracionCine() {
         int opc;
         String[] opcionesMenu = {
-            "numero de salas",
-            "numero de asientos",
-            "mostrar numero de salas y asientos en casa salas"
+            "Número de salas",
+            "Número de asientos",
+            "Mostrar valores actuales"
         };
         do {
             util.label("Mini menú Configuración - Cine");
@@ -581,11 +581,11 @@ public class MovieTheaterSystem {
     }
 
     public void superEtiqueta() {
-        System.out.println("  __^__                                      __^__");
-        System.out.println(" ( ___ )------------------------------------( ___ )");
-        System.out.println("  | / |                                      | \\ |");
-        System.out.println("  | / |      Movie Theater System 2018       | \\ |");
-        System.out.println("  |___|                                      |___|");
-        System.out.println(" (_____)------------------------------------(_____)");
+        System.out.println("                  __^__                                      __^__");
+        System.out.println("                 ( ___ )------------------------------------( ___ )");
+        System.out.println("                  | / |                                      | \\ |");
+        System.out.println("                  | / |      Movie Theater System 2018       | \\ |");
+        System.out.println("                  |___|                                      |___|");
+        System.out.println("                 (_____)------------------------------------(_____)");
     }
 }
