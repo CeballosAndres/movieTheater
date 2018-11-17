@@ -455,10 +455,9 @@ public class MovieTheaterSystem {
         this.listaSalas.mostrarSalasFunciones();
         System.out.println();
         System.out.println();
-        System.out.print("Opción invalida. Ingrese el número de la sala");
-
+        System.out.print("\n¡Bienvenido " + name + "!\n");
         do {
-            System.out.print("\n¡Bienvenido " + name + "! Ingrese el número de la sala");
+            System.out.print("Ingrese el número de la sala");
             numSala = util.inputInteger();
         } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
                 && obtenerSala(numSala).pelicula != null
@@ -482,11 +481,11 @@ public class MovieTheaterSystem {
 
         do {
             util.label("Desgloce de boletos");
-            System.out.print("Niños");
+            System.out.printf("%-12s","Niños");
             ticketKids = util.inputInteger();
-            System.out.print("Estandar");
+            System.out.printf("%-12s","Estandar");
             ticketStandard = util.inputInteger();
-            System.out.print("Tercera edad:");
+            System.out.printf("%-12s","Tercera edad");
             ticketElderly = util.inputInteger();
             total = ticketKids + ticketStandard + ticketElderly;
             if (total != boletos) {
@@ -513,10 +512,10 @@ public class MovieTheaterSystem {
         obtenerTicketList(numSala).getFin()
                 .mostrarTicket(costo, descuentoNinos, descuentoTercera);
 
-        System.out.println("El total a cobrar es:" + totalTicket);
+        System.out.println("El total a cobrar es" + totalTicket);
         float efectivo;
         do {
-            System.out.print("Ingrese el efectivo:");
+            System.out.print("Cantidad a cobra:");
             efectivo = util.inputInteger();
 
         } while (!(efectivo >= totalTicket));
