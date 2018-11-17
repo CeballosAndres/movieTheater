@@ -33,13 +33,11 @@ public class MovieTheaterSystem {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
             System.out.println("0 - Salir");
-            opc = util.inputChar();
+            opc = util.opcion();
             if (opc == 0) {
                 char opcDos;
-                do {
-                    opcDos = util.inputChar();
-                    System.out.print("¿Está seguro de salir del sistema? [S/s]");
-                } while (opcDos != 's');
+                System.out.print("¿Está seguro de salir del sistema? [S/s]");
+                opcDos = Character.toLowerCase(util.inputChar());
             }
 
             switch (opc) {
