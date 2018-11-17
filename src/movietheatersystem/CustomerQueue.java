@@ -48,7 +48,7 @@ public class CustomerQueue {
             System.out.println("No hay clientes en cola!");
         } else {
             Client aux = this.first;
-            System.out.print("Fila: ");
+            System.out.print("☉ ‿ ⚆   ");
             while (aux != null) {
                 aux.show();
                 aux = aux.getNext();
@@ -63,5 +63,7 @@ public class CustomerQueue {
         this.add(new Client(util.inputText()));
         System.out.println("Alta exitosa!");
     }
+    
+
 
 }

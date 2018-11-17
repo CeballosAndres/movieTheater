@@ -14,7 +14,8 @@ public class MovieTheaterSystem {
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
-
+        obj.superEtiqueta();
+        System.out.println();
         obj.listaSalas.configuracionInicial();
         obj.peliculas.peliculasEjemplo();
         obj.menu();
@@ -341,6 +342,7 @@ public class MovieTheaterSystem {
                     this.listaSalas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
+                    util.label(opcionesMenu[opc - 1]);
                     this.listaSalas.mostrarSalasFunciones();
                     break;
                 case 0:
@@ -439,14 +441,14 @@ public class MovieTheaterSystem {
         System.out.print("Ingresa folio: ");
         String folio = util.inputText();
         if (listaSalas.buscarFolio(folio)) {
-           
+
             System.out.println("Eliminado!!");
-        }else{
+        } else {
             System.out.println("No se encontro elemento");
         }
-       String name = customerQueue.remove().getName();
-       System.out.println("Fue un gusto atenderle "+ name);
-       subMenuVentas();
+        String name = customerQueue.remove().getName();
+        System.out.println("Fue un gusto atenderle " + name);
+        subMenuVentas();
     }
 
     public void serveCustumer() {
@@ -478,7 +480,6 @@ public class MovieTheaterSystem {
                         + (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas()));
             }
 
-
         } while (!(boletos > 0
                 && boletos <= (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas())));
 
@@ -486,11 +487,11 @@ public class MovieTheaterSystem {
 
         do {
             util.label("Desglose de boletos");
-            System.out.printf("%12s","Niños");
+            System.out.printf("%12s", "Niños");
             ticketKids = util.inputInteger();
-            System.out.printf("%12s","Estandar");
+            System.out.printf("%12s", "Estandar");
             ticketStandard = util.inputInteger();
-            System.out.printf("%12s","Tercera edad");
+            System.out.printf("%12s", "Tercera edad");
             ticketElderly = util.inputInteger();
             total = ticketKids + ticketStandard + ticketElderly;
             if (total != boletos) {
@@ -526,7 +527,6 @@ public class MovieTheaterSystem {
         System.out.println("Su cambio es: $" + (efectivo - totalTicket));
 
         //subMenuVentas();
-
     }
 
     public TicketList obtenerTicketList(int numSala) {
@@ -578,5 +578,14 @@ public class MovieTheaterSystem {
         } else {
             System.out.println("No hay información.");
         }
+    }
+
+    public void superEtiqueta() {
+        System.out.println("  __^__                                      __^__");
+        System.out.println(" ( ___ )------------------------------------( ___ )");
+        System.out.println("  | / |                                      | \\ |");
+        System.out.println("  | / |      Movie Theater System 2018       | \\ |");
+        System.out.println("  |___|                                      |___|");
+        System.out.println(" (_____)------------------------------------(_____)");
     }
 }
