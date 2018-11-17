@@ -447,11 +447,17 @@ public class MovieTheaterSystem {
     }
 
     public void serveCustumer() {
-
+        String name = customerQueue.remove().getName();
+        System.out.println("Bienvenido "+ name+"!\n");
+        
+        
         listaSalas.mostrarSalasNombre(4);
         int numSala = 0;
+        System.out.println();
+        this.listaSalas.mostrarSalasFunciones();
+        System.out.println();
         do {
-            System.out.print("Ingrese el número de la sala");
+            System.out.print("\nIngrese el número de la sala");
             numSala = util.inputInteger();
         } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
                 && obtenerSala(numSala).pelicula != null
@@ -474,11 +480,12 @@ public class MovieTheaterSystem {
         int total, ticketKids, ticketStandard, ticketElderly;
 
         do {
-            System.out.print("Cuantos ninos");
+            util.label("Desgloce de boletos");
+            System.out.print("Niños");
             ticketKids = util.inputInteger();
-            System.out.print("Cuantos boletos normales");
+            System.out.print("Estandar");
             ticketStandard = util.inputInteger();
-            System.out.print("Cuantos adultos tercera edad");
+            System.out.print("Tercera edad:");
             ticketElderly = util.inputInteger();
             total = ticketKids + ticketStandard + ticketElderly;
             if (total != boletos) {
@@ -497,8 +504,6 @@ public class MovieTheaterSystem {
         float totalTicket = (ticketStandard * costo)
                 + (ticketKids * costo * ((100 - descuentoNinos) / 100))
                 + (ticketElderly * costo * ((100 - descuentoTercera) / 100));
-
-        String name = customerQueue.remove().getName();
 
         obtenerTicketList(numSala)
                 .formarTicketParaAnadir(listaSalas.obtenerFolio(numSala),
