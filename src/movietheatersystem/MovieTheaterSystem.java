@@ -394,13 +394,13 @@ public class MovieTheaterSystem {
     }
 
     public void datosCosto() {
-        System.out.println("                       # Costos tradicionales # ");
+        System.out.println("\n                       # Costos tradicionales # ");
         System.out.println("costo 2D: " + costo2D
                 + "\n costo 3D: " + costo2D);
-        System.out.println("                       # Descuentos personas # ");
+        System.out.println("\n                     # Descuentos personas # ");
         System.out.println("descuento ninos: " + descuentoNinos
                 + "\n descuento adultos tercera edad: " + descuentoTercera);
-        System.out.println("                       # Costos asociados # ");
+        System.out.println("\n                       # Costos asociados # ");
         System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) / 100)
                 + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) / 100)
                 + " \n adultos - 2D: " + costo2D
