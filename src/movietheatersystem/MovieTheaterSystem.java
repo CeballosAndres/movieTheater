@@ -221,7 +221,7 @@ public class MovieTheaterSystem {
                     if (listaSalas.salaConBoletos()) {
                         serveCustumer();
                     } else {
-                        System.out.println("No hay salas con boletos disponibles ");
+                        System.out.println("No hay salas con boletos disponibles y funcionws ");
                     }
                     break;
 
@@ -438,18 +438,21 @@ public class MovieTheaterSystem {
     public void cancelarVenta() {
         System.out.print("Ingresa folio: ");
         String folio = util.inputText();
-        Ticket eliminado = this.listaSalas.buscarFolio(folio);
-        if (eliminado != null) {
-            eliminado.mostrarTicket();
+        if (listaSalas.buscarFolio(folio)) {
+           
             System.out.println("Eliminado!!");
+        }else{
+            System.out.println("No se encontro elemento");
         }
-
+       String name = customerQueue.remove().getName();
+       System.out.println("Fue un gusto atenderle "+ name);
+       subMenuVentas();
     }
 
     public void serveCustumer() {
         String name = customerQueue.remove().getName();
 
-        //listaSalas.mostrarSalasNombre(4);
+        listaSalas.mostrarSalasinf(4);
         int numSala = 0;
         System.out.println();
         this.listaSalas.mostrarSalasFunciones();
@@ -474,6 +477,8 @@ public class MovieTheaterSystem {
                 System.out.println("Ingrese una cantidad menor o igual a "
                         + (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas()));
             }
+
+
         } while (!(boletos > 0
                 && boletos <= (obtenerSala(numSala).capacidadSala - obtenerTicketList(numSala).cantidadPersonas())));
 
