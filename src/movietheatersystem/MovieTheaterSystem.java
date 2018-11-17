@@ -9,7 +9,7 @@ public class MovieTheaterSystem {
     ListaSalas listaSalas = new ListaSalas();
     Util util = new Util();
     CustomerQueue customerQueue = new CustomerQueue();
-    int costo2D = 20, costo3D = 30, descuentoTercera = 15, descuentoNinos = 10;
+    float costo2D = 20, costo3D = 30, descuentoTercera = 15, descuentoNinos = 10;
 
     public static void main(String[] args) {
         MovieTheaterSystem obj = new MovieTheaterSystem();
@@ -475,7 +475,7 @@ public class MovieTheaterSystem {
                 }
             } while (!(total == boletos));
 
-            int costo;
+            float costo;
 
             if (listaSalas.buscarSalaPorPosicion(numSala).getTipoFormato() == 1) {
                 costo = costo3D;
@@ -483,8 +483,9 @@ public class MovieTheaterSystem {
                 costo = costo2D;
             }
 
-            float totalTicket = (ticketStandard * costo) + (ticketKids * costo
-                    * ((100 - descuentoNinos) * 100)) + (ticketElderly * costo * ((100 - descuentoTercera) * 100));
+            float totalTicket = (ticketStandard * costo) 
+                    +(ticketKids * costo * ((100 - descuentoNinos) /100)) 
+                    + (ticketElderly * costo * ((100 - descuentoTercera) / 100));
             String name = customerQueue.remove().getName();
 
             listaSalas.buscarSalaPorPosicion(numSala).getTicketList()
