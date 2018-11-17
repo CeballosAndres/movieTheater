@@ -221,6 +221,17 @@ public class ListaSalas {
 
     }
 
+    public boolean salaConBoletosVendidosPelicula() {
+        Sala aux = this.inicio;
+        while (aux != null) {
+            if (aux.pelicula != null && aux.getTicketList().cantidadPersonas() != 0) {
+                return true;
+            }
+            aux = aux.getNext();
+        }
+        return false;
+    }
+
     public boolean salaConBoletosPelicula() {
         Sala aux = this.inicio;
         while (aux != null) {
@@ -285,13 +296,14 @@ public class ListaSalas {
 
     public void mostrarSalasConBoletoYPeliculas() {
         Sala aux = this.inicio;
+        util.label("Seleccionar Sala");
         if (aux != null) {
             aux.labelFuncionesSala();
         }
 
-        util.label("Seleccionar Sala");
         System.out.println();
         while (aux != null) {
+
             if (aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0 && aux.pelicula != null) {
                 aux.mostrar();
                 System.out.println();
@@ -299,6 +311,42 @@ public class ListaSalas {
             aux = aux.getNext();
         }
     }
+
+    public void mostrarSalasConBoletoVendidosYPelicula() {
+        Sala aux = this.inicio;
+        util.label("Seleccionar Sala");
+        if (aux != null) {
+            aux.labelFuncionesSala();
+        }
+        System.out.println();
+        while (aux != null) {
+            if (aux.pelicula != null && aux.getTicketList().cantidadPersonas() != 0) {
+                aux.mostrar();
+                System.out.println();
+            }
+            aux = aux.getNext();
+        }
+    }
+    
+    public void mostrarInfSala(Ticket ticket) {
+        Ticket aux =ticket;
+        util.label("Informacion Sala");
+        System.out.println(" Folio-Nombres-total");
+        int i=1;
+        while (aux != null) {
+            System.out.print(" < "+ i+" : "+ aux.getFolio()+" : "+aux.getName()+" : "+aux.getTotal());
+            i++;
+            aux = aux.getNext();
+        }
+    
+    }
+    public void mostrarDatosSalaPF(int numSala) {
+        System.out.println();
+        util.label("Ticket ---- "+buscarSalaPorPosicion(numSala).pelicula.getNombre()+" # "+buscarSalaPorPosicion(numSala).escribirFormato(numSala));
+        
+    
+    }
+    
 
     // objetos para estadisticas
     //

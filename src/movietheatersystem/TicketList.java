@@ -102,5 +102,7 @@ public class TicketList {
         Ticket nuevo = new Ticket(folio, name, ticketStandard, ticketKids, ticketElderly, total);
         anadirALista(nuevo);
     }
+    
+    
 
 }
