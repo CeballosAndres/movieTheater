@@ -108,7 +108,7 @@ public class ListaSalas {
     public void modificarFuncionesSala(ListaPeliculas peliculas) {
         if (algunaSalaConPelicula()) {
             util.label("Salas");
-            mostrarSalasNombre(2);
+            mostrarSalasinf(2);
             int numSala = 0;
             do {
                 System.out.print("Ingrese el numero de la sala");
@@ -178,7 +178,7 @@ public class ListaSalas {
 
     public void agregarFuncionesSala(ListaPeliculas peliculas) {
         if (!TodaSalaConPelicula()) {
-            this.mostrarSalasNombre(1);
+            this.mostrarSalasinf(1);
             int numSala;
             do {
                 System.out.print("Ingrese el numero de la sala");
@@ -220,8 +220,12 @@ public class ListaSalas {
         return null;
     }
 
-    public void mostrarSalasNombre(int opc) {
+    public void mostrarSalasinf(int opc) {
+       
         Sala aux = this.inicio;
+         if (opc==4 && aux!=null) {
+          aux.labelFuncionesSala();
+        }
         util.label("Seleccionar Sala");
         System.out.println();
         int i = 1;
@@ -237,8 +241,7 @@ public class ListaSalas {
                 System.out.println();
 
             } else if (opc == 4 && aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0 && aux.pelicula != null) {
-                System.out.print(i + " -  Sala ");
-                System.out.printf("%-20s", aux.getNumSala());
+                aux.mostrar();
 
                 System.out.println();
 
@@ -295,15 +298,15 @@ public class ListaSalas {
         return i;
     }
 
-    public Ticket buscarFolio(String folio) {
+    public boolean buscarFolio(String folio) {
         Sala aux = this.inicio;
-        Ticket eliminar;
+        boolean eliminado;
         while (aux != null) {
-            if ((eliminar = aux.getTicketList().buscarEliminarFolio(folio)) != null) {
-                return eliminar;
-            }
+           if(aux.getTicketList().buscarEliminarFolio(folio)) {
+            return true;
+           }
             aux = aux.getNext();
         }
-        return null;
+        return false;
     }
 }

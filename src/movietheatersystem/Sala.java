@@ -75,7 +75,7 @@ public class Sala {
         System.out.printf("| %-8s  ", this.numSala);
         System.out.printf("| %-21s  ", this.pelicula.getNombre());
         System.out.printf("| %-16s  ", this.escribirFormato(this.tipoFormato));
-        System.out.printf("| %-19s  |", String.valueOf(this.capacidadSala));
+        System.out.printf("| %-19s  |", String.valueOf(this.capacidadSala -ticketList.cantidadPersonas()));
         System.out.println();
     }
 

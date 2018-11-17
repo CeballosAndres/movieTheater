@@ -20,36 +20,39 @@ public class TicketList {
         return this.inicio == null;
     }
 
-    public Ticket buscarEliminarFolio(String folio) {
-        Ticket atras, aux;
-        if (folio.equalsIgnoreCase(inicio.getFolio())) {
-            aux = this.inicio;
-            if (inicio == fin) {
-                inicio = null;
-                fin = null;
-            } else {
-                inicio = inicio.getNext();
-            }
-            return aux;
-        } else {
-            atras = inicio;
-            aux = inicio.getNext();
-            while (aux != null) {
-                if (folio.equalsIgnoreCase(aux.getFolio())) {
-                    if (fin == aux) {
-                        fin = atras;
-                    } else {
-                        atras.setNext(aux.getNext());
-                    }
-                    System.out.println(aux.getFolio() + " eliminado.");
-                    return aux;
+    public boolean buscarEliminarFolio(String folio) {
+        if (!vacio()) {
+            Ticket atras, aux;
+            if (folio.equalsIgnoreCase(inicio.getFolio())) {
+                inicio.mostrarTicket();
+                if (inicio == fin) {
+                    inicio = null;
+                    fin = null;
                 } else {
-                    atras = aux;
-                    aux = aux.getNext();
+                    inicio = inicio.getNext();
+                }
+                return true;
+            } else {
+                atras = inicio;
+                aux = inicio.getNext();
+                while (aux != null) {
+                    if (folio.equalsIgnoreCase(aux.getFolio())) {
+                        aux.mostrarTicket();
+                        atras.setNext(aux.getNext());
+                        if (fin == aux) {
+                            fin = atras;
+                        }
+
+                        aux = null;
+                        return true;
+                    } else {
+                        atras = aux;
+                        aux = aux.getNext();
+                    }
                 }
             }
         }
-        return null;
+        return false;
     }
 
     private void anadirALista(Ticket nuevo) {
