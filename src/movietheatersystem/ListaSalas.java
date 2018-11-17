@@ -1,7 +1,4 @@
 package movietheatersystem;
-
-import java.util.Scanner;
-
 public class ListaSalas {
 
     Sala inicio, fin;

@@ -221,7 +221,7 @@ public class MovieTheaterSystem {
                     if (listaSalas.salaConBoletos()) {
                         serveCustumer();
                     } else {
-                        System.out.println("No hay salas con boletos disponibles y funcionws ");
+                        System.out.println("No hay salas con boletos ni funciones disponibles! ");
                     }
                     break;
 
@@ -452,7 +452,7 @@ public class MovieTheaterSystem {
     public void serveCustumer() {
         String name = customerQueue.remove().getName();
 
-        listaSalas.mostrarSalasinf(4);
+        //listaSalas.mostrarSalasinf(4);
         int numSala = 0;
         System.out.println();
         this.listaSalas.mostrarSalasFunciones();
@@ -485,16 +485,16 @@ public class MovieTheaterSystem {
         int total, ticketKids, ticketStandard, ticketElderly;
 
         do {
-            util.label("Desgloce de boletos");
-            System.out.printf("%-12s","Niños");
+            util.label("Desglose de boletos");
+            System.out.printf("%12s","Niños");
             ticketKids = util.inputInteger();
-            System.out.printf("%-12s","Estandar");
+            System.out.printf("%12s","Estandar");
             ticketStandard = util.inputInteger();
-            System.out.printf("%-12s","Tercera edad");
+            System.out.printf("%12s","Tercera edad");
             ticketElderly = util.inputInteger();
             total = ticketKids + ticketStandard + ticketElderly;
             if (total != boletos) {
-                System.out.println("La cantidades de cada categoria no son las adecuadas para " + boletos + " persona");
+                System.out.println("\nLa cantidades de cada categoria no son las adecuadas para " + boletos + " persona");
             }
         } while (!(total == boletos));
 
@@ -517,17 +517,15 @@ public class MovieTheaterSystem {
         obtenerTicketList(numSala).getFin()
                 .mostrarTicket(costo, descuentoNinos, descuentoTercera);
 
-        System.out.println("El total a cobrar es" + totalTicket);
         float efectivo;
         do {
-            System.out.print("Cantidad a cobra:");
+            System.out.print("¿Con cuánto paga?");
             efectivo = util.inputInteger();
-
         } while (!(efectivo >= totalTicket));
 
-        System.out.println("Su cambio es:" + (efectivo - totalTicket));
+        System.out.println("Su cambio es: $" + (efectivo - totalTicket));
 
-        subMenuVentas();
+        //subMenuVentas();
 
     }
 
