@@ -59,7 +59,7 @@ public class CustomerQueue {
    
 
     public void newClient() {
-        System.out.print("Nombre cliente: ");
+        System.out.print("Nombre cliente");
         this.add(new Client(util.inputText()));
         System.out.println("Alta exitosa!");
     }

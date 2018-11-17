@@ -233,7 +233,6 @@ public class MovieTheaterSystem {
         String[] opcionesMenu = {
             "numero de salas",
             "numero de asientos"
-
         };
         do {
             util.label("Mini menú Configuración - Cine");
@@ -304,9 +303,9 @@ public class MovieTheaterSystem {
     public void miniMenuConfiguracionFuncionesSala() {
         int opc;
         String[] opcionesMenu = {
-            "Asignar pelicula a sala (+formato) ",
-            "Modificar pelicula a sala",
-            "Mostrar peliculas a sala "};
+            "Asignar pelicula y formato a sala ",
+            "Modificar sala",
+            "Mostrar salas"};
         do {
             util.label("Mini menú Configuración - peliculas a Salas");
 
@@ -325,7 +324,6 @@ public class MovieTheaterSystem {
                     this.listaSalas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
-                    util.label(opcionesMenu[opc - 1]);
                     this.listaSalas.mostrarSalasFunciones();
                     break;
                 case 0:
@@ -437,8 +435,8 @@ public class MovieTheaterSystem {
             listaSalas.mostrarSalasNombre(2);
             int numSala = 0;
             do {
-                System.out.print("Ingrese el numero de la sala:");
-                numSala = util.opcion();
+                System.out.print("Ingrese el número de la sala");
+                numSala = util.inputInteger();
             } while (!(numSala <= listaSalas.cantidadSalas && numSala > 0
                     && listaSalas.buscarSalaPorPosicion(numSala).pelicula != null));
 
