@@ -223,7 +223,6 @@ public class MovieTheaterSystem {
                     } else {
                         System.out.println("No hay salas con boletos disponibles ");
                     }
-
                     break;
 
                 case 2:

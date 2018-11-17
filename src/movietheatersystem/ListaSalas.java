@@ -259,7 +259,7 @@ public class ListaSalas {
     public boolean salaConBoletos() {
         Sala aux = this.inicio;
         while (aux != null) {
-            if (aux.capacidadSala - aux.getTicketList().cantidadPersonas() != 0) {
+            if (aux.capacidadSala-aux.getTicketList().cantidadPersonas()!=0 && aux.pelicula!=null) {
                 return true;
             }
             aux = aux.getNext();
