@@ -535,7 +535,7 @@ public class MovieTheaterSystem {
                         name, ticketStandard, ticketKids, ticketElderly, totalTicket);
 
         listaSalas.mostrarDatosSalaPF(numSala);
-        System.out.println(numSala+"-  Sala "+ obtenerSala(numSala).numSala );
+        System.out.println( "                            "+numSala+"-  Sala "+ obtenerSala(numSala).numSala );
         obtenerTicketList(numSala).getFin()
                 .mostrarTicket(costo, descuentoNinos, descuentoTercera);
 
