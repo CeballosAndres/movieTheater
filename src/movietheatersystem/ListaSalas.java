@@ -127,6 +127,17 @@ public class ListaSalas {
         }
         return i;
     }
+     public int obtenerCantidadBoletos(int formato) {
+        Sala aux = this.inicio;
+        int i = 0;
+        while (aux != null) {
+            if ( aux.pelicula!=null && aux.getTipoFormato() == formato ) {
+                i += aux.getTicketList().obtenerCantidadBoletos();
+            }
+            aux = aux.getNext();
+        }
+        return i;
+    }
 
     //configuracion funciones sala
     //
@@ -314,7 +325,6 @@ public class ListaSalas {
 
     public void mostrarSalasConBoletoVendidosYPelicula() {
         Sala aux = this.inicio;
-        util.label("Seleccionar Sala");
         if (aux != null) {
             aux.labelFuncionesSala();
         }
@@ -330,7 +340,7 @@ public class ListaSalas {
     
     public void mostrarInfSala(Ticket ticket) {
         Ticket aux =ticket;
-        util.label("Informacion Sala");
+   
         System.out.println(" Folio-Nombres-total");
         int i=1;
         while (aux != null) {
@@ -381,6 +391,28 @@ public class ListaSalas {
         return totales;
     }
 
+     public Ticket totalesTicketsFormato(int formato) {
+        Ticket totales = new Ticket();
+        Sala aux = this.inicio;
+        while (aux != null) {
+            if ( aux.pelicula!=null && aux.getTipoFormato() == formato ) {
+                Ticket ticketSala = aux.getTicketList().totalesTickets();
+                totales.setTicketStandard(totales.getTicketStandard() + ticketSala.getTicketStandard());
+                totales.setTicketElderly(totales.getTicketElderly() + ticketSala.getTicketElderly());
+                totales.setTicketKids(totales.getTicketKids() + ticketSala.getTicketKids());
+                totales.setTotal(totales.getTotal() + ticketSala.getTotal());
+            }
+            aux = aux.getNext();
+        }
+        return totales;
+    }
+     
+    public int cantidadPersonasFormato(int formato) {
+        Ticket resultadosTicket = totalesTicketsFormato(formato);
+        int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
+        return i;
+    }
+    
     public int cantidadPersonasPelicula(String pelicula) {
         Ticket resultadosTicket = totalesTicketsPelicula(pelicula);
         int i = resultadosTicket.getTicketKids() + resultadosTicket.getTicketElderly() + resultadosTicket.getTicketStandard();
