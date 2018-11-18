@@ -570,46 +570,45 @@ public class MovieTheaterSystem {
     public void estadisticasSala() {
         if (this.listaSalas.cantidadSalas > 0) {
             Sala aux = this.listaSalas.inicio;
-            System.out.printf("|| %-8s |", "Sala no.");
-            System.out.printf("|| %-7s |", "Formato");
-            System.out.printf("|| %-22s |", "     pelicula         ");
-            System.out.printf("| %-8s ", "Vendidos");
-            System.out.printf("| %-8s ", "Niños");
-            System.out.printf("| %-8s ", "Normal");
-            System.out.printf("| %-8s |", "A. mayor");
-            System.out.printf("| %-9s |", "N.Boletos");
-            System.out.printf("| %-8s ||", "Ganancia");
+            System.out.printf("|| %-4s |", "SALA");
+            System.out.printf("| %-7s ", "FORMATO");
+            System.out.printf("| %-22s |", "PELICULA");
+            System.out.printf("| %-8s ", "VENDIDOS");
+            System.out.printf("| %-5s ", "NIÑOS");
+            System.out.printf("| %-6s ", "NORMAL");
+            System.out.printf("| %-7s |", "A MAYOR");
+            System.out.printf("| %-6s |", "FOLIOS");
+            System.out.printf("| %-8s ||", "GANANCIA");
             System.out.println();
             while (aux != null) {
                 Ticket ticket = aux.getTicketList().totalesTickets();
-                System.out.printf("|| %-8s |", aux.numSala);
+                System.out.printf("|| %-4s |", aux.numSala);
                 if (aux.pelicula != null) {
-                    System.out.printf("|| %-7s |", aux.escribirFormato(aux.tipoFormato));
-                    System.out.printf("|| %-22s |", aux.pelicula.getNombre());
+                    System.out.printf("| %-7s ", aux.escribirFormato(aux.tipoFormato));
+                    System.out.printf("| %-22s |", aux.pelicula.getNombre());
                 } else {
-                    System.out.printf("|| %-7s |", "-------");
-                    System.out.printf("|| %-22s |", "----------------------");
+                    System.out.printf("| %-7s ", "----");
+                    System.out.printf("| %-22s |", "----");
                 }
                 System.out.printf("| %-8s ", aux.getTicketList().cantidadPersonas());
-                System.out.printf("| %-8s ", ticket.getTicketKids());
-                System.out.printf("| %-8s ", ticket.getTicketStandard());
-                System.out.printf("| %-8s |", ticket.getTicketElderly());
-                System.out.printf("| %-9s |", aux.getTicketList().obtenerCantidadBoletos());
+                System.out.printf("| %-5s ", ticket.getTicketKids());
+                System.out.printf("| %-6s ", ticket.getTicketStandard());
+                System.out.printf("| %-7s |", ticket.getTicketElderly());
+                System.out.printf("| %-6s |", aux.getTicketList().obtenerCantidadBoletos());
                 System.out.printf("| %-8s ||", ticket.getTotal());
                 System.out.println();
                 aux = aux.getNext();
             }
 
             Ticket total = this.listaSalas.totalesTicketsCine();
-            System.out.printf("|| %-8s |", "Totales");
-            System.out.printf("|| %-7s |", "-------");
-            System.out.printf("|| %-22s |", "----------------------");
+            System.out.printf("|| %-40s |", "       T o t a l e s");
             System.out.printf("| %-8s ", listaSalas.cantidadPersonas());
-            System.out.printf("| %-8s ", total.getTicketKids());
-            System.out.printf("| %-8s ", total.getTicketStandard());
-            System.out.printf("| %-8s |", total.getTicketElderly());
-            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosSalas());
+            System.out.printf("| %-5s ", total.getTicketKids());
+            System.out.printf("| %-6s ", total.getTicketStandard());
+            System.out.printf("| %-7s |", total.getTicketElderly());
+            System.out.printf("| %-6s |", listaSalas.obtenerCantBoletosSalas());
             System.out.printf("| %-8s ||", total.getTotal());
+            System.out.println();
         } else {
             System.out.println("No hay información.");
         }

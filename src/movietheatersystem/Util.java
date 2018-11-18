@@ -28,7 +28,7 @@ public class Util {
     }
 
     public void label(String cadena) {
-        int ancho = 83;
+        int ancho = 105;
         System.out.println("");
         for (int i = 0; i < (ancho - cadena.length()) / 2; i++) {
             System.out.print("=");
