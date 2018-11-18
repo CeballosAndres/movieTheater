@@ -41,12 +41,12 @@ public class Ticket {
 
     public void mostrarTicket(float costo, float descuentoNinos, float descuentoTercera) {
         System.out.println();
-        System.out.printf("|  %-11s  ", "Nombre");
-        System.out.printf("|  %-7s  ", "Folio");
-        System.out.printf("|  %-7s  ", "Estandar");
-        System.out.printf("|  %-7s  ", "Niños");
-        System.out.printf("|  %-7s  ", "A. mayor");
-        System.out.printf("|  %-7s  |", "Total");
+        System.out.printf("|  %-11s  ", "NOMBRE");
+        System.out.printf("|  %-7s  ", "FOLIO");
+        System.out.printf("|  %-7s  ", "ESTANDAR");
+        System.out.printf("|  %-7s  ", "NIÑOS");
+        System.out.printf("|  %-7s  ", "A. MAYOR");
+        System.out.printf("|  %-7s  |", "TOTAL");
         System.out.println();
 
         System.out.printf("| %-12s  ", this.name);
@@ -57,7 +57,7 @@ public class Ticket {
         System.out.printf("| %-8s  |", this.cantidadPersonas());
 
         System.out.println("\n ----------------------------------------------------------------------------");
-        System.out.printf("| %-24s  ", "        Totales");
+        System.out.printf("| %-24s  ", "        TOTALES");
         System.out.printf("| %-9s  ", this.ticketStandard * costo);
         System.out.printf("| %-8s  ", this.ticketKids * costo * ((100 - descuentoNinos) / 100));
         System.out.printf("| %-9s  ", this.ticketElderly * costo * ((100 - descuentoTercera) / 100));
@@ -67,12 +67,12 @@ public class Ticket {
 
     public void mostrarTicket() {
         System.out.println();
-        System.out.printf("|  %-7s  ", "Name");
-        System.out.printf("|  %-20s  ", "Folio");
-        System.out.printf("|  %-15s  ", "ticketStandard");
-        System.out.printf("|  %-19s ", "ticketKids");
-        System.out.printf("|  %-15s  ", "ticketElderly");
-        System.out.printf("|  %-19s |", "total");
+        System.out.printf("|  %-7s  ", "NOMBRE");
+        System.out.printf("|  %-20s  ", "FOLIO");
+        System.out.printf("|  %-15s  ", "ESTANDAR");
+        System.out.printf("|  %-19s ", "NIÑOS");
+        System.out.printf("|  %-15s  ", "A MAYOR");
+        System.out.printf("|  %-19s |", "TOTAL");
         System.out.println();
         
         

@@ -68,15 +68,15 @@ public class ListaPeliculas {
         System.out.print("Nombre");
         nombre = util.inputText();
         if (this.buscarPorNombre(nombre) == null) {
-            System.out.print("Genero");
+            System.out.print("Género");
             genero = util.inputText();
             System.out.print("Director");
             director = util.inputText();
-            System.out.print("duracion");
+            System.out.print("Duración");
             duracion = util.inputInteger();
             this.agregarFinal(new Pelicula(nombre, genero, director, duracion));
         } else {
-            System.out.println("Esa pelicula ya existe.");
+            System.out.println("Esa película ya existe.");
         }
     }
 
@@ -117,14 +117,14 @@ public class ListaPeliculas {
 
     public void eliminarPelicula() {
         String nombre;
-        System.out.print("Nombre de pelicula a eliminar");
+        System.out.print("Nombre de película a eliminar");
         nombre = util.inputText();
         Pelicula eliminar = this.buscarPorNombre(nombre);
         if (eliminar != null) {
             System.out.println("");
             eliminar.labelPeliculas();
             eliminar.mostrar();
-            System.out.print("\n¿Seguro de eliminar esta pelicula?[S/s]");
+            System.out.print("\n¿Seguro de eliminar esta película?[S/s]");
             char opc = util.inputChar();
             if (Character.toLowerCase(opc) == 's') {
                 switch (this.posicion(eliminar)) {
@@ -147,7 +147,7 @@ public class ListaPeliculas {
                 System.out.println("No se ha eliminado el elemento.");
             }
         } else {
-            System.out.println("Pelicula no encontrada.");
+            System.out.println("Película no encontrada.");
         }
     }
     
@@ -155,7 +155,7 @@ public class ListaPeliculas {
     
 
     public void modificarPelicula() {
-        System.out.print("Nombre de pelicula a modificar");
+        System.out.print("Nombre de película a modificar");
         String nombre = util.inputText();
         Pelicula modificar = this.buscarPorNombre(nombre);
         if (modificar != null) {
@@ -190,20 +190,20 @@ public class ListaPeliculas {
                 flag = true;
             }
             if (flag) {
-                System.out.println("\nPelicula modificada:");
+                System.out.println("\nPelícula modificada:");
                 modificar.labelPeliculas();
                 modificar.mostrar();
             } else {
-                System.out.println("No se modifico " + modificar.getNombre());
+                System.out.println("No se modificó " + modificar.getNombre());
             }
         } else {
-            System.out.println("Pelicula no encontrada.");
+            System.out.println("Película no encontrada.");
         }
     }
 
     public void mostrarPeliculas() {
         if (this.vacia()) {
-            System.out.println("No hay peliculas registradas.");
+            System.out.println("No hay películas registradas.");
         } else {
             Pelicula aux = this.inicio;
             aux.labelPeliculas();
@@ -216,7 +216,7 @@ public class ListaPeliculas {
 
     public void mostrarPeliculasNombre() {
         if (this.vacia()) {
-            System.out.println("No hay peliculas registradas.");
+            System.out.println("No hay películas registradas.");
         } else {
             Pelicula aux = this.inicio;
             System.out.println();

@@ -64,10 +64,10 @@ public class Sala {
 
     public void labelFuncionesSala() {
         System.out.println();
-        System.out.printf("|  %-7s  ", "Sala");
-        System.out.printf("|  %-20s  ", "Pelicula");
-        System.out.printf("|  %-15s  ", "Formato");
-        System.out.printf("|  %-19s |", "Disponibles");
+        System.out.printf("|  %-7s  ", "SALA");
+        System.out.printf("|  %-20s  ", "PELÍCULA");
+        System.out.printf("|  %-15s  ", "FORMATO");
+        System.out.printf("|  %-19s |", "DISPONIBLES");
         System.out.println();
     }
 
