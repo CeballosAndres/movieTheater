@@ -69,10 +69,10 @@ public class Pelicula {
 
     public void labelPeliculas() {
         System.out.println();
-        System.out.printf("|  %-20s  ", "Nombre");
-        System.out.printf("|  %-20s  ", "Director");
-        System.out.printf("|  %-15s  ", "Genero");
-        System.out.printf("|  %-8s  |", "Duración");
+        System.out.printf("|  %-20s  ", "NOMBRE");
+        System.out.printf("|  %-20s  ", "DIRECTOR");
+        System.out.printf("|  %-15s  ", "GÉNERO");
+        System.out.printf("|  %-8s  |", "DURACIÓN");
         System.out.println();
     }
 

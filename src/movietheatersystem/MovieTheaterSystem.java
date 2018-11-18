@@ -89,7 +89,7 @@ public class MovieTheaterSystem {
                             this.miniMenuVentasAtender();
                         }
                     } else {
-                        System.out.println("\nNo hat clientes formados en fila para compra o cancelacion de boleto.");
+                        System.out.println("\nNo hay clientes formados en fila para compra o cancelación de boleto.");
                     }
                     break;
                 case 0:
@@ -121,7 +121,7 @@ public class MovieTheaterSystem {
                     break;
                 case 2:
                     if (peliculas.cantidadPeliculas() == 0) {
-                        System.out.println("No se puede configurar funciones sala si no hay peliculas, ingrese opcion 1 para agregar peliculas");
+                        System.out.println("No se puede configurar funciones sala si no hay películas, ingrese opción 1 para agregar peliculas");
                     } else {
                         this.miniMenuConfiguracionFuncionesSala();
                     }
@@ -360,7 +360,6 @@ public class MovieTheaterSystem {
                     this.listaSalas.agregarFuncionesSala(peliculas);
                     break;
                 case 2:
-                    util.label(opcionesMenu[opc - 1]);
                     this.listaSalas.modificarFuncionesSala(peliculas);
                     break;
                 case 3:
@@ -386,7 +385,7 @@ public class MovieTheaterSystem {
         };
         do {
             util.label("Mini menú Administración - Costos");
-            System.out.println("Al cambiar costos se reconfigura el sistema :listas de salas y numero de asientos ");
+            System.out.println("Al cambiar costos se reconfigura el sistema. Listas de salas y número de asientos.");
             for (int i = 0; i < opcionesMenu.length; i++) {
                 System.out.println((i + 1) + " - " + opcionesMenu[i]);
             }
@@ -423,29 +422,28 @@ public class MovieTheaterSystem {
     }
 
     public void datosCosto() {
-        System.out.println("\n                       # Costos tradicionales # ");
-        System.out.println("costo 2D: " + costo2D
-                + "\n costo 3D: " + costo2D);
-        System.out.println("\n                     # Descuentos personas # ");
-        System.out.println("descuento ninos: " + descuentoNinos
-                + "\n descuento adultos tercera edad: " + descuentoTercera);
-        System.out.println("\n                       # Costos asociados # ");
-        System.out.println(" ninos - 2D: " + costo2D * ((100 - descuentoNinos) / 100)
-                + " \n ninos - 3D: " + costo3D * ((100 - descuentoNinos) / 100)
-                + " \n adultos - 2D: " + costo2D
-                + " \n adultos - 3D: " + costo3D
-                + " \n adultos tercera - 2D: " + costo2D * ((100 - descuentoTercera) / 100)
-                + " \n adultos tercera - 3D: " + costo3D * ((100 - descuentoTercera) / 100));
-
+      System.out.println("\n     - Costos de peliculas tradicionales - ");
+        System.out.println("                  Costo 2D: " + costo2D
+                +        "\n                  Costo 3D: " + costo2D);
+      System.out.println("\n     - Descuentos por tipo de personas - ");
+        System.out.println("                     Ninos: " + descuentoNinos
+           +             "\n      Adultos tercera edad: " + descuentoTercera);
+      System.out.println("\n     - Costos asociados - ");
+        System.out.println("                Niños - 2D: " + costo2D * ((100 - descuentoNinos) / 100)
+                +        "\n                Niños - 3D: " + costo3D * ((100 - descuentoNinos) / 100)
+                +        "\n              Adultos - 2D: " + costo2D
+                +        "\n              Adultos - 3D: " + costo3D
+                +        "\n Adultos tercera edad - 2D: " + costo2D * ((100 - descuentoTercera) / 100)
+                +        "\n Adultos tercera edad - 3D: " + costo3D * ((100 - descuentoTercera) / 100));
     }
 
     public int obtenerCosto(int opc) {
         int costo = 0;
         do {
             if (opc == 1) {
-                System.out.print("Ingresa costo nuevo:");
+                System.out.print("Ingresa costo nuevo");
             } else {
-                System.out.print("Ingresa descuento nuevo( 0-100):");
+                System.out.print("Ingresa descuento nuevo(0-100)");
             }
 
             costo = util.inputInteger();
@@ -460,7 +458,7 @@ public class MovieTheaterSystem {
     }
 
     public boolean cancelarVenta() {
-        System.out.print("Ingresa folio: ");
+        System.out.print("Ingresa folio");
         String folio = util.inputText();
         if (listaSalas.buscarFolio(folio)) {
 
@@ -469,7 +467,7 @@ public class MovieTheaterSystem {
             System.out.println("Fue un gusto atenderle " + name);
             return true;
         } else {
-            System.out.println("No se encontro elemento");
+            System.out.println("No se encontró elemento");
             return false;
         }
 
@@ -570,46 +568,45 @@ public class MovieTheaterSystem {
     public void estadisticasSala() {
         if (this.listaSalas.cantidadSalas > 0) {
             Sala aux = this.listaSalas.inicio;
-            System.out.printf("|| %-8s |", "Sala no.");
-            System.out.printf("|| %-7s |", "Formato");
-            System.out.printf("|| %-22s |", "     pelicula         ");
-            System.out.printf("| %-8s ", "Vendidos");
-            System.out.printf("| %-8s ", "Niños");
-            System.out.printf("| %-8s ", "Normal");
-            System.out.printf("| %-8s |", "A. mayor");
-            System.out.printf("| %-9s |", "N.Boletos");
-            System.out.printf("| %-8s ||", "Ganancia");
+            System.out.printf("|| %-4s |", "SALA");
+            System.out.printf("| %-7s ", "FORMATO");
+            System.out.printf("| %-22s |", "PELICULA");
+            System.out.printf("| %-8s ", "VENDIDOS");
+            System.out.printf("| %-5s ", "NIÑOS");
+            System.out.printf("| %-6s ", "NORMAL");
+            System.out.printf("| %-7s |", "A MAYOR");
+            System.out.printf("| %-6s |", "FOLIOS");
+            System.out.printf("| %-8s ||", "GANANCIA");
             System.out.println();
             while (aux != null) {
                 Ticket ticket = aux.getTicketList().totalesTickets();
-                System.out.printf("|| %-8s |", aux.numSala);
+                System.out.printf("|| %-4s |", aux.numSala);
                 if (aux.pelicula != null) {
-                    System.out.printf("|| %-7s |", aux.escribirFormato(aux.tipoFormato));
-                    System.out.printf("|| %-22s |", aux.pelicula.getNombre());
+                    System.out.printf("| %-7s ", aux.escribirFormato(aux.tipoFormato));
+                    System.out.printf("| %-22s |", aux.pelicula.getNombre());
                 } else {
-                    System.out.printf("|| %-7s |", "-------");
-                    System.out.printf("|| %-22s |", "----------------------");
+                    System.out.printf("| %-7s ", "----");
+                    System.out.printf("| %-22s |", "----");
                 }
                 System.out.printf("| %-8s ", aux.getTicketList().cantidadPersonas());
-                System.out.printf("| %-8s ", ticket.getTicketKids());
-                System.out.printf("| %-8s ", ticket.getTicketStandard());
-                System.out.printf("| %-8s |", ticket.getTicketElderly());
-                System.out.printf("| %-9s |", aux.getTicketList().obtenerCantidadBoletos());
+                System.out.printf("| %-5s ", ticket.getTicketKids());
+                System.out.printf("| %-6s ", ticket.getTicketStandard());
+                System.out.printf("| %-7s |", ticket.getTicketElderly());
+                System.out.printf("| %-6s |", aux.getTicketList().obtenerCantidadBoletos());
                 System.out.printf("| %-8s ||", ticket.getTotal());
                 System.out.println();
                 aux = aux.getNext();
             }
 
             Ticket total = this.listaSalas.totalesTicketsCine();
-            System.out.printf("|| %-8s |", "Totales");
-            System.out.printf("|| %-7s |", "-------");
-            System.out.printf("|| %-22s |", "----------------------");
+            System.out.printf("|| %-40s |", "       T O T A L E S");
             System.out.printf("| %-8s ", listaSalas.cantidadPersonas());
-            System.out.printf("| %-8s ", total.getTicketKids());
-            System.out.printf("| %-8s ", total.getTicketStandard());
-            System.out.printf("| %-8s |", total.getTicketElderly());
-            System.out.printf("| %-9s |", listaSalas.obtenerCantBoletosSalas());
+            System.out.printf("| %-5s ", total.getTicketKids());
+            System.out.printf("| %-6s ", total.getTicketStandard());
+            System.out.printf("| %-7s |", total.getTicketElderly());
+            System.out.printf("| %-6s |", listaSalas.obtenerCantBoletosSalas());
             System.out.printf("| %-8s ||", total.getTotal());
+            System.out.println();
         } else {
             System.out.println("No hay información.");
         }
@@ -638,13 +635,13 @@ public class MovieTheaterSystem {
         } else {
             Pelicula aux = this.peliculas.inicio;
 
-            System.out.printf("|| %-22s |", "     pelicula         ");
-            System.out.printf("| %-8s ", "Vendidos");
-            System.out.printf("| %-8s ", "Niños");
-            System.out.printf("| %-8s ", "Normal");
-            System.out.printf("| %-8s |", "A. mayor");
-            System.out.printf("| %-9s |", "N.Boletos");
-            System.out.printf("| %-8s ||", "Ganancia");
+            System.out.printf("|| %-22s |", "     PELICULA         ");
+            System.out.printf("| %-8s ", "VENDIDOS");
+            System.out.printf("| %-8s ", "NIÑOS");
+            System.out.printf("| %-8s ", "NORMAL");
+            System.out.printf("| %-8s |", "A  MAYOR");
+            System.out.printf("| %-9s |", "N BOLETOS");
+            System.out.printf("| %-8s ||", "GANANCIA");
             System.out.println();
             while (aux != null) {
                 Ticket ticket = listaSalas.totalesTicketsPelicula(aux.getNombre());
@@ -661,7 +658,7 @@ public class MovieTheaterSystem {
             }
 
             Ticket total = this.listaSalas.totalesTicketsCine();
-            System.out.printf("|| %-22s |", "      Totales         ");
+            System.out.printf("|| %-22s |", "      TOTALES         ");
             System.out.printf("| %-8s ", listaSalas.cantidadPersonas());
             System.out.printf("| %-8s ", total.getTicketKids());
             System.out.printf("| %-8s ", total.getTicketStandard());
@@ -711,11 +708,11 @@ public class MovieTheaterSystem {
     }
 
     public void superEtiqueta() {
-        System.out.println("                  __^__                                      __^__");
-        System.out.println("                 ( ___ )------------------------------------( ___ )");
-        System.out.println("                  | / |                                      | \\ |");
-        System.out.println("                  | / |      Movie Theater System 2018       | \\ |");
-        System.out.println("                  |___|                                      |___|");
-        System.out.println("                 (_____)------------------------------------(_____)");
+        System.out.println("                           __^__                                      __^__");
+        System.out.println("                          ( ___ )------------------------------------( ___ )");
+        System.out.println("                           | / |                                      | \\ |");
+        System.out.println("                           | / |      Movie Theater System 2018       | \\ |");
+        System.out.println("                           |___|                                      |___|");
+        System.out.print("                          (_____)------------------------------------(_____)");
     }
 }
